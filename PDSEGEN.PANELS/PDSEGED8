@@ -1,0 +1,77 @@
+)Attr Default(%+_)
+   _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
+   # type(output) intens(high) caps(off) just(left) pas(on) hilite(uscore)
+     color(&clrt)
+   } type(output) intens(high) caps(off) just(right) pas(on) hilite(uscore)
+     color(&clrt)
+   ] type(output) intens(high) caps(off) just(asis) pas(on) hilite(uscore)
+     color(&clrt)
+   $ type( input) intens(high) caps(on ) just(left ) hilite(uscore)
+     color(&clrw)
+   @ type(input ) intens(low ) caps(off) just(left ) color(&clrr)
+   ^ type(output) intens(low) caps(off)  color(&clrh) hilite(&clrhr)
+   [ type(output) intens(low) caps(off)  color(&clrw)
+   ! type(output) intens(low) color(&clrn) just(right)
+   % type(text) intens(high) color(&clrw)
+   + type(text) intens(low ) color(&clrb)
+   ` type(text) intens(high) color(&clrg)
+   ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
+   01  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
+   02  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRcdate)
+   03  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
+   04  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
+   06  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmmod)  just(right)
+   07  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
+)Body  Expand(\\)
+%-\-\(~PDSE V2 Member Generations^ver  %)\-\-
+%Command ===>_zcmd                                             %Scroll ===>_amt
+%                                                                              +
+[pdsetitl
+`Command  #Name`    Status      Rel-Gen]MDdate          +}Size        #ID      `
+)Model
+$z        z       @z         !z       z         z     œz           z
+)Init
+.zvars = '(msel mbr lopt mgen mdate4 mtime mcur muser)'
+ &ver = &pdsegver
+ &name   = 'Name'
+ &mddate = '   Changed   '
+ &size   = '  Size'
+ &id     = 'ID'
+.help = pdsegh0
+&amt = csr
+&m = ''
+if (&mail = 1)
+   &m = 'M'
+&msel = &z
+*Rexx(zdspagu, zdsperu)
+ zdspagu = strip(zdspagu)
+ zdsperu = strip(zdsperu)
+*EndRexx
+&m1       = '********************'
+&m2       = '*** Pages: &zdspagu    Percent Util: &zdsperu ***'
+&ztdmark  = '&m1&m2&m1'
+)ReInit
+ &ver = &pdsegver
+)Proc
+ &rowcrp = .csrrow
+ if (&zcmd = &z)
+    if (&ztdsels = 0000)
+       &row = .csrrow
+       if (&row ^= 0)
+           if (&msel = &z)
+               &msel = 'S'
+    if (&ztdsels ^= 0000)
+        &row = 0
+    if (&msel ^= &z)
+       if (&msel = '=')
+           &msel = &osel
+    &osel = &msel
+)PNTS
+FIELD(name)     VAR(ZCMD) VAL('SORT NAME')
+FIELD(crdate)   VAR(ZCMD) VAL('SORT CREATED')
+FIELD(mddate)   VAR(ZCMD) VAL('SORT CHANGED')
+FIELD(size)     VAR(ZCMD) VAL('SORT SIZE')
+FIELD(id)       VAR(ZCMD) VAL('SORT ID')
+)End
+/* Copyright (c) 2018-2020 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */

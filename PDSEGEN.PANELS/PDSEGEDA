@@ -1,0 +1,136 @@
+)Attr Default(%+_)
+   _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw)
+   # type(output) intens(high) caps(off) just(left) pas(on) hilite(uscore)
+     color(&clrt)
+   ] type(output) intens(high) caps(off) just(asis) pas(on) hilite(uscore)
+     color(&clrt)
+   $ type( input) intens(high) caps(on ) just(left ) hilite(uscore)
+     color(&clrw)
+   @ type(output) intens(low ) caps(off) just(left ) color(&clrr)
+   ^ type(output) intens(low) caps(off)  color(&clrh) skip(on)
+     hilite(&clrhr)
+   [ type(output) intens(low) caps(off)  color(&clrw)
+   ! type(output) intens(low) color(&clrn) just(right)
+   % type(text) intens(high) color(&clrw)
+   + type(text) intens(low ) color(&clrb)
+   ` type(text) intens(high) color(&clrg)
+   ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
+   01  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
+   02  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRcdate)
+   03  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
+   04  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
+   05  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRminit) just(right)
+   06  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmmod)  just(right)
+   07  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
+   | TYPE(AB)           /* Action bar                */
+   < TYPE(ABSL) GE(ON)  /* Action bar separator line */
+)ABC DESC('Member') mnem(1)
+ PDC DESC('Browse')   Action Run(BROWSE)
+ PDC DESC('COMpare')  Action Run(COMPARE)
+ PDC DESC('COPy')     Action Run(COPY)
+ PDC DESC('Edit')     Action Run(EDIT)
+ PDC DESC('FILter')   Action Run(FILTER)
+ PDC DESC('Find'   )  Action Run(Find)
+ PDC DESC('Locate' )  Action Run(Locate)
+ PDC DESC('SUBmit' )  Action Run(Submit)
+ PDC DESC('View'   )  Action Run(View)
+ PDC DESC('End'    )  Action Run(End)
+)ABCINIT
+  .ZVARS = 'MENUM'
+)ABC DESC('Filters') mnem(1)
+ PDC DESC('Today'  )  Action Run(Today)
+ PDC DESC('Week'   )  Action Run(Week   )
+ PDC DESC('Month'  )  Action Run(Month  )
+ PDC DESC('Year'   )  Action Run(Year)
+ PDC DESC('Mine'   )  Action Run(Mine)
+ PDC DESC('ID'     )  Action Run(ID)
+)ABCINIT
+  .ZVARS = 'MENUF'
+)ABC DESC('Dataset') mnem(1)
+ PDC DESC('BACkup')    Action Run(Backup)
+ PDC DESC('Info'  )    Action Run(Info)
+ PDC DESC('MODel' )    Action Run(Model)
+ PDC DESC('Prune' )    Action Run(Prune)
+ PDC DESC('RESTore')   Action Run(Restore)
+ PDC DESC('Validate')  Action Run(Validate)
+)ABCINIT
+  .ZVARS = 'MENUD'
+)ABC DESC('Dialog') mnem(2)
+ PDC DESC('Change'  ) Action Run(Change)
+ PDC DESC('Genonly' ) Action Run(Genonly)
+ PDC DESC('Hide'    ) Action Run(Hide  )
+ PDC DESC('HIGen'   ) Action Run(Higen )
+ PDC DESC('OUtput'  ) Action Run(Output)
+ PDC DESC('REFresh' ) Action Run(Refresh)
+ PDC DESC('SEt'     ) Action Run(Set   )
+ PDC DESC('SOrt'    ) Action Run(Sort)
+ PDC DESC('REFList' ) Action Run(Reflist)
+ PDC DESC('SETMacro') Action Run(Setmacro)
+)ABCINIT
+  .ZVARS = 'MENUX'
+)ABC DESC(Help) mnem(1)
+ PDC DESC('Help')  ACTION RUN(TUTOR) PARM('pdsegh0')
+ PDC DESC('About') ACTION RUN(TUTOR) PARM('pdsegabt')
+)ABCINIT
+  .ZVARS = HELPX
+)Body  Expand(\\) smsg(smsg) lmsg(lmsg)
++| Member | Filters | Dataset | Dialog | Help +
+<-----------\-\--------------------------------+
+%-\-\(~PDSE V2 Member Generations^ver  %)\-\-
+%Command ===>_zcmd                                             %Scroll ===>_amt
+%!lmsg                                                     !smsg               +
+[pdsetitl
+  #Name`       Gen  Abs#CRdate  ]MDdate       +`VV.MM #Size`#Init`#Mod#ID      `
+)Model
+$zz       @z !z  !z   z       z       z    !z    œz    	z    †z   z
+)Init
+.zvars = '(msel mbr lopts mgen agen cdate mdate +
+           mtime vrm mcur minit mmod muser)'
+ &ver = &pdsegver
+ &name   = 'Name'
+ &crdate = 'Created'
+ &mddate = '    Changed   '
+ &size   = 'Size'
+ &init   = 'Init'
+ &mod    = 'Mod'
+ &id     = 'ID'
+.help = pdsegh0
+&amt = csr
+&m = ''
+if (&mail = 1)
+   &m = 'M'
+&msel = &z
+*Rexx(zdspagu, zdsperu)
+ zdspagu = strip(zdspagu)
+ zdsperu = strip(zdsperu)
+*EndRexx
+&m1       = '********************'
+&m2       = '*** Pages: &zdspagu    Percent Util: &zdsperu ***'
+&ztdmark  = '&m1&m2&m1'
+)ReINIT
+ &ver = &pdsegver
+)Proc
+ &rowcrp = .csrrow
+ if (&zcmd = &z)
+    if (&ztdsels = 0000)
+       &row = .csrrow
+       if (&row ^= 0)
+           if (&msel = &z)
+               &msel = 'S'
+    if (&ztdsels ^= 0000)
+        &row = 0
+    if (&msel ^= &z)
+       if (&msel = '=')
+           &msel = &osel
+    &osel = &msel
+)PNTS
+FIELD(name)     VAR(ZCMD) VAL('SORT NAME')
+FIELD(crdate)   VAR(ZCMD) VAL('SORT CREATED')
+FIELD(mddate)   VAR(ZCMD) VAL('SORT CHANGED')
+FIELD(size)     VAR(ZCMD) VAL('SORT SIZE')
+FIELD(init)     VAR(ZCMD) VAL('SORT INIT')
+FIELD(mod)      VAR(ZCMD) VAL('SORT MOD')
+FIELD(id)       VAR(ZCMD) VAL('SORT ID')
+)End
+/* Copyright (c) 2018-2020 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */

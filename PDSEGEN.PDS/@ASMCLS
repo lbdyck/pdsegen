@@ -1,0 +1,38 @@
+//ASMCLS   JOB ...                                                      00010002
+//ASM      PROC MEMBER=CLS                                              00020002
+//             INSTLIB='HLQ.ASM',                                       00030002
+//             ARENT='RENT',LRENT='RENT,REUS'                           00040002
+//*     PRIOR RECORD IS THE INSTALLATION SOURCE LIBARRY                 00050002
+//ASM      EXEC PGM=ASMA90,REGION=32M,                                  00060002
+//             PARM=(NORLD,&ARENT,TERM,'XREF(SHORT),SIZE(MAX,ABOVE)')   00070002
+//SYSUT1    DD UNIT=VIO,SPACE=(4096,(120,1200),,,ROUND),DCB=BUFNO=1     00080002
+//SYSLIN    DD UNIT=VIO,SPACE=(TRK,(5,5)),DISP=(NEW,PASS),              00090002
+//             DCB=BLKSIZE=3120                                         00100002
+//SYSPRINT  DD SYSOUT=*                                                 00110002
+//SYSTERM   DD SYSOUT=*                                                 00120002
+//SYSLIB    DD DSN=SYS1.MODGEN,DISP=SHR                                 00130002
+//          DD DSN=SYS1.MACLIB,DISP=SHR                                 00140002
+//          DD DSN=&INSTLIB,DISP=SHR                                    00150002
+//LKED     EXEC PGM=IEWL,COND=(4,LT),REGION=32M,                        00160002
+//             PARM='MAP,&LRENT,NCAL'                                   00170002
+//SYSPRINT  DD SYSOUT=*                                                 00180002
+//SYSLIN    DD DSN=*.ASM.SYSLIN,DISP=(OLD,DELETE)                       00190002
+//SYSLMOD   DD DISP=SHR,                                                00200002
+//             DSN=HLQ.LOAD(&MEMBER)                                    00210002
+//*     PRIOR RECORD IS THE LINKEDIT TARGET LOAD LIBRARY                00220002
+//SYSUT1    DD UNIT=VIO,SPACE=(1024,(120,120),,,ROUND),                 00230002
+//             DCB=BUFNO=1                                              00240002
+//         PEND                                                         00250002
+//*                                                                     00260002
+//ASMCLS   EXEC ASM                                                     00270002
+//SYSIN     DD *                                                        00280002
+*---------------------------------------------------------------------* 00290002
+*        TSO "CLEAR SCREEN" COMMAND                                   * 00300002
+*---------------------------------------------------------------------* 00310002
+CLEARSCR CSECT                                                          00320002
+CLEARSCR RMODE ANY                                                      00330002
+         STLINENO LINE=1,CLEAR=YES     TOP OF SCREEN                    00340002
+         BR    14                      GOBACK                           00350002
+         DC    C'GSF UTILITIES - CLS R300'                              00360002
+         END                                                            00370002
+/*                                                                      00380002

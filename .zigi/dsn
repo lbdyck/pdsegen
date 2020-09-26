@@ -1,11 +1,11 @@
 # ZIGI dsn-file
 # This file needs to be here.
 # Don't edit unless you know what you're doing :)
-#  
+#
 # record format is (case insensitive):
-#  
+#
 # Position - description
-#  
+#
 # 1 - directory name which will be prefixed by the
 #     defined HLQ to create the z/OS dataset
 #     (* defines the default)
@@ -18,6 +18,17 @@
 #     0 is allowed if system determined blksize is enabled
 # 6 - extension (optional - if used then no period)
 #     file extension to be used for PDS members in USS
-#  
+#
 # Default DSORG and DCB info
 * PO FB 80 32720
+PDSEGEN.ASM PO FB 80 27920
+PDSEGEN.EXEC PO FB 80 32720
+PDSEGEN.PANELS PO FB 80 32720
+PDSEGEN.SAMPLE.PDS PO FB 80 32720
+PDSEGEN.PDS PO FB 80 32720
+PDSEGEN.PDS/ASM PO FB 80 32720
+PDSEGEN.PDS/EXEC PO FB 80 32720
+PDSEGEN.PDS/SAMPLE PO FB 80 32720
+PDSEGEN.PDS/PANELS PO FB 80 32720
+PDSEGEN.PDS/LOAD PO FB 80 32720
+PDSEGEN.LOAD PO U 4096 32760 

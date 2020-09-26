@@ -1,0 +1,30 @@
+//ASMJCL   JOB .                                                        00010009
+//PDSGEN   PROC MEMBER=MISSING,                                         00020009
+//             INSTLIB='T311LBD.PDSEGEN.ASM',                           00030011
+//             LOADLIB='T311LBD.PDSEGEN.LOAD',                          00031011
+//             ARENT='RENT',LRENT='RENT,REUS'                           00040009
+//ASM      EXEC PGM=ASMA90,REGION=32M,                                  00060009
+//             PARM=(NORLD,&ARENT,TERM,'XREF(SHORT),SIZE(MAX,ABOVE)')   00070009
+//SYSUT1    DD UNIT=VIO,SPACE=(4096,(120,1200),,,ROUND),DCB=BUFNO=1     00080009
+//SYSLIN    DD UNIT=VIO,SPACE=(TRK,(5,5)),DISP=(NEW,PASS),              00090009
+//             DCB=BLKSIZE=3120                                         00100009
+//SYSPRINT  DD SYSOUT=*                                                 00110009
+//SYSTERM   DD SYSOUT=*                                                 00120009
+//SYSIN     DD DISP=SHR,DSN=&INSTLIB.(&MEMBER)                          00130009
+//SYSLIB    DD DSN=SYS1.MODGEN,DISP=SHR                                 00140009
+//          DD DSN=SYS1.MACLIB,DISP=SHR                                 00150009
+//          DD DSN=&INSTLIB,DISP=SHR                                    00160009
+//LKED     EXEC PGM=IEWL,COND=(4,LT),REGION=32M,                        00170009
+//             PARM='MAP,&LRENT,NCAL'                                   00180009
+//SYSPRINT  DD SYSOUT=*                                                 00190009
+//SYSLIN    DD DSN=*.ASM.SYSLIN,DISP=(OLD,DELETE)                       00200009
+//SYSLMOD   DD DISP=SHR,                                                00210009
+//             DSN=&LOADLIB(&MEMBER)                                    00220010
+//SYSUT1    DD UNIT=VIO,SPACE=(1024,(120,120),,,ROUND),                 00240009
+//             DCB=BUFNO=1                                              00250009
+//         PEND                                                         00260009
+//*                                                                     00270009
+//PDSEGENI EXEC PDSGEN,MEMBER=PDSEGENI                                  00280009
+//PDSEGDEL EXEC PDSGEN,MEMBER=PDSEGDEL                                  00290009
+//PDSEGMAT EXEC PDSGEN,MEMBER=PDSEGMAT                                  00300009
+//*                                                                     00310009

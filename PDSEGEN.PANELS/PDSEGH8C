@@ -1,0 +1,43 @@
+)attr default(%+_)
+_ type( input) intens(low ) just(left ) hilite(uscore) color(&clrt )
+` type(text) intens(low ) caps(off) just(asis ) color(&clrt)
+~ type(text) intens(high) caps(off) just(asis ) color(&clrh)
+  hilite(&clrhr)
++ type(text) intens(high) caps(off) just(asis ) color(&clrt)
+# type(text) intens(high) caps(off) just(asis ) color(&clrt)
+% type(text) intens(high) color(&clrw)
+01 type(text) color(blue)
+02 type(text) color(green)
+03 type(text) color(pink)
+04 type(text) color(red )
+05 type(text) color(turq)
+06 type(text) color(white)
+07 type(text) color(yellow)
+)Body Expand(\\)
+%Tutorial -\-\(~PDSE V2 Member Generations%)\-\- Tutorial
+%Command ===>_ZCMD                                                             +
+%
+%  SET options
+`
+`  SET allows the user to change the default color options for the
+`  PDSEGEN application and tutorial panels.
+`
+`  Valid color options are:
+`       B - Blue   œR - Red   Y - Yellow
+`       G - Green  	T - Turq
+`       P - Pink   †W - White
+`
+`  The Header row color and the option to reverse the color are
+`  supported.
+`
+`  The member table display column colors may also be changed:
+`       Sorted is the color of the column last sorted
+`       UnSorted is the color of the other columns
+`
+)Init
+ .cursor = &zcmd
+)PROC
+ &ZUP = PDSEGH0
+)END
+/* Copyright (c) 2017 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */

@@ -1,0 +1,87 @@
+)Attr Default(%+_)
+   _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
+   + type(text) intens(low) skip(on) color(&clrb )
+   @ type(output) intens(high) caps(on) just(left) pas(on) hilite(uscore)
+      color(&clrt)
+   $ type( input) intens(high) caps(on ) just(left ) hilite(uscore)
+     color(&clrw)
+   ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
+   } type(output) intens(low) caps(off) color(&clrh) hilite(&clrhr)
+   01 type(text) intens(low) color(&clrb)
+   02 type(text) intens(low) color(&clrg)
+   03 type(text) intens(low) color(&clrp)
+   04 type(text) intens(low) color(&clrr)
+   05 type(text) intens(low) color(&clrt)
+   06 type(text) intens(low) color(&clrw)
+   07 type(text) intens(low) color(&clry)
+   08 type(input) intens(low) color(&clrw) caps(on)
+   09 type(text) intens(low) color(&clrh) hilite(&clrhr)
+   10 type(text) intens(low) color(&sortc)
+   11 type(text) intens(low) color(&sortb)
+)Body window(73,21) expand(\\)
+%-\-\(~PDSE V2 Generations Settings}ver  %)\-\-
+%Command ===>_zcmd
++
++Enter Default option for Select:$z+(@z+@z+@z+@z+)
++Use Action Bar panels:          $z+  Y or N
++Max Number of History Datasets: $z  +0 for no history
++Scroll Member List:             $z+  0 Do Not Scroll, 1 Scroll to Member
++Cursor on Last Selected Row:    $z+  0 Cursor in Command, 1 on Row
++
++Review/Change Color Settings:
++  Blue:   óz+    	Turq:   óz+            +B=Blue G=Green P=Pink
++  Green:  óz+    ÜWhite:  óz+            +R=Red T=Turq W=White
++  Pink:   óz+    Yellow: óz+            +Y=Yellow
++  úRed:    óz+
++  çHeader: Color: óz+ Reverse: óz+(Y or N)
++
++Table Sort Colors:Sorted: óz+       UnSorted: óz+
++
++Display Product Version Changes:$z+ (%0+no,%1+v.r,%2+v.r.m )
++
+\ \Press Enter to Register the changes - F3 to Cancel\ \
+)Init
+ .zvars  = '(pdsedo b e v s useab umaxhist tb cp +
+            sb st sg sw sp sy sr sh rh srtc srtb sc)'
+ &ver    = &pdsegver
+ .cursor = pdsedo
+ .help   = pdsegh8
+ &b = 'B'
+ &e = 'E'
+ &v = 'V'
+ &s = '/'
+ if (&exp = &z)
+     &exp = 'N'
+ if (&pdsedo = &z)
+     &pdsedo = '/'
+ if (&pdsedo = &z)
+     &pdsedo = '0'
+)Proc
+ ver (&pdsedo,nb,list,B,E,V,/)
+ ver (&useab,nb,list,Y,N)
+ ver (&umaxhist,nb,num)
+ ver (&tb,nb,list,0,1)
+ ver (&cp,nb,list,0,1)
+ &pdsetb = &tb
+ vput (pdsedo pdsetb) profile
+ ver (&sb,nb,list,B,G,P,R,T,W,Y)
+ ver (&sg,nb,list,B,G,P,R,T,W,Y)
+ ver (&sp,nb,list,B,G,P,R,T,W,Y)
+ ver (&sr,nb,list,B,G,P,R,T,W,Y)
+ ver (&st,nb,list,B,G,P,R,T,W,Y)
+ ver (&sw,nb,list,B,G,P,R,T,W,Y)
+ ver (&sy,nb,list,B,G,P,R,T,W,Y)
+ ver (&sh,nb,list,B,G,P,R,T,W,Y)
+ ver (&srtc,nb,list,B,G,P,R,T,W,Y)
+ ver (&srtb,nb,list,B,G,P,R,T,W,Y)
+ ver (&rh,nb,list,Y,N)
+ ver (&sc,nb,list,0,1,2)
+)End
+)PNTS
+FIELD(b) var(pdsedo) val(B)
+FIELD(e) var(pdsedo) val(E)
+FIELD(v) var(pdsedo) val(V)
+FIELD(s) var(pdsedo) val(S)
+)End
+/* Copyright (c) 2018-2020 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */
