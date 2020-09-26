@@ -31,3 +31,4 @@ PDSEGEN.PDS/ASM git-encoding=BINARY zos-working-tree-encoding=BINARY binary
 PDSEGEN.PDS/EXEC git-encoding=BINARY zos-working-tree-encoding=BINARY binary
 PDSEGEN.PDS/SAMPLE git-encoding=BINARY zos-working-tree-encoding=BINARY binary
 PDSEGEN.PDS/PANELS git-encoding=BINARY zos-working-tree-encoding=BINARY binary
+PDSEGEN.PDS/LOAD git-encoding=BINARY zos-working-tree-encoding=BINARY binary
