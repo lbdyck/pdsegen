@@ -28,3 +28,4 @@
 *.obj binary
 *.bin binary
 PDSEGEN.PDS/ASM git-encoding=BINARY zos-working-tree-encoding=BINARY binary
+PDSEGEN.PDS/EXEC git-encoding=BINARY zos-working-tree-encoding=BINARY binary
