@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.8.4  Oct 27, 2020
++    - ASM changes
++      PDSEGENI - Increase DSERV buffer size for more members
++
 +~Version 5.8.3  Sept 17, 2020
 +    - Exec changes
 +      PDSEGEN  - Support cursor retention setting

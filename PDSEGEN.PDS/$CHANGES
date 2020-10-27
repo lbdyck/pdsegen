@@ -5,16 +5,43 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.8.4  Oct 27, 2020
+     - ASM changes
+       PDSEGENI - Increase DSERV buffer size for more members
+
+  Version 5.8.3  Sept 17, 2020
+     - Exec changes
+       PDSEGEN  - Support cursor retention setting
+     - Panel changes
+       PDSEGEDA - Update for cursor positioning
+       PDSEGEDB - Update for cursor positioning
+       PDSEGEDC - Update for cursor positioning
+       PDSEGEDD - Update for cursor positioning
+       PDSEGEDE - Update for cursor positioning
+       PDSEGEDF - Update for cursor positioning
+       PDSEGEDG - Update for cursor positioning
+       PDSEGEDH - Update for cursor positioning
+       PDSEGED1 - Update for cursor positioning
+       PDSEGED2 - Update for cursor positioning
+       PDSEGED3 - Update for cursor positioning
+       PDSEGED4 - Update for cursor positioning
+       PDSEGED5 - Update for cursor positioning
+       PDSEGED6 - Update for cursor positioning
+       PDSEGED7 - Update for cursor positioning
+       PDSEGED8 - Update for cursor positioning
+       PDSEGH8  - Update for cursor positioning
+       PDSEGSET - Update for cursor positioning
+
+  Version 5.8.2  August 11, 2020
+     - Exec changes
+       PDSEGEN  - Free Model dataset after allocation
+
   Version 5.8.1  August 6, 2020
      - Exec changes
        PDSEGDSL - Enable access from display using alias
                 - Allow a member name in the dsname field
      - Panel changes
        PDSEGDSL - Expand dsname field to allow for member
-
-  Version 5.8.2  August 11, 2020
-     - Exec changes
-       PDSEGEN  - Free Model dataset after allocation
 
   Version 5.8.0  August 3, 2020
      - Exec changes
