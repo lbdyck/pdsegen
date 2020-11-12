@@ -17,7 +17,7 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
-+~Version 5.8.4  Oct 27, 2020
++~Version 5.8.4  Nov 12, 2020
 +    - ASM changes
 +      PDSEGENI - Increase DSERV buffer size for more members
 +
