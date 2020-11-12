@@ -69,6 +69,9 @@
 * UPDATE BY GAP JUNE 2020 TO RELOCATE THE DCBE POINTER TO RESOLVE   *
 * AND ISSUE IF THIS LMOD IS IN LINKLIST.                            *
 *                                                                   *
+* UPDATE BY *LBD* OCT 2020 CHANGE DESERV BUFFER FROM 10240 TO 32K   *
+* TO SUPPORT LARGER PDSE MEMBER COUNTS - UP TO ??? MEMBERS +/-      *
+*                                                                   *
 * THE MEMBER. VARIABLE LAYOUT:                                      *
 *                                                                   *
 *    FIELD    START LENGTH                                          *
@@ -827,7 +830,7 @@ STEMSCAN_FORNONZERO EQU *
          TITLE 'LITERALS'
          LTORG
          TITLE 'STORAGE ITEMS'
-DESERV_BFL DC   A(512*10240)  *LBD*    DESERV FUNC=GET_ALL_G BUFFER LEN
+DESERV_BFL DC   A(512*32760)  *LBD*    DESERV FUNC=GET_ALL_G BUFFER LEN
 DESERV_RC  DC   CL8'DESERVRC'          DESERV RC VAR NAME
 DESERV_RSN DC   CL8'DESERVRS'          DESERV RS VAR NAME
 P_MEMBER_STEM0 DC CL8'MEMBER.0'        MEMBER STEM 0
