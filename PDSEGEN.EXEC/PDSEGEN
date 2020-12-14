@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          12/14/20 - v5.8.5 - Correct return if recfm=u     *
   *          09/17/20 - v5.8.3 - Enhance cursor location       *
   *          08/11/20 - v5.8.2 - Free MODEL allocation         *
   *          08/07/20 - v5.8.1 - Support dsname(mem)           *
@@ -1017,9 +1018,7 @@ Start:
     zerrlm = 'PDSEGEN does not support RECFM='zdsrf
     'setmsg msg(isrz003)'
     "Select PGM(isrdslst) parm(DSL "pdsedsn") suspend scrname(udlist)"
-    pdsedsn = '*'
-    zcmd = 'C ?'
-    signal do_zcmd
+    exit 8
   end
 
   /* ---------------------------------------------- *
