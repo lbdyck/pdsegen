@@ -17,6 +17,11 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.8.6  Feb 17, 2021
++    - Exec changes
++      PDSEGEN  - Correct return from PDSEGDSL of 0
++      PDSEGDSL - Allow single qualifier dsns on Change command
++
 +~Version 5.8.5  Dec 14, 2020
 +    - Exec changes
 +      PDSEGEN  - Correct return if RECFM=U on entry

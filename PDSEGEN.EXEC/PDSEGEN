@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          02/17/21 - v5.8.6 - Fix return from PDSEGDSL if 0 *
   *          12/14/20 - v5.8.5 - Correct return if recfm=u     *
   *          09/17/20 - v5.8.3 - Enhance cursor location       *
   *          08/11/20 - v5.8.2 - Free MODEL allocation         *
@@ -960,6 +961,7 @@ Restart:
       pdsedsn = null
       'vput (pdsedsn)'
       pdsedsn = pdsegdsl()
+      if pdsedsn = 0 then pdsedsn = '*'
       if words(pdsedsn) > 1 then
       parse value pdsedsn with pdsedsn filter
       call close
