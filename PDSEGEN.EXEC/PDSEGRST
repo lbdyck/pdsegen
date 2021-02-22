@@ -50,6 +50,7 @@
  | Author:    Lionel B. Dyck                                  |
  |                                                            |
  | History:  (most recent on top)                             |
+ |            02/22/21 - Correct Typo in Report               |
  |            03/04/19 - Add numerics for maxgen check        |
  |            11/24/17 - Update to support changed PDSEGENS   |
  |            09/27/17 - Add Progress Meter                   |
@@ -85,11 +86,11 @@
  call do_say 'Calling parameters:'
  call do_say '%'sysvar('sysicmd') parms
  call do_say ' '
- call do_say 'Input Backup PDSE:  ' fromdsn
- call do_say 'Outpput Target PDSE:' targetds
- call do_say 'Member (mask):      ' mbr
- call do_say 'Generation:         ' gen
- call do_say 'New Flag:           ' target_new
+ call do_say 'Input Backup PDSE: ' fromdsn
+ call do_say 'Output Target PDSE:' targetds
+ call do_say 'Member (mask):     ' mbr
+ call do_say 'Generation:        ' gen
+ call do_say 'New Flag:          ' target_new
  call do_say ' '
 
 /* --------------------------------------------------- *
