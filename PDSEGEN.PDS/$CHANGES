@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.8.8  Feb 23, 2021
+     - Exec changes
+       PDSEGEN  - Correct typo in msel unknown msg
+
   Version 5.8.7  Feb 22, 2021
      - Exec changes
        PDSEGRST - Correct typo (outPPut to output)

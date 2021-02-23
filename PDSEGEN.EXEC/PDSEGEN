@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          02/23/21 - v5.8.8 - Fix typo in msel unknown msg  *
   *          02/17/21 - v5.8.6 - Fix return from PDSEGDSL if 0 *
   *          12/14/20 - v5.8.5 - Correct return if recfm=u     *
   *          09/17/20 - v5.8.3 - Enhance cursor location       *
@@ -2241,7 +2242,7 @@ Start:
       if length(msel) = 1 then
       if pos(msel,'/ABCDEGHIJKMOPQRTUVWXZ') = 0 then do
         zerrsm = 'Unknown Selection'
-        zerrlm = msel 'is an unknow option - select a valid option.'
+        zerrlm = msel 'is an unknown option - select a valid option.'
         'Setmsg msg(isrz003)'
         msel = '/'
       end
