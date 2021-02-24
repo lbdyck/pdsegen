@@ -5,6 +5,11 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.8.9  Feb 24, 2021
+     - Exec changes
+       PDSEGEN  - Prevent a false positive during FIND processing for
+                  a PDSEGEN BACKUP PDS
+
   Version 5.8.8  Feb 23, 2021
      - Exec changes
        PDSEGEN  - Correct typo in msel unknown msg

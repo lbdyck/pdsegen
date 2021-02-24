@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          02/24/21 - v5.8.9 - Change Find routine for backup*
+  *                              member check to avoid false   *
   *          02/23/21 - v5.8.8 - Fix typo in msel unknown msg  *
   *          02/17/21 - v5.8.6 - Fix return from PDSEGDSL if 0 *
   *          12/14/20 - v5.8.5 - Correct return if recfm=u     *
@@ -5309,10 +5311,10 @@ Do_Find:
   fhit = 0
   do forever
     if zdsngen = 0 then fhit = 1
-    if sysdsn("'"wdsn"($alloc)'")  = 'OK' then fhit = 1
-    if sysdsn("'"wdsn"($backup)'") = 'OK' then fhit = 1
-    if sysdsn("'"wdsn"($index)'")  = 'OK' then fhit = 1
-    if fhit = 0 then leave
+    if sysdsn("'"wdsn"($alloc)'")  = 'OK' then fhit = fhit + 1
+    if sysdsn("'"wdsn"($backup)'") = 'OK' then fhit = fhit + 1
+    if sysdsn("'"wdsn"($index)'")  = 'OK' then fhit = fhit + 1
+    if fhit < 3 then leave
     /* build selection list */
     ftmems = null
     'tbtop' pdset
