@@ -173,8 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
-  *          02/24/21 - v5.8.9 - Change Find routine for backup*
-  *                              member check to avoid false   *
+  *          02/25/21 - v5.8.9 - Clean up the do_find for PDS  *
+  *                              and PDSE without gens         *
   *          02/23/21 - v5.8.8 - Fix typo in msel unknown msg  *
   *          02/17/21 - v5.8.6 - Fix return from PDSEGDSL if 0 *
   *          12/14/20 - v5.8.5 - Correct return if recfm=u     *
@@ -5301,20 +5301,15 @@ Do_Prune:
   /* ---------------------------------------------------------- *
   * Do_Find routine                                            *
   *                                                            *
-  * - test for members $alloc, $backup and $index to determine *
-  *   if this is a backup dataset                              *
-  * - if not do normal find                                    *
-  * - if backup use superc find pdsegfnd                       *
+  * - If a PDSE or PDS with zdsngen (maxgen) = 0 then use      *
+  *   pdsegfnd (superc)                                        *
+  * - if not do PDSEGEN enhanced find (includes generations)   *
   * ---------------------------------------------------------- */
 Do_Find:
   zcmd = null
   fhit = 0
+  if zdsngen = 0 then
   do forever
-    if zdsngen = 0 then fhit = 1
-    if sysdsn("'"wdsn"($alloc)'")  = 'OK' then fhit = fhit + 1
-    if sysdsn("'"wdsn"($backup)'") = 'OK' then fhit = fhit + 1
-    if sysdsn("'"wdsn"($index)'")  = 'OK' then fhit = fhit + 1
-    if fhit < 3 then leave
     /* build selection list */
     ftmems = null
     'tbtop' pdset

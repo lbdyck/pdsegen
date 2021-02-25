@@ -17,10 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
-+~Version 5.8.9  Feb 24, 2021
++~Version 5.8.9  Feb 25, 2021
 +    - Exec changes
-+      PDSEGEN  - Prevent a false positive during FIND processing for
-+                 a PDSEGEN BACKUP PDS
++      PDSEGEN  - Improve detection in do_find routine for a PDSE without
++                 generations
 +
 +~Version 5.8.8  Feb 23, 2021
 +    - Exec changes
