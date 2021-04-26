@@ -17,6 +17,36 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.0  Apr 26, 2021
++    - Exec changes
++      PDSEGEN  - Allow short dataset names on the prompt panel
++
++~Version 5.8.9  Feb 25, 2021
++    - Exec changes
++      PDSEGEN  - Improve detection in do_find routine for a PDSE without
++                 generations
++
++~Version 5.8.8  Feb 23, 2021
++    - Exec changes
++      PDSEGEN  - Correct typo in msel unknown msg
++
++~Version 5.8.7  Feb 22, 2021
++    - Exec changes
++      PDSEGRST - Correct typo (outPPut to output)
++
++~Version 5.8.6  Feb 17, 2021
++    - Exec changes
++      PDSEGEN  - Correct return from PDSEGDSL of 0
++      PDSEGDSL - Allow single qualifier dsns on Change command
++
++~Version 5.8.5  Dec 14, 2020
++    - Exec changes
++      PDSEGEN  - Correct return if RECFM=U on entry
++
++~Version 5.8.4  Oct 27, 2020
++    - ASM changes
++      PDSEGENI - Increase DSERV buffer size for more members
++
 +~Version 5.8.3  Sept 17, 2020
 +    - Exec changes
 +      PDSEGEN  - Support cursor retention setting

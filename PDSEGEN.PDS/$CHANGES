@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.0  Apr 26, 2021
+     - Exec changes
+       PDSEGEN  - Allow short dataset names on the prompt panel
+
   Version 5.8.9  Feb 25, 2021
      - Exec changes
        PDSEGEN  - Improve detection in do_find routine for a PDSE without

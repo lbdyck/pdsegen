@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          04/26/21 - v5.9.0 - Allow short dataset names on  *
+  *                              prompt panel                  *
   *          02/25/21 - v5.8.9 - Clean up the do_find for PDS  *
   *                              and PDSE without gens         *
   *          02/23/21 - v5.8.8 - Fix typo in msel unknown msg  *
@@ -970,6 +972,12 @@ Restart:
       call close
       signal restart
     end
+    if length(pdsedsn) < 9 then
+       if pos('.',pdsedsn) = 0
+          then do
+               call close
+               signal restart
+               end
     if sysdsn(pdsedsn) /= 'OK' then do
       zerrsm = 'Invalid DSN'
       zerrlm = sysdsn(pdsedsn)

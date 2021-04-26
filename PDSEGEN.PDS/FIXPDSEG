@@ -17,6 +17,7 @@
  * ---------------------------------------------------------- */
  Address ISREdit
  'Macro (hlq)'
+ trace '?i'
  '(member) = member'
   if wordpos(member,'ASMJCL PDSEGENX') > 0 then do
      "c 'hlq.' '"hlq"' all"
