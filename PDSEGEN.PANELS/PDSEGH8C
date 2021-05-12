@@ -6,13 +6,13 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrt )
 + type(text) intens(high) caps(off) just(asis ) color(&clrt)
 # type(text) intens(high) caps(off) just(asis ) color(&clrt)
 % type(text) intens(high) color(&clrw)
-01 type(text) color(blue)
-02 type(text) color(green)
-03 type(text) color(pink)
-04 type(text) color(red )
-05 type(text) color(turq)
-06 type(text) color(white)
-07 type(text) color(yellow)
+! type(text) color(blue)
+@ type(text) color(green)
+* type(text) color(pink)
+{ type(text) color(red )
+} type(text) color(turq)
+^ type(text) color(white)
+/ type(text) color(yellow)
 )Body Expand(\\)
 %Tutorial -\-\(~PDSE V2 Member Generations%)\-\- Tutorial
 %Command ===>_ZCMD                                                             +
@@ -23,9 +23,9 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrt )
 `  PDSEGEN application and tutorial panels.
 `
 `  Valid color options are:
-`       B - Blue   R - Red   Y - Yellow
-`       G - Green  	T - Turq
-`       P - Pink   W - White
+`       !B - Blue   {R - Red   /Y - Yellow
+`       @G - Green  }T - Turq
+`       *P - Pink   ^W - White
 `
 `  The Header row color and the option to reverse the color are
 `  supported.

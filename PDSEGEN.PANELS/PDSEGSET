@@ -7,17 +7,17 @@
      color(&clrw)
    ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
    } type(output) intens(low) caps(off) color(&clrh) hilite(&clrhr)
-   01 type(text) intens(low) color(&clrb)
-   02 type(text) intens(low) color(&clrg)
-   03 type(text) intens(low) color(&clrp)
-   04 type(text) intens(low) color(&clrr)
-   05 type(text) intens(low) color(&clrt)
-   06 type(text) intens(low) color(&clrw)
-   07 type(text) intens(low) color(&clry)
-   08 type(input) intens(low) color(&clrw) caps(on)
-   09 type(text) intens(low) color(&clrh) hilite(&clrhr)
-   10 type(text) intens(low) color(&sortc)
-   11 type(text) intens(low) color(&sortb)
+   ` type(text) intens(low) color(&clrb)
+   ! type(text) intens(low) color(&clrg)
+   # type(text) intens(low) color(&clrp)
+   * type(text) intens(low) color(&clrr)
+   { type(text) intens(low) color(&clrt)
+   ^ type(text) intens(low) color(&clrw)
+   ? type(text) intens(low) color(&clry)
+    type(input) intens(low) color(&clrw) caps(on)
+   ' type(text) intens(low) color(&clrh) hilite(&clrhr)
+   " type(text) intens(low) color(&sortc)
+   < type(text) intens(low) color(&sortb)
 )Body window(73,21) expand(\\)
 %-\-\(~PDSE V2 Generations Settings}ver  %)\-\-
 %Command ===>_zcmd
@@ -29,13 +29,13 @@
 +Cursor on Last Selected Row:    $z+  0 Cursor in Command, 1 on Row
 +
 +Review/Change Color Settings:
-+  Blue:   z+    	Turq:   z+            +B=Blue G=Green P=Pink
-+  Green:  z+    White:  z+            +R=Red T=Turq W=White
-+  Pink:   z+    Yellow: z+            +Y=Yellow
-+  Red:    z+
-+  Header: Color: z+ Reverse: z+(Y or N)
++  `Blue:   z+    {Turq:   z+            +B=Blue G=Green P=Pink
++  !Green:  z+    ^White:  z+            +R=Red T=Turq W=White
++  #Pink:   z+    ?Yellow: z+            +Y=Yellow
++  *Red:    z+
++  'Header: Color: z+ Reverse: z+(Y or N)
 +
-+Table Sort Colors:Sorted: z+       UnSorted: z+
++Table Sort Colors:"Sorted: z+       <UnSorted: z+
 +
 +Display Product Version Changes:$z+ (%0+no,%1+v.r,%2+v.r.m )
 +
