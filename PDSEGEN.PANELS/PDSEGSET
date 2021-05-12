@@ -29,13 +29,13 @@
 +Cursor on Last Selected Row:    $z+  0 Cursor in Command, 1 on Row
 +
 +Review/Change Color Settings:
-+  Blue:   뾸+    	Turq:   뾸+            +B=Blue G=Green P=Pink
-+  Green:  뾸+    냍hite:  뾸+            +R=Red T=Turq W=White
-+  Pink:   뾸+    Yellow: 뾸+            +Y=Yellow
-+  쏳ed:    뾸+
-+  뛊eader: Color: 뾸+ Reverse: 뾸+(Y or N)
++  Blue:   혰z+    	Turq:   혰z+            +B=Blue G=Green P=Pink
++  Green:  혰z+    혛White:  혰z+            +R=Red T=Turq W=White
++  Pink:   혰z+    Yellow: 혰z+            +Y=Yellow
++  혵Red:    혰z+
++  혥Header: Color: 혰z+ Reverse: 혰z+(Y or N)
 +
-+Table Sort Colors:Sorted: 뾸+       UnSorted: 뾸+
++Table Sort Colors:Sorted: 혰z+       UnSorted: 혰z+
 +
 +Display Product Version Changes:$z+ (%0+no,%1+v.r,%2+v.r.m )
 +

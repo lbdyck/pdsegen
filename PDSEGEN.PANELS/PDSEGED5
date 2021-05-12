@@ -15,13 +15,13 @@
    + type(text) intens(low ) color(&clrb)
    ` type(text) intens(high) color(&clrg)
    ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
-   01  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
-   02  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRcdate)
-   03  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
-   04  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
-   05  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRminit) just(right)
-   06  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmmod)  just(right)
-   07  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
+   *   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
+   {   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRcdate)
+   }   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
+   :   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
+   /   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRminit) just(right)
+   ?   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmmod)  just(right)
+      TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
 )Body  Expand(\\)
 %-\-\(~PDSE V2 Member Generations^ver  %)\-\-
 %Command ===>_zcmd                                             %Scroll ===>_amt
@@ -29,7 +29,7 @@
 [pdsetitl
   #Name`        Rel-Gen#CRdate  ]MDdate       +`VV.MM #Size`#Init`#Mod#ID      `
 )Model
-$zz       @z !z       z       z       z    !z    œz    	z    †z   z
+$z*z       @z !z       {z       }z       }z    !z    :z    /z    ?z   z
 )Init
 .zvars = '(msel mbr lopts mgen cdate mdate +
            mtime vrm mcur minit mmod muser)'

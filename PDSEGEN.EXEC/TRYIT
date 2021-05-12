@@ -995,32 +995,32 @@ destroy_libdefs:
  28 TYPE(NEF) CAPS(ON) PADC(USER)
 
 )BODY  CMD(ZCMD)
-Ž                     	       Try20 Assembler Dialog    Ž                      Ž
-Command ===>ˆZ                                                                Ž
+ÂŽ                     	       Try20 Assembler Dialog    ÂŽ                      ÂŽ
+ÂCommand ===>ÂˆZ                                                                ÂŽ
 SAREA38                                                                       
 )AREA SAREA38
-Ž
-—Assembler options:—                                                           Ž
-ŽŽTerm  . . .ˆZ     Ž(TERM or NOTERM)Ž
-ŽŽRent  . . .ˆZ  Ž   (YES  or NO)    Ž
-ŽŽOther . . .ˆZ                                                            Ž
-Ž
-—Additional Macro Libraries:—(* to include active dataset)                     Ž
-—Maclib===>ˆtmac1                                                            Ž
-Ž Ž    ===>ˆtmac2                                                            Ž
-Ž Ž    ===>ˆtmac3                                                            Ž
-Ž Ž    ===>ˆtmac4                                                            Ž
-Ž
-—Linkage Editor Options:—(in addition to assembler rent)
-ŽŽAuth  . . .ˆZ  Ž   (YES or NO - AC=1)  Ž
-ŽŽOther . . .ˆtlink                                                        Ž
-Ž
-—Syslib===>ˆtsyslib                                                          Ž
-—Load  ===>ˆtloadlib                                                         Ž
-Ž           (If blank then no link will be performed)                         Ž
-Ž                                                                             Ž
-ŽRetain Listing and Obj Data Sets===>ˆz  Ž (YES or NO)     Ž                Ž
-Ž                                                                             Ž
+ÂŽ
+Â—Assembler options:Â—                                                           ÂŽ
+ÂŽÂŽÂTerm  . . .ÂˆZ     ÂŽ(TERM or NOTERM)ÂŽ
+ÂŽÂŽÂRent  . . .ÂˆZ  ÂŽ   (YES  or NO)    ÂŽ
+ÂŽÂŽÂOther . . .ÂˆZ                                                            ÂŽ
+ÂŽ
+Â—Additional Macro Libraries:Â—(* to include active dataset)                     ÂŽ
+Â—MaclibÂ===>Âˆtmac1                                                            ÂŽ
+ÂŽ ÂŽÂ    ===>Âˆtmac2                                                            ÂŽ
+ÂŽ ÂŽÂ    ===>Âˆtmac3                                                            ÂŽ
+ÂŽ ÂŽÂ    ===>Âˆtmac4                                                            ÂŽ
+ÂŽ
+Â—Linkage Editor Options:Â—(in addition to assembler rent)
+ÂŽÂŽÂAuth  . . .ÂˆZ  ÂŽ   (YES or NO - AC=1)  ÂŽ
+ÂŽÂŽÂOther . . .Âˆtlink                                                        ÂŽ
+ÂŽ
+Â—SyslibÂ===>Âˆtsyslib                                                          ÂŽ
+Â—Load  Â===>Âˆtloadlib                                                         ÂŽ
+ÂŽ           (If blank then no link will be performed)                         ÂŽ
+ÂŽ                                                                             ÂŽ
+ÂŽRetain Listing and Obj Data SetsÂ===>Âˆz  ÂŽ (YES or NO)     ÂŽ                ÂŽ
+ÂŽ                                                                             ÂŽ
 )Init
  .zvars = '(Zcmd tterm trent tother tauth tretain)'
  .cursor = zcmd

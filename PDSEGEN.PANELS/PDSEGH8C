@@ -23,9 +23,9 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrt )
 `  PDSEGEN application and tutorial panels.
 `
 `  Valid color options are:
-`       B - Blue   œR - Red   Y - Yellow
+`       B - Blue   ÂœR - Red   Y - Yellow
 `       G - Green  	T - Turq
-`       P - Pink   †W - White
+`       P - Pink   Â†W - White
 `
 `  The Header row color and the option to reverse the color are
 `  supported.

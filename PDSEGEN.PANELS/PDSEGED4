@@ -16,12 +16,12 @@
    + type(text) intens(low ) color(&clrb)
    ` type(text) intens(high) color(&clrg)
    ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
-   01  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
+   *   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmbr)
    02  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRcdate)
-   03  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
-   04  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
+   {   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRchang)
+   :   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmcur)  just(right)
    06  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmmod)  just(right)
-   07  TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
+   /   TYPE(OUTPUT) INTENS(LOW)  SKIP(ON) COLOR(&CLRmuser)
 )Body  Expand(\\)
 %-\-\(~PDSE V2 Member Generations^ver  %)\-\-
 %Command ===>_zcmd                                             %Scroll ===>_amt
@@ -29,7 +29,7 @@
 [pdsetitl
 `Command  #Name`    Status     Gen  Abs]MDdate          +  }Size      #ID      `
 )Model
-$z        z       @z         !z  !z   z         z     œz           z
+$z        *z       @z         !z  !z   {z         {z     :z           /z
 )Init
 .zvars = '(msel mbr lopt mgen agen mdate4 mtime mcur muser)'
  &ver = &pdsegver
