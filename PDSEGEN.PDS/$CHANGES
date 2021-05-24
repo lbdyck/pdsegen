@@ -5,6 +5,14 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.1  May 24, 2021
+     - Exec changes
+       PDSEGEN  - Change do_zcmd from if logic to select/when logic
+                - Fix check for MINE command to allow S/E/B/.. MINE
+     - Panel changes
+       PDSEGBAK - Change version in header to make it bigger
+       PDSEGRST - Change version in header to make it bigger
+
   Version 5.9.0  Apr 26, 2021
      - Exec changes
        PDSEGEN  - Allow short dataset names on the prompt panel

@@ -1,39 +1,67 @@
-This member documents the PDSEGEN Commands:
+PDSEGBAK is a rexx utility that utilizes the PDSEGENI REXX function
+and ISPF services to make a complete backup of a PDSE V2 that has
+members with generations, and then provides the ability to restore
+that backup.
 
-Command line options are:
+NOTE 1: If the backup PDS does not have generations then an error
+        message will be generated as this is not the best utility to
+        process datasets without member generations defined.
 
-       Backup                      to invoke the Backup/Restore dialog
-       Casper                      add pending delete members to the list
-       Compare member old new      to Compare the 2 generations
-                                   e.g. Compare ABC -4 -1
-                                   if no member specified then a
-                                   prompting panel will popup
-       Copy                        Copy from current PDSE to new or existing
-                                   PDSE - will allocate new PDSE based
-                                   on the current PDSE if create specified
-                                   * does NOT copy ghost members
-                                   With Copy the space and maxgen can
-                                   be changed.
-       Edit member                 to edit an existing or new member
-                                   e.g. E abc
-       Filter member-pattern       to Filter by member mask
-                                   abc* for members starting with abc
-                                   *abc for members ending with abc
-                                   abc/ for members with abc anywhere
-                                   OFF to turn off filtering
-       Find string                 to find a string in all members/gens
-       Ghost                       display only pending delete members
-       Locate member or member*    to scroll to the member
-                                   e.g. L abc
-                                    or  L ab*
-       Prune                       to delete obsolete generations
-                                   ** Alias RESET
-       Refresh                     to rebuild the member list
-       Restore                     to invoke the Backup/Restore dialog
-       Set                         popup to change the line selection S
-                                   action (B, E, V)
-       Sort                        Sort by Name, Creation, Changed, or User
-                                   - point/shoot for these column headers
-                                   Sort Field-name Order where order is A or D
-       Validate                    Validate the PDSE using IEBPDSE
+NOTE 2: The target PDS for both backup and restore must NOT exist as
+        it will be dynamically allocated as needed.
 
+Backup will create a new PDS based on the space allocations and DCB
+for the source PDSE. It will then copy all the members with their
+generations into a backup PDS. The backup PDS can then be processed
+by any existing utility that can process a PDS without fear of
+having the member generations lost.
+
+Three special members in the backup PDS are $ALLOC and $INDEX.
+
+   $ALLOC contains the maxgen specification of the original PDSE so
+   that the PDSE can be recreated during the restoration process.
+
+   $BACKUP contains the backup report.
+
+   $INDEX contains a list of all members with their backup member
+   names. This is used during the restoration process. The members
+   are created in the correct sequence so that after restoration the
+   base member will be the correct base member and the relative
+   generations will be their original relative generation. The
+   absolute generation number will be lost but the key is to use is
+   the relative generation (right?).
+
+The member names within the backup PDS are special members that
+retain all the ISPF statistics of the original PDSE.
+
+Restore will read in the $ALLOC member to pick up the MAXGEN
+specification so that it can allocate a new PDSE with that MAXGEN
+value. It will then read in the $INDEX member and use ISPF LMCOPY to
+copy each backup member into the restore target PDSE in sequence in
+order to retain the correct relative generation sequence.
+
+Before the target dataset is allocated the $ALLOC MAXGEN value is
+compared to the system MAXGENS_LIMIT value. If the system value is
+greater than the $ALLOC value then a warning message is issued and
+the target dataset is allocated using the system limit. NOTE: This
+could result in lost generations.
+
+PDSEGBAK can be run without options under ISPF and will display a
+prompting ISPF Panel to assist with performing the backup or restore.
+It can also be run in batch using the TMP with all the appropriate
+ISPF allocations (see member SAMPBR for sample JCL for this).
+
+The command syntax to run outside of the dialog is:
+
+ Syntax:    %pdsegbak input output option
+
+            input  is either the pdse with member/gens
+                   or the backup pds
+            output is the target dataset for backup or
+                   restore.  this dataset will be
+                   allocated based on the input dataset
+            option is:   backup or restore
+
+            If no parameters, or just a input parm, and running
+            under ISPF in the foreground then display a prompting
+            panel
