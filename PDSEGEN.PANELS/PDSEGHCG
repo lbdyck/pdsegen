@@ -17,8 +17,15 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
-+~Version 5.9.0  Apr 26, 2021
++~Version 5.9.1  May 24, 2021
 +    - Exec changes
++      PDSEGEN  - Change do_zcmd from if logic to select/when logic
++               - Fix check for MINE command to allow S/E/B/.. MINE
++    - Panel changes
++      PDSEGBAK - Change version in header to make it bigger
++      PDSEGRST - Change version in header to make it bigger
++
++~Version 5.9.0  Apr 26, 2021
 +      PDSEGEN  - Allow short dataset names on the prompt panel
 +
 +~Version 5.8.9  Feb 25, 2021
@@ -43,7 +50,7 @@
 +    - Exec changes
 +      PDSEGEN  - Correct return if RECFM=U on entry
 +
-+~Version 5.8.4  Oct 27, 2020
++~Version 5.8.4  Nov 12, 2020
 +    - ASM changes
 +      PDSEGENI - Increase DSERV buffer size for more members
 +

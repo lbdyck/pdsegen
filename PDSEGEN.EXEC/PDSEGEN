@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          05/24/21 - v5.9.1 - Fix bug with S MINE processing*
+  *                            - Change do_zcmd to select/when *
   *          04/26/21 - v5.9.0 - Allow short dataset names on  *
   *                              prompt panel                  *
   *          02/25/21 - v5.8.9 - Clean up the do_find for PDS  *
@@ -1357,25 +1359,33 @@ Start:
     if zcmd /= null then do
       edits = null
       call logit 'Processing Command:' zcmd
-      if abbrev("CASPER",word(zcmd,1),3) = 1 then zcmd = "HIGEN" subword(zcmd,2)
-      if abbrev("ACHMED",word(zcmd,1),3) = 1 then zcmd = "HIGEN" subword(zcmd,2)
-      if abbrev("ZOMBIE",word(zcmd,1),3) = 1 then zcmd = "HIGEN" subword(zcmd,2)
-      if abbrev("SELECT",word(zcmd,1),1) = 1 then do
+      Select
+      when abbrev("CASPER",word(zcmd,1),3) = 1
+      then zcmd = "HIGEN" subword(zcmd,2)
+      when abbrev("ACHMED",word(zcmd,1),3) = 1
+      then zcmd = "HIGEN" subword(zcmd,2)
+      when abbrev("ZOMBIE",word(zcmd,1),3) = 1
+      then zcmd = "HIGEN" subword(zcmd,2)
+      when abbrev("SELECT",word(zcmd,1),1) = 1 then do
         zcmd = 'EDIT' subword(zcmd,2)
         edits = 'S'
       end
-      if abbrev("RESET",word(zcmd,1),3) = 1 then zcmd = "REFRESH"
-      if abbrev("SRCH",word(zcmd,1),3) = 1 then zcmd = "FIND" subword(zcmd,2)
-      if abbrev("SEARCH",word(zcmd,1),3) = 1 then zcmd = "FIND" subword(zcmd,2)
+      when abbrev("RESET",word(zcmd,1),3) = 1 then zcmd = "REFRESH"
+      when abbrev("SRCH",word(zcmd,1),3) = 1
+      then zcmd = "FIND" subword(zcmd,2)
+      when abbrev("SEARCH",word(zcmd,1),3) = 1
+      then zcmd = "FIND" subword(zcmd,2)
 
       /* ----------------------------------------- *
       | Support PDSE memlist/ml syntax for filter |
       * ----------------------------------------- */
-      if abbrev('MEMLIST',word(zcmd,1),3) = 1 then do
+      when abbrev('MEMLIST',word(zcmd,1),3) = 1 then do
         zcmd = 'FILTER' subword(zcmd,2)
       end
-      if word(zcmd,1) = 'ML' then
+      when word(zcmd,1) = 'ML' then
       zcmd = 'FILTER' subword(zcmd,2)
+      Otherwise nop
+      end
 
       /* -------------------------------- *
       | Now check for supported commands |
@@ -1384,7 +1394,7 @@ Start:
         /* ----------------------- *
         | Check for userid filter |
         * ----------------------- */
-        When wordpos('MINE',zcmd) > 0 then do
+        When 'MINE' = zcmd > 0 then do
           if wordpos('MINE',filter_title) > 0 then do
             filter_id = null
             if wordpos('MINE',filter_title) > 0 then do

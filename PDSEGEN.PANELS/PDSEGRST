@@ -6,7 +6,7 @@
    _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
    ^ type(output) intens(low) caps(off)  color(&clrh ) hilite(&clrhr)
 )Body window(73,13) expand(\\)
-%-\-\(~PDSE V2 Member Generations Restore^ver %)\-\-
+%-\-\(~PDSE V2 Member Generations Restore^ver  %)\-\-
 %Command ===>_zcmd
 +
 +PDSE Generation Backup:_fromdsn                                       +
