@@ -19,8 +19,8 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 ` %new-dsname`is optional and will be used for the new dataset name
 `  if one is provided on the command.
 `
- ` This command is used to allocate a new dataset (PDS or PDSE) dataset
- ` using the characteristics of the existing dataset.
+ ` This command is used to allocate a new dataset (PDS or PDSE) using the
+ ` characteristics of the existing dataset.
  `
  ` A popup prompt is provided with all of the current allocation information
  ` allowing all allocation parameters to be changed.

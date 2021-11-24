@@ -5,7 +5,7 @@
      hilite(&clrhr)
    _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
    ^ type(output) intens(low) caps(off)  color(&clrh ) hilite(&clrhr)
-)Body window(73,14) expand(\\)
+)Body Window(69,16) Expand(\\)
 %-\-\(~PDSE V2 Member Generations Backup^ver  %)\-\-
 %Command ===>_zcmd
 +
@@ -18,6 +18,8 @@
 +Restore Input must be a PDSE without Member Generations
 +
 +Target PDSE will always be allocated NEW based on the Input PDSE
++
+%Note:+Does NOT use IEBCOPY.
 +
 +Press Enter to continue or F3 to cancel
 )Init
