@@ -1,7 +1,7 @@
 Processing backup from PDSEGEN.SAMPLE.PDS
                     to PDSEGEN.SAMPLE.BACKUP
 
-Time: 10:55:51 Date: 24 May 2021
+Time: 12:33:33 Date: 25 Nov 2021
 
 Preparing to backup: 28 members/generations
 
@@ -21,20 +21,20 @@ Backing up gen member  COMMANDS rel gen: -3    generation 3 to @0000013
 Backing up gen member  COMMANDS rel gen: -2    generation 4 to @0000014
 Backing up gen member  COMMANDS rel gen: -1    generation 5 to @0000015
 Backing up base member COMMANDS to @0000016
-Backing up gen member  DUMMYS   rel gen: -5    generation 3 to @0000017
-Backing up gen member  DUMMYS   rel gen: -4    generation 4 to @0000018
-Backing up gen member  DUMMYS   rel gen: -3    generation 5 to @0000019
-Backing up gen member  DUMMYS   rel gen: -2    generation 6 to @0000020
-Backing up gen member  DUMMYS   rel gen: -1    generation 7 to @0000021
+Backing up gen member  DUMMYS   rel gen: -5    generation 1 to @0000017
+Backing up gen member  DUMMYS   rel gen: -4    generation 2 to @0000018
+Backing up gen member  DUMMYS   rel gen: -3    generation 3 to @0000019
+Backing up gen member  DUMMYS   rel gen: -2    generation 4 to @0000020
+Backing up gen member  DUMMYS   rel gen: -1    generation 5 to @0000021
 Backing up base member DUMMYS   to @0000022
-Backing up gen member  LINEOPS  rel gen: -5    generation 3 to @0000023
-Backing up gen member  LINEOPS  rel gen: -4    generation 4 to @0000024
-Backing up gen member  LINEOPS  rel gen: -3    generation 5 to @0000025
-Backing up gen member  LINEOPS  rel gen: -2    generation 6 to @0000026
-Backing up gen member  LINEOPS  rel gen: -1    generation 7 to @0000027
+Backing up gen member  LINEOPS  rel gen: -5    generation 1 to @0000023
+Backing up gen member  LINEOPS  rel gen: -4    generation 2 to @0000024
+Backing up gen member  LINEOPS  rel gen: -3    generation 3 to @0000025
+Backing up gen member  LINEOPS  rel gen: -2    generation 4 to @0000026
+Backing up gen member  LINEOPS  rel gen: -1    generation 5 to @0000027
 Backing up base member LINEOPS  to @0000028
 
 Backed up 28 members from PDSEGEN.SAMPLE.PDS
                          to PDSEGEN.SAMPLE.BACKUP
 
-Elapsed time: 00:00.21 (mm:ss:th)
+Elapsed time: 00:00.40 (mm:ss:th)

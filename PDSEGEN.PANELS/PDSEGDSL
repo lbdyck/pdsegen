@@ -19,7 +19,7 @@
 %                                                                              +
 %Commands:#Insert+#CLEAR+#SORT+#SORTD+#Exit+ \ \%Max History:_z   +
 %                                                                              +
-+      Data Set Name                      +          +         Alias     Last
++       Data Set Name                     +          +         Alias     Last
 )Model
 _z+]zs @pdsn                                                ]z@palias  +@z     +
 )Init

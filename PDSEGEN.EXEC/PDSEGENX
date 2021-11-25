@@ -11,7 +11,7 @@
  *                                                            *
  *            filter is optional                              *
  *                                                            *
- * Note:      splbd.PDSEGEN will be changed by the $RECV exec to *
+ * Note:      hlq. will be changed by the $RECV exec to       *
  *            match what you restore the libraries to         *
  *                                                            *
  * Author:    Lionel B. Dyck                                  *
@@ -22,13 +22,13 @@
  *            06/20/16 - Creation                             *
  *                                                            *
  * ---------------------------------------------------------- *
- * Copyright (c) 2017 by Lionel B. Dyck                       *
+ * Copyright (c) 2017-2021 by Lionel B. Dyck                  *
  * ---------------------------------------------------------- */
  arg pdselib filter
 
- exec   = "'splbd.PDSEGEN.exec'" /* changed during receive */
- load   = "'splbd.PDSEGEN.load'" /* changed during receive */
- panels = "'splbd.PDSEGEN.panels'" /* changed during receive */
+ exec   = "'hlq..exec'" /* changed during receive */
+ load   = "'hlq..load'" /* changed during receive */
+ panels = "'hlq..panels'" /* changed during receive */
 
  'altlib activate dataset('exec') application(exec)'
  address ispexec

@@ -17,6 +17,11 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++ Version 5.9.1  Nov 24, 2021
++    - Panel changes
++      PDSEGBAK - add comment about IEBCOPY not being used
++      PDSEGHMD - correct grammer
++
 +~Version 5.9.1  May 24, 2021
 +    - Exec changes
 +      PDSEGEN  - Change do_zcmd from if logic to select/when logic

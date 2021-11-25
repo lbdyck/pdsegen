@@ -23,7 +23,7 @@
 )Proc
   ver (&avr,nb,range,1,99)
   ver (&amd,nb,num)
-  ver (&aid,nb,name)
+  ver (&aid,nb,dsname)
   if  (&level < '7.2.3')
      ver (&aid,len,LE,7)
 )End
