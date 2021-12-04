@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.2  Dec 04, 2021
+     - Exec changes
+       PDSEGEN  - Correction if the directory creation date is null (rare)
+
   Version 5.9.1  Nov 24, 2021
      - Panel changes
        PDSEGBAK - add comment about IEBCOPY not being used

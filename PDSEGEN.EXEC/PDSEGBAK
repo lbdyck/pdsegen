@@ -428,10 +428,12 @@ Start:
        mem.cmem.A = ''
        end
     mem.cmem.A = mem.cmem.A agen
-    if length(strip(mcur)) = 0 then mcur = 0
-                               else mcur = x2d(c2x(mcur))
-    if length(strip(minit)) = 0 then minit = 0
-                                else minit = x2d(c2x(minit))
+    if mcur = '    '
+    then mcur = 0
+    else mcur = x2d(c2x(mcur))
+    if minit = '    '
+    then minit = 0
+    else minit = x2d(c2x(minit))
     mtime = Substr(mtime,2,2)||':'||Substr(mtime,4,2)
     mmod = c2x(mmod)
     mmod = x2d(mmod)

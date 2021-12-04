@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          12/04/21 - v5.9.2 - Correct bug if creation date  *
+  *                              is null in the directory (rare*
   *          05/24/21 - v5.9.1 - Fix bug with S MINE processing*
   *                            - Change do_zcmd to select/when *
   *          04/26/21 - v5.9.0 - Allow short dataset names on  *
@@ -4005,6 +4007,10 @@ Proc_pdsegeni:
       end
       Otherwise nop
     end
+
+    if cdate = null
+       then if mdate /= null
+          then cdate = mdate
 
     mtime = Substr(mtime,2,2)||':'||Substr(mtime,4,2)
     mmod  = x2d(c2x(mmod))
