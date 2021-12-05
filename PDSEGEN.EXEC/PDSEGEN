@@ -173,8 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
-  *          12/04/21 - v5.9.2 - Correct bug if creation date  *
-  *                              is null in the directory (rare*
+  *          12/05/21 - v5.9.2 - Move numeric digits to top of *
+  *                              the code                      *
   *          05/24/21 - v5.9.1 - Fix bug with S MINE processing*
   *                            - Change do_zcmd to select/when *
   *          04/26/21 - v5.9.0 - Allow short dataset names on  *
@@ -769,11 +769,11 @@
   sortcol  = 'NAME'
   sortf = 'mbr,c,'A',mgen,n,d'
   sort.sortcol = 'A'
+  Numeric Digits 10
 
   /* ----------------------------- *
   * Get the current MAXGENS_LIMIT *
   * ----------------------------- */
-  Numeric Digits 10
   CVT      = C2D(Storage(10,4))
   CVTDFA   = C2D(Storage(D2X(CVT + 1216),4))   /* cvt + 4c0 */
   DFAMGEN  = C2D(Storage(D2X(cvtdfa + 76),4))  /* dfa + 4c */
@@ -4007,10 +4007,6 @@ Proc_pdsegeni:
       end
       Otherwise nop
     end
-
-    if cdate = null
-       then if mdate /= null
-          then cdate = mdate
 
     mtime = Substr(mtime,2,2)||':'||Substr(mtime,4,2)
     mmod  = x2d(c2x(mmod))

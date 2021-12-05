@@ -17,9 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
-+~Version 5.9.2  Dec 04, 2021
++~Version 5.9.2  Dec 05, 2021
 +    - Exec changes
-+      PDSEGEN  - Correction if the directory creation date is null (rare)
++      PDSEGBAK - Move NUMERIC DIGITS to the top of the code
++      PDSEGEN  - Move NUMERIC DIGITS to the top of the code
 +
 +~Version 5.9.1  Nov 24, 2021
 +    - Panel changes
