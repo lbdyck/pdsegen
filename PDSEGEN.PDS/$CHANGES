@@ -5,6 +5,12 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.3  Dec 19, 2021
+     - Exec changes
+       PDSEGENS - Improve comments for def_panel
+     - Panel changes
+       PDSEGH0  - Remove entries for Unsupport and Supported Vendor Products
+
   Version 5.9.2  Dec 05, 2021
      - Exec changes
        PDSEGBAK - Move NUMERIC DIGITS to the top of the code

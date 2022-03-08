@@ -1,0 +1,9 @@
+Requests for Enhancements (RFE)
+
+12/18/2021 Willy Jensen
+ - Prune line command (perhaps only on the extended line command)
+ - Add filter to Prune command
+ - PDSEGENS update description for def_panel (completed 12/18/2021 5.9.3)
+ - Line commands for rename swap
+   - 1st selection is member 1
+   - 2nd selection is member 2
