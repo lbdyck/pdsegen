@@ -12,8 +12,8 @@
 +Enter or Change Filter:_filter                  +
 +
 + e.g. ABC*, ABC:, *ABC, ABC/, /ABC, ABC, %AB, A*B, A%C*, etc.
-+      TODAY, WEEK, MONTH, YEAR, SINCE yy/mm/dd, Since -nn,
-+      blank or OFF to turn off filter
++      TODAY, YESTERDAY, WEEK, MONTH, YEAR, SINCE yy/mm/dd,
++      Since -nn, blank or OFF to turn off filter
 )Init
 .cursor = filter
 .help = pdseghf

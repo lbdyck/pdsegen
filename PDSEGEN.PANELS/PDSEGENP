@@ -17,7 +17,7 @@
 +
 +Enter Member Filter:$filter                    +
 +      abc*, abc: *abc, abc/, /abc, abc, ab%c, %ab*, (m1 m2), etc.
-+      Today, Week, Month, Year, Since yy/mm/dd, Since -nn
++      Today, Yesterday, Week, Month, Year, Since yy/mm/dd, Since -nn
 +
 +Enter Default option for Select:$z+(B,E,V,/)
 +

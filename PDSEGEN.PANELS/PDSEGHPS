@@ -41,6 +41,7 @@
 `                               `*abc for members ending with abc
 `                               `abc/ for members with abc anywhere
 `                               `Today for updated today
+`                               `Yesterday for updated from yesterday
 `                               `Week for updated last 7 days
 `                               `Month for updated last 30 days
 `                               `Year for updated this year

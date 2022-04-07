@@ -41,6 +41,7 @@
   .ZVARS = 'MENUM'
 )ABC DESC('Filters') mnem(1)
  PDC DESC('Today'  )  Action Run(Today)
+ PDC DESC('Yesterday') Action Run(YEST   )
  PDC DESC('Week'   )  Action Run(Week   )
  PDC DESC('Month'  )  Action Run(Month  )
  PDC DESC('Year'   )  Action Run(Year)
@@ -110,6 +111,8 @@ if (&mail = 1)
  &ver = &pdsegver
 )Proc
  &rowcrp = .csrrow
+ if (&zcmd = 'YEST')
+     &zcmd = 'YESTERDAY'
  if (&zcmd = &z)
     if (&ztdsels = 0000)
        &row = .csrrow

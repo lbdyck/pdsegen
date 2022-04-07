@@ -10,21 +10,21 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 %
 %  Date Filters
 `
-` %TODAY`will display all members and generations changed today.
+  %TODAY`will display all members and generations changed today.
+  %YESTERDAY`will display all members and generations changed from yesterday.
+  %WEEK `will display all members and generations changed in the last 7 days.
+  %MONTH`will display all members and generations changed in the last 30 days.
+  %YEAR `will display all members and generations changed this year.
+  %SINCE -nn`will display all members and generations updated since the
+`  previous nn days.
 `
-` %WEEK `will display all members and generations changed in the last 7 days.
-`
-` %MONTH`will display all members and generations changed in the last 30 days.
-`
-` %YEAR `will display all members and generations changed this year.
-`
-` %SINCE -nn`will display all members and generations updated
-`  since the previous nn days.
-`
-` %SINCE yy/mm/dd`will display all members and generations updated
+  %SINCE yy/mm/dd`will display all members and generations updated
 `  since the provided date. The date MUST be in the format of yy/mm/dd.
 `
 `  All date filters are toggles. To toggle SINCE off just enter SINCE.
+`
+`
+`
 `
 )Init
  .cursor = &zcmd

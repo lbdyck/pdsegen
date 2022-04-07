@@ -13,6 +13,7 @@
  *            the return.                                     *
  *                                                            *
  * History:                                                   *
+ *            12/18/21 - Update def_panel comments            *
  *            07/26/20 - Default max History Datasets         *
  *            05/06/19 - Change disp_change options           *
  *            04/25/18 - Update for new ispf panels           *
@@ -125,6 +126,11 @@
  |                                     |
  | Use one of the following statements |
  | and delete or comment the others    |
+ |                                     |
+ | Dynamically switch using Left or    |
+ | Right Function keys/commands.       |
+ |                                     |
+ | The last one used is remembered.    |
  * ----------------------------------- */
  /* No Action bar panels */
  /* panels with absolute gen */

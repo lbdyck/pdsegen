@@ -34,13 +34,13 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `]LM+Mail the member     ]C10+Genonly and Hide     ]P+IEBPDSE                +
 `%   &m1                 ]C11+HIGen                ]R+PDSE Restrictions      +
 `]LT+Tryit               ]C12+ID and MINE          ]T+Hints and Tips         +
-` LP+Line Prompt %       ]C13+Locate               ]U+Unsupported Products%* +
-`                        ]C14+Model                ]V+Supported Products%*   +
-`                        ]C15+Options              ]A+Author %*              +
-`  Any line command can  ]C16+Output                                         +
-`  be a block command:   ]C17+Prune                %Summaries (optional)     +
-`  XX/XX or X99999       ]C18+Reflist              ]LS+Line Summary%*        +
-`                        ]C19+Refresh              ]PS+Primary Summary%*     +
+` LP+Line Prompt %       ]C13+Locate               ]A+Author %*              +
+`                        ]C14+Model
+`                        ]C15+Options              %Summaries (optional)     +
+`  Any line command can  ]C16+Output               ]LS+Line Summary%*        +
+`  be a block command:   ]C17+Prune                ]PS+Primary Summary%*     +
+`  XX/XX or X99999       ]C18+Reflist
+`                        ]C19+Refresh
 `  With the Expanded     ]C20+Restore
 `  Member display any    ]C21+Select and Edit
 `  valid TSO command     ]C22+Set command
@@ -102,8 +102,6 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 &P = 'P'
 &R = 'R'
 &T = 'T'
-&U = 'U'
-&V = 'V'
 &C = 'C'
 &A = 'A'
  .cursor = &zcmd
@@ -178,8 +176,6 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
             P,pdseghpd
             R,pdseghr
             T,pdseght
-            U,*pdseghu
-            V,*pdseghv
             C,*pdseghcg
             A,*pdseghau
             *,'?'
@@ -236,10 +232,8 @@ FIELD(O   )     VAR(ZCMD) VAL(O  )
 FIELD(P   )     VAR(ZCMD) VAL(P  )
 FIELD(R   )     VAR(ZCMD) VAL(R  )
 FIELD(T   )     VAR(ZCMD) VAL(T  )
-FIELD(U   )     VAR(ZCMD) VAL(U  )
-FIELD(V   )     VAR(ZCMD) VAL(V  )
 FIELD(C   )     VAR(ZCMD) VAL(C  )
 FIELD(A   )     VAR(ZCMD) VAL(A  )
 )END
-/* Copyright (c) 2018 by Lionel B. Dyck */
+/* Copyright (c) 2018-2021 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

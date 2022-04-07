@@ -17,6 +17,30 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++
++~Version 5.9.4  Apr 07, 2022
++    - Exec changes
++      PDSEGEN  - Add YESTERDAY as date filter option
++    - Panel changes
++      PDSEGEDA - Support Yesterday
++      PDSEGEDB - Support Yesterday
++      PDSEGEDC - Support Yesterday
++      PDSEGEDD - Support Yesterday
++      PDSEGEDE - Support Yesterday
++      PDSEGEDF - Support Yesterday
++      PDSEGEDG - Support Yesterday
++      PDSEGEDH - Support Yesterday
++      PDSEGENP - Support Yesterday
++      PDSEGFIL - Support Yesterday
++      PDSEGHPS - Support Yesterday
++      PDSEGH18 - Support Yesterday
++      PDSEGPH  - Support Yesterday
++
++~Version 5.9.3  Dec 22, 2021
++    - Panel changes
++      PDSEGH0  - Remove entries for Unsupport and Supported Vendor Products
++      PDSEGMDL - small enhancement
++
 +~Version 5.9.2  Dec 05, 2021
 +    - Exec changes
 +      PDSEGBAK - Move NUMERIC DIGITS to the top of the code

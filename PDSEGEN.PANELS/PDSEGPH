@@ -23,7 +23,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `       @ABC/`to filter for members with ABC anywhere
 `       @/ABC`to filter for members with ABC anywhere
 `       @ABC `to filter for just member ABC
-@        Today, Week, Month, Year, Since yy/mm/dd, Since -nn
+@        Today, Yesterday, Week, Month, Year, Since yy/mm/dd, Since -nn
 `
 `  Enter the default line selection option to be used when S is used.
 `  A valid option is B for Browse, E for Edit, V for View, or / for prompt.

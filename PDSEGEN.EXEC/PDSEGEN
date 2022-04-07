@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          04/07/22 - v5.9.4 - Support YESTERDAY filter      *
   *          12/05/21 - v5.9.2 - Move numeric digits to top of *
   *                              the code                      *
   *          05/24/21 - v5.9.1 - Fix bug with S MINE processing*
@@ -769,6 +770,7 @@
   sortcol  = 'NAME'
   sortf = 'mbr,c,'A',mgen,n,d'
   sort.sortcol = 'A'
+  date_filter_words = 'SINCE YESTERDAY TODAY WEEK MONTH YEAR'
   Numeric Digits 10
 
   /* ----------------------------- *
@@ -1449,7 +1451,7 @@ Start:
         /* ----------------- *
         * Date filter check *
         * ----------------- */
-        when wordpos(word(zcmd,1),'SINCE TODAY WEEK MONTH YEAR') > 0
+        When wordpos(word(zcmd,1),date_filter_words) > 0
         then do
           call setup_date_filter
           zcmd = null
@@ -4774,13 +4776,13 @@ Setup_Filter:
   if filter = '/' then filter = '*'
   if words(filter) > 1 then
   if left(filter,1) /= '(' then
-  if wordpos(word(filter,1),'SINCE TODAY WEEK MONTH YEAR') = 0 then do
+  if wordpos(word(filter,1),date_filter_words) = 0 then do
     dfilter = subword(filter,2)
     filter = word(filter,1)
   end
   else dfilter = null
   Select
-    When wordpos(word(filter,1),'SINCE TODAY WEEK MONTH YEAR') > 0 then do
+    When wordpos(word(filter,1),date_filter_words) > 0 then do
       zcmd = filter
       call setup_date_filter
       filter = null
@@ -5757,6 +5759,18 @@ setup_date_filter:
       else do
         date_filter = date('b')-7
         date_filter_title = 'Week'
+        last_date_filter = zcmd
+      end
+    end
+    When abbrev('YESTERDAY',zcmd,4) = 1 then do
+      if last_date_filter = zcmd then do
+        date_filter = null
+        date_filter_title = null
+        last_date_filter = null
+      end
+      else do
+        date_filter = date('b')-1
+        date_filter_title = 'Yesterday'
         last_date_filter = zcmd
       end
     end

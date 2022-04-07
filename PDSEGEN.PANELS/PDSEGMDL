@@ -43,6 +43,8 @@
   ver (&zdsdira,num)
   ver (&newgen,nb,range,0,&dfamgen)
   ver (&dsnt,nb,list,'L','P')
+  if (&dsnt = 'P')
+      ver(&zdsdira range,1,9999999)
 )End
-/* Copyright (c) 2018 by Lionel B. Dyck */
+/* Copyright (c) 2018-2021 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */
