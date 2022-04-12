@@ -59,6 +59,7 @@ then a prompting panel is displayed.
 
        Filter are:  ABC*, ABC: ,ABC, ABC/, /ABC, or ABC
                     TODAY, WEEK, MONTH, YEAR, SINCE YY/MM/DD, SINCE -nn
+                    YESTERDAY, SINCE day-of-week (SUnday, Monday, ...)
 
        The date filters are toggles.
 
