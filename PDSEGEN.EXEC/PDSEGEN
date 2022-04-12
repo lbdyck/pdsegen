@@ -76,7 +76,7 @@
   *                pending deletes.                            *
   *            View member                                     *
   *            Today, Week, Month, Year, Since yy/mm/dd,       *
-  *                Since -nn (toggles)                         *
+  *                Since -nn, Since day  (toggles)             *
   *                                                            *
   * Selection options:                                         *
   * Short - Long - Description                                 *
@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          04/12/22 - v5.9.5 - Support SINCE day (Sun, ...)  *
   *          04/07/22 - v5.9.4 - Support YESTERDAY filter      *
   *          12/05/21 - v5.9.2 - Move numeric digits to top of *
   *                              the code                      *
@@ -5684,6 +5685,7 @@ Save_dslist:
   * Year  - this year    *
   * Since yy/mm/dd       *
   * Since -nn            *
+  * Since day (Sun, Mon) *
   * -------------------- */
 setup_date_filter:
   date_filterv = zcmd
@@ -5698,6 +5700,8 @@ setup_date_filter:
     end
     When word(zcmd,1) = 'SINCE' then do
       stdate = word(zcmd,2)
+      if stdate /= null then
+         call check_since
       if left(stdate,1) = '-' then do
         parse value stdate with '-' sinced
         date_filter = date('b') - sinced
@@ -6700,3 +6704,31 @@ Cmd_Prompt:
   'rempop'
   zcmd = askopt askstr
   return
+
+  /* ------------------------------------------------ *
+   | Support Since day-of-week                        |
+   |         Since Sunday, Monday, etc.               |
+   |         Abbreviations of SU, M, TU, W, TH, F, SA |
+   * ------------------------------------------------ */
+Check_Since:
+  w2 = word(zcmd,2)
+  if left(w2,1) = '-' then return
+  if pos('/',w2) > 0 then return
+  if datatype(w2) /= 'CHAR' then return
+  w2 = translate(w2)
+  Select
+    When abbrev('SUNDAY',w2,2)    = 1 then w2 = 1
+    When abbrev('MONDAY',w2,1)    = 1 then w2 = 2
+    When abbrev('TUESDAY',w2,2)   = 1 then w2 = 3
+    When abbrev('WEDNESDAY',w2,1) = 1 then w2 = 4
+    When abbrev('THURDAY',w2,2)   = 1 then w2 = 5
+    When abbrev('FRIDAY',w2,1)    = 1 then w2 = 6
+    When abbrev('SATURDAY',w2,2)  = 1 then w2 = 7
+    otherwise return
+    end
+    wt = translate(date('w'))
+    wt = wordpos(wt,'SUNDAY MONDAY TUESDAY WEDNESDAY THURSDAY' ,
+        'FRIDAY SATURDAY')
+    stdate = w2 - wt
+    if stdate > 0 then stdate = stdate - 7
+    return

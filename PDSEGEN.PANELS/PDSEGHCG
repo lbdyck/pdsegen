@@ -17,6 +17,9 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.5  Apr 12, 2022
++    - Exec changes
++      PDSEGEN  - Support SINCE day-of-week (e.g. Since TUesday)
 +
 +~Version 5.9.4  Apr 07, 2022
 +    - Exec changes

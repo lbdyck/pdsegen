@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.5  Apr 12, 2022
+     - Exec changes
+       PDSEGEN  - Support SINCE day-of-week (e.g. Since TUesday)
+
   Version 5.9.4  Apr 07, 2022
      - Exec changes
        PDSEGEN  - Add YESTERDAY as date filter option
