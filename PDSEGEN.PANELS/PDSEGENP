@@ -4,6 +4,7 @@
    $ type(input) intens(high) caps(on ) just(left ) hilite(uscore)
      color(&clrw)
    @ type(text ) intens(high) just(left ) color(&clrw)
+   ` type(output) intens(high) just(left ) color(&clrw)
    ^ type(output) intens(low) caps(off)  color(&clrh)
      hilite(&clrhr)
    ~ type(text) intens(high) color(&clrh)
@@ -13,7 +14,7 @@
 #Command ===>_zcmd
 #                                                                              +
 +Enter PDSE Dataset:$pdsedsn                                        +
-#                 @ *+will display last 25 datasets referenced          +
+#                 @ *+will display last`z  +datasets referenced      +
 +
 +Enter Member Filter:$filter                    +
 +      abc*, abc: *abc, abc/, /abc, abc, ab%c, %ab*, (m1 m2), etc.
@@ -27,7 +28,7 @@
 )Init
  .cursor = pdsedsn
  &ver = &pdsegver
- .zvars = '(pdsedo)'
+ .zvars = '(umaxhist pdsedo)'
  .help = pdsegph
  if (&pdsedo = &z)
      &pdsedo = '/'
@@ -37,5 +38,5 @@
  ver (&pdsedo,nb,list,B,E,V,/)
  vput (pdsedo) profile
 )End
-/* Copyright (c) 2017 by Lionel B. Dyck */
+/* Copyright (c) 2017 - 2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

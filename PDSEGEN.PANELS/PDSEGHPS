@@ -47,6 +47,7 @@
 `                               `Year for updated this year
 `                               `Since yy/mm/dd
 `                               `Since -nn
+`                               `Since day-of-week (SUnday, Monday, ...)
 `                               `OFF to turn off filtering
 `     @Find string              `to find a string in all members/gens
 `     @GENOnly                  `Display only Generation members
