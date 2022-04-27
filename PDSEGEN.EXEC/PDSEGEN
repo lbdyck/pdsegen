@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          04/27/22 - v5.9.6 - Change REFRESH to retain      *
+  *                              active filters                *
   *          04/12/22 - v5.9.5 - Support SINCE day (Sun, ...)  *
   *          04/07/22 - v5.9.4 - Support YESTERDAY filter      *
   *          12/05/21 - v5.9.2 - Move numeric digits to top of *
@@ -2042,12 +2044,14 @@ Start:
         * Refresh *
         * ------- */
         when abbrev("REFRESH",word(zcmd,1),3) = 1 then do
+          /* Comment Start
           parse value '' with tfilter tfilterl tfiltert ,
             date_filter date_filter_title ,
             filter filter_title hide_title ,
             HIGEN_title last_date_filter filter_id
           higenf = 0
           gen_hide = 0
+             Comment End */
           if word(zcmd,2) /= null then do
             filter = subword(zcmd,2)
             call setup_filter

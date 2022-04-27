@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.6  Apr 27, 2022
++    - Exec changes
++      PDSEGEN  - Change REFresh command to retain all active filters
++
 +~Version 5.9.5  Apr 12, 2022
 +    - Exec changes
 +      PDSEGEN  - Support SINCE day-of-week (e.g. Since TUesday)
