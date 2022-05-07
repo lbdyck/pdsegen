@@ -17,6 +17,11 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.7  May 02, 2022
++    - Exec changes
++      PDSEGEN  - Dynamically calculate size for the temp file used
++                 when accessing a generation.
++
 +~Version 5.9.6  Apr 27, 2022
 +    - Exec changes
 +      PDSEGEN  - Change REFresh command to retain all active filters

@@ -5,6 +5,11 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.7  May 02, 2022
+     - Exec changes
+       PDSEGEN  - Dynamically calculate size for the temp file used
+                  when accessing a generation.
+
   Version 5.9.6  Apr 27, 2022
      - Exec changes
        PDSEGEN  - Change REFresh command to retain all active filters

@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          05/02/22 - v5.9.7 - Dynamically calculate size of *
+  *                              temp file used for gen access *
   *          04/27/22 - v5.9.6 - Change REFRESH to retain      *
   *                              active filters                *
   *          04/12/22 - v5.9.5 - Support SINCE day (Sun, ...)  *
@@ -4717,6 +4719,13 @@ Do_eMail:
   * ---------------------------------------------- */
 Create_Temp:
   arg temp_opt
+  ct_space = 5
+  zdslrec = zdslrec + 0
+  if zdslrec /= null then
+     if mcur /= null then do
+      ct_space = mcur * zdslrec
+      ct_space = (ct_space%50000) + 5
+     end
   if temp_opt = null then do
     zpdsendd = randstr()
     if sysvar('syspref') = null then hlq = sysvar('sysuid')
@@ -4726,7 +4735,7 @@ Create_Temp:
     if left(zdsrf,1) = 'F' then zdsrf = 'F B'
     else zdsrf = 'V B'
     Address TSO ,
-      'Alloc f('zpdsendd') ds('tdsn') new spa(5,5) tr' ,
+      'Alloc f('zpdsendd') ds('tdsn') new spa('ct_space','ct_space') tr' ,
       'Recfm('zdsrf') lrecl('zdslrec') blksize('zdsblk')' ,
       def_unit
   end

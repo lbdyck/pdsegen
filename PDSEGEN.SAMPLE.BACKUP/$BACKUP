@@ -1,7 +1,7 @@
 Processing backup from PDSEGEN.SAMPLE.PDS
                     to PDSEGEN.SAMPLE.BACKUP
 
-Time: 15:26:36 Date: 27 Apr 2022
+Time: 11:38:54 Date: 7 May 2022
 
 Preparing to backup: 28 members/generations
 
@@ -37,4 +37,4 @@ Backing up base member LINEOPS  to @0000028
 Backed up 28 members from PDSEGEN.SAMPLE.PDS
                          to PDSEGEN.SAMPLE.BACKUP
 
-Elapsed time: 00:00.60 (mm:ss:th)
+Elapsed time: 00:00.35 (mm:ss:th)

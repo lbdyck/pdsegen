@@ -11,8 +11,8 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 %
 %  REFRESH
 `
-`  The Refresh command will refresh the member/generation list and reset
-`  all filters with an option to define a new filter.
+`  The Refresh command will refresh the member/generation list and will not
+`  reset all filters with an option to define a new filter.
 `
 `  Syntax:  REFresh filter
 `
