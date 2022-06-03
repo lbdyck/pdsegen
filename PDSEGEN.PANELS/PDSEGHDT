@@ -26,6 +26,7 @@
 `
 `The table supports the following commands:
 `
+`   -%CLEAN+    Remove all dataset entries without an alias
 `   -%CLEAR+    Empty the table
 `   -%INSERT+   Insert a new row for a dataset
 `               (e.g.%Insert+dataset+alias)

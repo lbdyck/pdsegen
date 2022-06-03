@@ -9,6 +9,7 @@
   * Author:    Lionel B. Dyck                                  *
   *                                                            *
   * History:  (most recent on top)                             *
+  *            06/03/22 LBD - Add Clean option                 *
   *            12/17/20 LBD - Allow single qualifier dsn       *
   *            08/06/20 LBD - Allow alias on command line like *
   *                           a number                         *
@@ -21,7 +22,7 @@
   *            07/25/20 LBD - Creation                         *
   *                                                            *
   * ---------------------------------------------------------- *
-  * Copyright (c) 2017-2020 by Lionel B. Dyck                  *
+  * Copyright (c) 2017-2022 by Lionel B. Dyck                  *
   * ---------------------------------------------------------- *
   * Support is on a best effort and time available basis which *
   * is why the complete source is provided for this application*
@@ -240,6 +241,15 @@ do_zcmd:
            'setmsg msg(isrz003)'
            end
     end
+    When zcmd = 'CLEAN' then do
+      'tbtop pdsegdsl'
+      do forever
+         'tbskip pdsegdsl'
+         if rc > 0 then leave
+         if palias = null then 'tbdelete pdsegdsl'
+         end
+      x = update_zs(0)
+      end
     When zcmd = 'CLEAR' then do
       'tbclose pdsegdsl library(ispprof)'
       'tberase pdsegdsl library(ispprof)'

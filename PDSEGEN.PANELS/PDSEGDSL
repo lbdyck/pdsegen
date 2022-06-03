@@ -17,7 +17,7 @@
 -\-\%(~PDSE V2 Member Generations List^ver  %)\-\-
 %Command ===>_zcmd                    \ \%Scroll ===>_zscr+
 %                                                                              +
-%Commands:#Insert+#CLEAR+#SORT+#SORTD+#Exit+ \ \%Max History:_z   +
+%Commands:#Insert+#CLEAN+#CLEAR+#SORT+#SORTD+#Exit+ \ \%Max History:_z   +
 %                                                                              +
 +       Data Set Name                     +          +         Alias     Last
 )Model
@@ -26,6 +26,7 @@ _z+]zs @pdsn                                                ]z@palias  +@z     +
  &ver = &pdsegver
   .zvars = '(umhist dsel dscr lastref)'
  &insert = 'Insert'
+ &clean = 'Clean'
  &clear = 'Clear'
  &sort  = 'Sort'
  &sortd = 'SortD'
@@ -40,6 +41,7 @@ _z+]zs @pdsn                                                ]z@palias  +@z     +
  &pos = .cursor
 )PNTS
 FIELD(Insert)  VAR(ZCMD) VAL('INSERT')
+FIELD(Clean)   VAR(ZCMD) VAL('CLEAN')
 FIELD(Clear)   VAR(ZCMD) VAL('CLEAR')
 FIELD(sort)    VAR(ZCMD) VAL('SORT')
 FIELD(sortd)   VAR(ZCMD) VAL('SORT D')
@@ -47,5 +49,5 @@ FIELD(exit)    VAR(ZCMD) VAL('EXIT')
 )FIELD
 FIELD(pdsn )  len(56) ind(dscr,'<>')
 )End
-/* Copyright (c) 2017 by Lionel B. Dyck */
+/* Copyright (c) 2017-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

@@ -17,6 +17,14 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.8  June 03, 2022
++    - Exec changes
++      PDSEGDSL - Add CLEAN option for the dataset list table to
++                 remove all entries without an alias.
++    - Panel changes
++      PDSEGDSL - Add CLEAN option to menu
++      PDSEGHDT - Add CLEAN option to tutorial
++
 +~Version 5.9.7  May 02, 2022
 +    - Exec changes
 +      PDSEGEN  - Dynamically calculate size for the temp file used
