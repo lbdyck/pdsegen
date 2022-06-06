@@ -17,6 +17,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
   %YEAR `will display all members and generations changed this year.
   %SINCE -nn`will display all members and generations updated since the
 `  previous nn days.
+  %Day-of-Week`Sunday, Monday, etc. translated into Since day-of-week
 `
   %SINCE day-of-week to display all members and generations since the recent
 `  day (e.g. SUnday, Monday, TUesday, Wednesday, THursday, Friday, SAturday)
@@ -25,7 +26,6 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `  since the provided date. The date MUST be in the format of yy/mm/dd.
 `
 `  All date filters are toggles. To toggle SINCE off just enter SINCE.
-`
 `
 )Init
  .cursor = &zcmd

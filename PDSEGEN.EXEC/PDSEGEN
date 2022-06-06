@@ -173,6 +173,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          06/06/22 - v5.9.9 - Support day of week for filter*
+  *                              e.g. Friday                   *
   *          05/02/22 - v5.9.7 - Dynamically calculate size of *
   *                              temp file used for gen access *
   *          04/27/22 - v5.9.6 - Change REFRESH to retain      *
@@ -775,7 +777,8 @@
   sortcol  = 'NAME'
   sortf = 'mbr,c,'A',mgen,n,d'
   sort.sortcol = 'A'
-  date_filter_words = 'SINCE YESTERDAY TODAY WEEK MONTH YEAR'
+  date_filter_words = 'SINCE YESTERDAY TODAY WEEK MONTH YEAR' ,
+   'SUNDAY MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY SATURDAY'
   Numeric Digits 10
 
   /* ----------------------------- *
@@ -5702,6 +5705,21 @@ Save_dslist:
   * -------------------- */
 setup_date_filter:
   date_filterv = zcmd
+
+ /* ---------------------------- *
+  | Check for day of week filter |
+  * ---------------------------- */
+  Select
+  When abbrev('SUNDAY',zcmd,3)    = 1 then zcmd = 'SINCE SUNDAY'
+  When abbrev('MONDAY',zcmd,3)    = 1 then zcmd = 'SINCE MONDAY'
+  When abbrev('TUESDAY',zcmd,3)   = 1 then zcmd = 'SINCE TUESDAY'
+  When abbrev('WEDNESDAY',zcmd,3) = 1 then zcmd = 'SINCE WEDNESDAY'
+  When abbrev('THURSDAY',zcmd,3)  = 1 then zcmd = 'SINCE THURSDAY'
+  When abbrev('FRIDAY',zcmd,3)    = 1 then zcmd = 'SINCE FRIDAY'
+  When abbrev('SATURDAY',zcmd,3)  = 1 then zcmd = 'SINCE SATURDAY'
+  Otherwise nop
+  end
+
   Select
     When last_date_filter = zcmd then do
       parse value '' with date_filter date_filterv ,

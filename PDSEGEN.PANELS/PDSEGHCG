@@ -17,6 +17,13 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 5.9.9  June 06, 2022
++    - Exec changes
++      PDSEGEN  - Support day of week as a filter command
++                 e.g. Friday (changed to Since -n)
++    - Panel changes
++      PDSEGH18 - Add day-of-week filter
++
 +~Version 5.9.8  June 03, 2022
 +    - Exec changes
 +      PDSEGDSL - Add CLEAN option for the dataset list table to

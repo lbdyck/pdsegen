@@ -5,6 +5,13 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 5.9.9  June 06, 2022
+     - Exec changes
+       PDSEGEN  - Support day of week as a filter command
+                  e.g. Friday (changed to Since -n)
+     - Panel changes
+       PDSEGH18 - Add day-of-week filter
+
   Version 5.9.7  May 02, 2022
      - Exec changes
        PDSEGEN  - Dynamically calculate size for the temp file used
