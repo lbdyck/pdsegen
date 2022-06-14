@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          06/14/22 - v6.0.0 - Fix typo for thurSday :(      *
   *          06/06/22 - v5.9.9 - Support day of week for filter*
   *                              e.g. Friday                   *
   *          05/02/22 - v5.9.7 - Dynamically calculate size of *
@@ -6752,7 +6753,7 @@ Check_Since:
     When abbrev('MONDAY',w2,1)    = 1 then w2 = 2
     When abbrev('TUESDAY',w2,2)   = 1 then w2 = 3
     When abbrev('WEDNESDAY',w2,1) = 1 then w2 = 4
-    When abbrev('THURDAY',w2,2)   = 1 then w2 = 5
+    When abbrev('THURSDAY',w2,2)   = 1 then w2 = 5
     When abbrev('FRIDAY',w2,1)    = 1 then w2 = 6
     When abbrev('SATURDAY',w2,2)  = 1 then w2 = 7
     otherwise return
@@ -6762,4 +6763,5 @@ Check_Since:
         'FRIDAY SATURDAY')
     stdate = w2 - wt
     if stdate > 0 then stdate = stdate - 7
+    else stdate = -7
     return

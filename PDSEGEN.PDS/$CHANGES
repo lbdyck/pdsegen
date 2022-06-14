@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.0.0  June 14, 2022
+     - Exec changes
+       PDSEGEN  - Fix typo of THURDAY to THURSDAY (sigh)
+
   Version 5.9.9  June 06, 2022
      - Exec changes
        PDSEGEN  - Support day of week as a filter command
