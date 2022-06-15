@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          06/15/22 - v6.0.1 - Fix day check for since       *
   *          06/14/22 - v6.0.0 - Fix typo for thurSday :(      *
   *          06/06/22 - v5.9.9 - Support day of week for filter*
   *                              e.g. Friday                   *
@@ -6763,5 +6764,4 @@ Check_Since:
         'FRIDAY SATURDAY')
     stdate = w2 - wt
     if stdate > 0 then stdate = stdate - 7
-    else stdate = -7
     return

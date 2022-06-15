@@ -1,5 +1,5 @@
 /* --------------------  rexx procedure  -------------------- */
- ver = '6.0.0'
+ ver = '6.0.1'
  return ver
 /* Name:      PDSEGVER                                        |
  |                                                            |
@@ -12,6 +12,7 @@
  | Author:    Lionel B. Dyck                                  |
  |                                                            |
  | History:  (most recent on top)                             |
+ |            06/15/22 - 6.0.1 - Reflect updates to package   |
  |            06/14/22 - 6.0.0 - Reflect updates to package   |
  |            06/06/22 - 5.9.9 - Reflect updates to package   |
  |            06/03/22 - 5.9.8 - Reflect updates to package   |

@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.0.1  June 145 2022
+     - Exec changes
+       PDSEGEN  - Correct Day calculation for since that I broke
+
   Version 6.0.0  June 14, 2022
      - Exec changes
        PDSEGEN  - Fix typo of THURDAY to THURSDAY (sigh)
