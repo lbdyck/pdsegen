@@ -18,7 +18,7 @@
    ' type(text) intens(low) color(&clrh) hilite(&clrhr)
    " type(text) intens(low) color(&sortc)
    < type(text) intens(low) color(&sortb)
-)Body window(73,21) expand(\\)
+)Body expand(\\)
 %-\-\(~PDSE V2 Generations Settings}ver  %)\-\-
 %Command ===>_zcmd
 +
@@ -36,13 +36,13 @@
 +  'Header: Color: z+ Reverse: z+(Y or N)
 +
 +Table Sort Colors:"Sorted: z+       <UnSorted: z+
-+
 +Display Product Version Changes:$z+ (%0+no,%1+v.r,%2+v.r.m )
++Display Elapsed Time on Startup:$z+ (%0+no%1+yes)
 +
 \ \Press Enter to Register the changes - F3 to Cancel\ \
 )Init
  .zvars  = '(pdsedo b e v s useab umaxhist tb cp +
-            sb st sg sw sp sy sr sh rh srtc srtb sc)'
+            sb st sg sw sp sy sr sh rh srtc srtb sc setime)'
  &ver    = &pdsegver
  .cursor = pdsedo
  .help   = pdsegh8
@@ -56,6 +56,8 @@
      &pdsedo = '/'
  if (&pdsedo = &z)
      &pdsedo = '0'
+ if (&setime = &z)
+     &setime = '0'
 )Proc
  ver (&pdsedo,nb,list,B,E,V,/)
  ver (&useab,nb,list,Y,N)
@@ -76,6 +78,7 @@
  ver (&srtb,nb,list,B,G,P,R,T,W,Y)
  ver (&rh,nb,list,Y,N)
  ver (&sc,nb,list,0,1,2)
+ ver (&setime,nb,list,0,1)
 )End
 )PNTS
 FIELD(b) var(pdsedo) val(B)
@@ -83,5 +86,5 @@ FIELD(e) var(pdsedo) val(E)
 FIELD(v) var(pdsedo) val(V)
 FIELD(s) var(pdsedo) val(S)
 )End
-/* Copyright (c) 2018-2020 by Lionel B. Dyck */
+/* Copyright (c) 2018-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

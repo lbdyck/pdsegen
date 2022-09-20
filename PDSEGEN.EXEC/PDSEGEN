@@ -173,6 +173,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          09/20/22 - v6.0.2 - Add elapsed time to set option*
   *          06/15/22 - v6.0.1 - Fix day check for since       *
   *          06/14/22 - v6.0.0 - Fix typo for thurSday :(      *
   *          06/06/22 - v5.9.9 - Support day of week for filter*
@@ -6142,7 +6143,7 @@ Proc_Settings:
   arg PSoption
   Address ISPExec
   'Vget (clrb clrg clrp clrr clrt clrw clry clrh clrhr' ,
-    'sortb sortc pdsetb csrloc changed useab umaxhist) profile'
+    'sortb sortc pdsetb csrloc changed useab umaxhist setime) profile'
   old_ab = useab
   if datatype(umaxhist) /= 'NUM'
   then umaxhist = maxhist
@@ -6150,6 +6151,8 @@ Proc_Settings:
     sortb = left(base_color,1)
     sortc = left(sort_color,1)
   end
+  if datatype(setime) = 'NUM'
+     then etime = setime
   tb = pdsetb
   if datatype(csrloc) /= 'NUM' then csrloc = 0
   cp = csrloc
@@ -6196,7 +6199,7 @@ Proc_Settings:
     Call Set_defaults
   end
   'VPut (clrb clrg clrp clrr clrt clrw clry clrh clrhr' ,
-    'sortb sortc pdsetb csrloc changed useab umaxhist) profile'
+    'sortb sortc pdsetb csrloc changed useab umaxhist setime) profile'
   return
 
   /* ------------------------------------------------ *

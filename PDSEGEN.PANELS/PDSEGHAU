@@ -23,8 +23,8 @@
 |   Contributors:  John Kalinich  Greg Price     Bill Smith            |
 |                  Bruce Koss     Thomas Conley  Salvador Carrasco     |
 |----------------------------------------------------------------------|
-|               Version number: 6.0.1                                  |
-|               Date          : June 15, 2022                          |
+|               Version number: 6.0.2                                  |
+|               Date          : Sept 20, 2022                          |
 |----------------------------------------------------------------------|
 |                                                                      |
 |   Support of PDSEGEN is as time allows.                              |
@@ -38,5 +38,5 @@
 &zcont = PDSEGHD
 )Proc
 )End
-/* Copyright (c) 2020 by Lionel B. Dyck */
+/* Copyright (c) 2020-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

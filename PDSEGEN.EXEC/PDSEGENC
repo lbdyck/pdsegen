@@ -65,6 +65,7 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            08/15/22 - Adjust popup on copy panel           *
  *            09/10/19 - Fix pdsegeni parse for mmod          *
  *            08/19/19 - Fix filter/options bug               *
  *            08/13/19 - Support from:to filter               *
@@ -517,7 +518,7 @@
  * ----------------------------------------------------- */
 disp_progress:
   "Control Display Lock"
-  "Addpop column(11) row(2)"
+  "Addpop column(6) row(4)"
   "Display Panel(pdsegcps)"
   "Rempop"
   return
