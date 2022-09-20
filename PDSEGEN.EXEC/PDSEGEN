@@ -6195,6 +6195,7 @@ Proc_Settings:
     if rc > 0 then leave
     sortb = srtb
     sortc = srtc
+    etime = setime
     if oldab /= useab then call change_panels
     Call Set_defaults
   end
