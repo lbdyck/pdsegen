@@ -105,6 +105,7 @@
   * Z COMpare  - Compare  (for gen 0 to non-0 generation)      *
   * /          - prompt for option                             *
   * =          - repeat last used line command                 *
+  * +          - open pdsegen on pds/member in new session     *
   *                                                            *
   * Notes:                                                     *
   *   0. Generation browse/edit/view only works with z/OS 2.1  *
@@ -173,6 +174,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/06/22 - v6.0.3 - Add + selection option        *
   *          09/20/22 - v6.0.2 - Add elapsed time to set option*
   *          06/15/22 - v6.0.1 - Fix day check for since       *
   *          06/14/22 - v6.0.0 - Fix typo for thurSday :(      *
@@ -652,7 +654,7 @@
   *            05/26/16 - v0.1 - creation                      *
   *                                                            *
   * ---------------------------------------------------------- *
-  * Copyright (c) 2017-2020 by Lionel B. Dyck                  *
+  * Copyright (c) 2017-2022 by Lionel B. Dyck                  *
   * ---------------------------------------------------------- *
   * Support is on a best effort and time available basis which *
   * is why the complete source is provided for this application*
@@ -2277,7 +2279,7 @@ Start:
       | Validate the member selection options |
       * ------------------------------------- */
       if length(msel) = 1 then
-      if pos(msel,'/ABCDEGHIJKMOPQRTUVWXZ') = 0 then do
+      if pos(msel,'+/ABCDEGHIJKMOPQRTUVWXZ') = 0 then do
         zerrsm = 'Unknown Selection'
         zerrlm = msel 'is an unknown option - select a valid option.'
         'Setmsg msg(isrz003)'
@@ -2414,6 +2416,21 @@ Start:
           msel  = null
           'tbput' pdset 'Order'
         end
+        /* ------------------------------------------------------- *
+        | Process the + selection to open PDSEGEN in another ISPF |
+        | split session.                                          |
+        * ------------------------------------------------------- */
+        When msel = '+' then do
+                parse source with x pgcmd .
+                zerrsm = 'Started.'
+                zerrlm = 'A new ISPF Session was started for member' mbr
+                'setmsg msg(isrz003)'
+                lopt  = '*+'
+                lopts = lopt
+                msel  = null
+                'tbput' pdset 'Order'
+                "select pgm(ispstrt) parm(tso "pgcmd "'"wdsn"'" mbr")"
+          end
         /* ---------- *
         | Attributes |
         * ---------- */
@@ -6195,7 +6212,6 @@ Proc_Settings:
     if rc > 0 then leave
     sortb = srtb
     sortc = srtc
-    etime = setime
     if oldab /= useab then call change_panels
     Call Set_defaults
   end

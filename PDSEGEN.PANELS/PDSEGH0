@@ -34,7 +34,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `]LM+Mail the member     ]C10+Genonly and Hide     ]P+IEBPDSE                +
 `%   &m1                 ]C11+HIGen                ]R+PDSE Restrictions      +
 `]LT+Tryit               ]C12+ID and MINE          ]T+Hints and Tips         +
-` LP+Line Prompt %       ]C13+Locate               ]A+Author %*              +
+`]LP+Line Prompt %       ]C13+Locate               ]A+Author %*              +
 `                        ]C14+Model
 `                        ]C15+Options              %Summaries (optional)     +
 `  Any line command can  ]C16+Output               ]LS+Line Summary%*        +
@@ -235,5 +235,5 @@ FIELD(T   )     VAR(ZCMD) VAL(T  )
 FIELD(C   )     VAR(ZCMD) VAL(C  )
 FIELD(A   )     VAR(ZCMD) VAL(A  )
 )END
-/* Copyright (c) 2018-2021 by Lionel B. Dyck */
+/* Copyright (c) 2018-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

@@ -1,6 +1,6 @@
-)Attr Default(%+_)
+)Attr Default(%{_)
    % type(text) intens(high) color(&clrw)
-   + type(text) intens(low ) color(&clrb)
+   { type(text) intens(low ) color(&clrb)
    ~ type(text) intens(high) caps(off) just(asis ) color(&clrh)
      hilite(&clrhr)
    _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw)
@@ -13,20 +13,21 @@
    / type(output) intens(high) color(&clrh) hilite(&clrhr)
    ^ type(output) intens(low) caps(off)  color(&clrw)
    $ type(input) intens(low) caps(on) hilite(uscore) color(&clrw)
-)Body window(56,13) expand(\\)
+)Body window(56,14) expand(\\)
 %-\-\(~PDSE V2 Generations Select/ver  %)\-\-
 %Command ===>_zcmd
-+
-+Line selection processing for member: ^mbr
-+                          generation: ^mgen
-+
+{
+{Line selection processing for member: ^mbr
+{                          generation: ^mgen
+{
 `Non-0 Generation selection options.
-+
-+Enter a valid member selection option:$z+
-+
-+  `B]c1    +  `I]ci  +       `T]ct   + +   `X]ca     +
-+  `D]c3     + `J]c4    +     `U]c8  +  +   `Z]c2     +
-+  `G]c7     + `P]c6     +    `V]c9  +  +   @m[c5    +
+{
+{Enter a valid member selection option:$z{
+{
+{  `B]c1    {  `I]ci  {       `T]ct   { {   `X]ca     {
+{  `D]c3     { `J]c4    {     `U]c8  {  {   `Z]c2     {
+{  `G]c7     { `P]c6     {    `V]c9  {  {   @m[c5    {
+{  `+]p{
 )Init
  &c1 = 'Browse'
  &c2 = 'Compare'
@@ -39,6 +40,7 @@
  &ca = 'eXecute'
  &ct = 'Tryit'
  &ci = 'Info'
+ &p = '+'
  .zvars = '(msel)'
  .help = pdsegh0
  &ver = &pdsegver
@@ -52,7 +54,7 @@
 )ReInit
  &ver = &pdsegver
 )Proc
- ver (&msel,nb,list,B,Z,D,I,J,P,G,T,U,V,X,M)
+ ver (&msel,nb,list,+,B,Z,D,I,J,P,G,T,U,V,X,M)
 )PNTS
 FIELD(c1)   VAR(msel) VAL(B)
 FIELD(c2)   VAR(msel) VAL(Z)
@@ -66,6 +68,7 @@ FIELD(c9)   VAR(msel) VAL(V)
 FIELD(ca)   VAR(msel) VAL(X)
 FIELD(ct)   VAR(msel) VAL(T)
 FIELD(ci)   VAR(msel) VAL(I)
+FIELD(p)    VAR(msel) VAL(+)
 )End
-/* Copyright (c) 2017 by Lionel B. Dyck */
+/* Copyright (c) 2017-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

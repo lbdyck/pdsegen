@@ -17,6 +17,15 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.0.3  Oct 6, 2022
++    - Exec changes
++      PDSEGEN  - Add + selection to open PDSEGEN in new ISPF Split
++    - Panel changes
++      PDSEGH0  - Make LP a point and shoot field
++      PDSEGH6  - Add + selection
++      PDSEGSLN - Add + selection
++      PDSEGSL0 - Add + selection
++
 +~Version 6.0.2  Sept 20, 2022
 +    - Exec changes
 +      PDSEGEN  - Support elapsed time display option on set

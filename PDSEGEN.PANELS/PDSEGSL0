@@ -1,6 +1,6 @@
-)Attr Default(%+_)
+)Attr Default(%{_)
    % type(text) intens(high) color(&clrw)
-   + type(text) intens(low ) color(&clrb)
+   { type(text) intens(low ) color(&clrb)
    ~ type(text) intens(high) caps(off) just(asis ) color(&clrh)
      hilite(&clrhr)
    _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw)
@@ -13,20 +13,21 @@
    ^ type(output) intens(low) caps(off)  color(&clrw)
    / type(output) intens(high) color(&clrh) hilite(&clrhr)
    $ type(input) intens(low) caps(on) hilite(uscore) color(&clrw)
-)Body window(55,13) expand(\\)
+)Body window(55,14) expand(\\)
 %-\-\(~PDSE V2 Generations Select/ver  %)\-\-
 %Command ===>_zcmd
-+
-+Line selection processing for member: ^mbr
-+
-+Generation 0 (base) selection options.
-+
-+Enter a valid member selection option:$z+
-+                                                     +
-+  `A]c0    +  `E]c3  +    +  `Q]c7     + `V]ca  +
-+  `B]c1    +  `I]ci  +    +  `R]c8    +  `X]cb     +
-+  `C]cc  +    `J]c4    +     `T]ct   +   `Z]cz     +
-+  `D]c2    +  `K]c5   +      `U]c9   +   @m[c6    +
+{
+{Line selection processing for member: ^mbr
+{
+{Generation 0 (base) selection options.
+{
+{Enter a valid member selection option:$z{
+{                                                     {
+{  `A]c0    {  `E]c3  {    {  `Q]c7     { `V]ca  {
+{  `B]c1    {  `I]ci  {    {  `R]c8    {  `X]cb     {
+{  `C]cc  {    `J]c4    {     `T]ct   {   `Z]cz     {
+{  `D]c2    {  `K]c5   {      `U]c9   {   @m[c6    {
+{  `+]p{
 )Init
  &c0 = 'Attrib'
  &c1 = 'Browse'
@@ -43,6 +44,7 @@
  &ct = 'Tryit'
  &ci = 'Info'
  &cz = 'Compare'
+ &p = '+'
  .zvars = '(msel)'
  .help = pdsegh0
  &ver = &pdsegver
@@ -56,7 +58,7 @@
 )ReInit
  &ver = &pdsegver
 )Proc
- ver (&msel,nb,list,A,B,C,D,E,I,J,K,Q,R,T,U,V,X,M,Z)
+ ver (&msel,nb,list,+,A,B,C,D,E,I,J,K,Q,R,T,U,V,X,M,Z)
 )PNTS
 FIELD(c0)   VAR(msel) VAL(A)
 FIELD(c1)   VAR(msel) VAL(B)
@@ -74,6 +76,7 @@ FIELD(cc)   VAR(msel) VAL(C)
 FIELD(ci)   VAR(msel) VAL(I)
 FIELD(ct)   VAR(msel) VAL(T)
 FIELD(cz)   VAR(msel) VAL(Z)
+FIELD(p)    VAR(msel) VAL(+)
 )End
-/* Copyright (c) 2018 by Lionel B. Dyck */
+/* Copyright (c) 2018-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */
