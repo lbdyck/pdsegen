@@ -33,6 +33,7 @@
  PDC DESC('Edit')     Action Run(EDIT)
  PDC DESC('FILter')   Action Run(FILTER)
  PDC DESC('Find'   )  Action Run(Find)
+ PDC DESC('LImit'  )  Action Run(Limit)
  PDC DESC('Locate' )  Action Run(Locate)
  PDC DESC('SUBmit' )  Action Run(Submit)
  PDC DESC('View'   )  Action Run(View)

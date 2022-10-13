@@ -50,6 +50,7 @@
   *            ID char(s) - display only members with the      *
   *                         characters.                        *
   *            Info to display info on the dataset (PDSE only) *
+  *            LImit mgen to limit the display of generations  *
   *            Locate member or member*                        *
   *            MIne - display only active users members        *
   *            Model - Allocate a new dataset based on the     *
@@ -174,6 +175,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/13/22 - v6.0.5 - Correct edit gen max msg      *
+  *          10/12/22 - v6.0.4 - Add LIMIT command             *
   *          10/06/22 - v6.0.3 - Add + selection option        *
   *          09/20/22 - v6.0.2 - Add elapsed time to set option*
   *          06/15/22 - v6.0.1 - Fix day check for since       *
@@ -769,7 +772,7 @@
     dsn_prompt table_panelo last_mem last_mgen ,
     last_agen first_pass docmd blockcmd ,
     save_bcmd topdse hfilter bypass_tb ,
-    update_table open_pdse filter_id ,
+    update_table open_pdse filter_id gen_limit ,
     tfilter_from tfilter_to tfilter_list srowcrp
   pdsedd   = randstr()
   pdsegdd  = randstr()
@@ -1190,6 +1193,7 @@ Start:
   | be reported on if the user pressed F1 when the   |
   | short message with processing time is displayed. |
   * ------------------------------------------------ */
+  if gen_limit = null then
   if etime = 1 then do
     e_time = time("E")
     e_stime   = sysvar('SYSCPU')
@@ -1232,6 +1236,13 @@ Start:
     Address ISPExec
     'setmsg msg(isrz003)'
   end
+
+    if gen_limit /= null then do
+       zerrsm = 'Limit' gen_limit
+       zerrlm = 'LIMIT is limiting the number of generations' ,
+                'displayed.'
+       'setmsg msg(isrz003)'
+       end
 
   /* ------------------------------------- *
   * Now display the ISPF Table of Members *
@@ -1461,6 +1472,43 @@ Start:
           filter_title = strip(filter_title 'ID' filter_id)
           call proc_refresh
         end
+        /* --------------------------------- *
+        | Check for generation LIMIT        |
+        | if positive make negative to      |
+        | limit the display of generations  |
+        *---------------------------------- */
+        When abbrev('LIMIT',word(zcmd,1),2) = 1 then do
+          if gen_limit /= null & words(zcmd) = 1
+             then do
+                  zcmd = null
+                  gen_limit = null
+                  zerrsm = null
+                  zerrlm = 'LIMIT reset to null'
+                  'setmsg msg(isrz003)'
+                  call proc_refresh
+                  end
+          if words(zcmd) /= 2 then do
+             zerrsm = null
+             zerrlm = 'LIMIT requires a relative generation' ,
+                      'e.g. LIMIT -3'
+             'setmsg msg(isrz003)'
+             end
+          else do
+               gen_limit = word(zcmd,2)
+               if datatype(gen_limit) /= 'NUM' then do
+                  zerrsm = null
+                  zerrlm = 'LIMIT requires a relative generation' ,
+                      'e.g. LIMIT -3, not' word(zcmd,2)
+                  'setmsg msg(isrz003)'
+                  end
+               else do
+                    if gen_limit > 0 then
+                       gen_limit = gen_limit * -1
+               end
+          end
+          zcmd = null
+          call proc_refresh
+          end
         /* ----------------- *
         * Date filter check *
         * ----------------- */
@@ -1987,11 +2035,16 @@ Start:
         /* ------- *
         * Prune   *
         * ------- */
-        when abbrev("PRUNE",word(zcmd,1),1) = 1 then do
-          if gen_hide = 1 then do
+        When abbrev("PRUNE",word(zcmd,1),1) = 1 then do
+          if gen_hide = 1 | gen_limit /= null then do
             zerrsm = 'Warning'
-            zerrlm = 'Prune is not supported when generations are' ,
+            if gen_limit = null
+            then zerrlm = 'Prune is not supported when generations are' ,
               'hidden. Use the REFRESH command to restore the' ,
+              'generations to the member list and then you can' ,
+              'use prune.'
+            else zerrlm = 'Prune is not supported when LIMIT is active.' ,
+              'Use the LIMIT blank to restore the' ,
               'generations to the member list and then you can' ,
               'use prune.'
             'Setmsg msg(isrz003)'
@@ -3985,6 +4038,12 @@ Proc_pdsegeni:
     if wordpos(mbr,all_members.0) = 0
     then all_members.0 = all_members.0 mbr
     if smbr /= null then if smbr /= mbr then iterate
+
+    /* -------------------------------- *
+    | Check for Gen_Limit and honor it |
+    * -------------------------------- */
+    if gen_limit /= null then
+       if mgen < gen_limit then iterate
 
     /* ----------------------------- *
     | Check and process any filters |

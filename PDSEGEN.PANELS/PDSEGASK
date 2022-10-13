@@ -19,6 +19,7 @@
  select
  when askopt = 'B' then prompt = 'Member Name'
  when askopt = 'E' then prompt = 'Member Name'
+ when askopt = 'G' then prompt = 'Limit Gen'
  when askopt = 'V' then prompt = 'Member Name'
  when askopt = 'L' then prompt = 'Member Name'
  when askopt = 'SUB' then prompt = 'Member Name'

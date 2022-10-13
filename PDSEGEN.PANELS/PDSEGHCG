@@ -17,6 +17,20 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.0.5  Oct 13, 2022
++    - Exec changes
++      PDSEGEN  - Correct Edit max gen message if Limit used
++
++~Version 6.0.4  Oct 12, 2022
++    - Exec changes
++      PDSEGEN  - Add new LIMIT command
++    - Panel changes
++      PDSEGASK - Update for LIMIT
++      PDSEGHLM - Added for LIMIT
++      PDSEGHPS - Update for LIMIT
++      PDSEGH0  - Update for LIMIT
++      PDSEGOPT - Update for LIMIT
++
 +~Version 6.0.3  Oct 6, 2022
 +    - Exec changes
 +      PDSEGEN  - Add + selection to open PDSEGEN in new ISPF Split

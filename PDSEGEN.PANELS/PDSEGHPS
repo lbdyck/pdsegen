@@ -55,6 +55,7 @@
 `                               `- known as dummy members
 `     @ID xxx                   `Display member where xxx is in userid
 `     @Info                     `Display dataset allocation information
+`     @LImit generation         `Limit the generations displayed
 `     @Locate member or member* `to scroll to the member
 `                               `e.g. L abc
 `                               ` or  L ab*

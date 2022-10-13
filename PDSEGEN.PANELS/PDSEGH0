@@ -34,20 +34,21 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `]LM+Mail the member     ]C10+Genonly and Hide     ]P+IEBPDSE                +
 `%   &m1                 ]C11+HIGen                ]R+PDSE Restrictions      +
 `]LT+Tryit               ]C12+ID and MINE          ]T+Hints and Tips         +
-`]LP+Line Prompt %       ]C13+Locate               ]A+Author %*              +
-`                        ]C14+Model
-`                        ]C15+Options              %Summaries (optional)     +
-`  Any line command can  ]C16+Output               ]LS+Line Summary%*        +
-`  be a block command:   ]C17+Prune                ]PS+Primary Summary%*     +
-`  XX/XX or X99999       ]C18+Reflist
-`                        ]C19+Refresh
-`  With the Expanded     ]C20+Restore
-`  Member display any    ]C21+Select and Edit
-`  valid TSO command     ]C22+Set command
-`  can be entered.`      ]C23+SETMacro
-`                        ]C24+Sort
-`                        ]C25+SUBmit
-`                        ]C26+Validate (IEBPDSE)
+`]LP+Line Prompt %       ]C13+LImit                ]A+Author %*              +
+`                        ]C14+Locate
+`                        ]C15+Model                %Summaries (optional)     +
+`  Any line command can  ]C16+Options              ]LS+Line Summary%*        +
+`  be a block command:   ]C17+Output               ]PS+Primary Summary%*     +
+`  XX/XX or X99999       ]C18+Prune
+`                        ]C19+Reflist
+`  With the Expanded     ]C20+Refresh
+`  Member display any    ]C21+Restore
+`  valid TSO command     ]C22+Select and Edit
+`  can be entered.`      ]C23+Set command
+`                        ]C24+SETMacro
+`                        ]C25+Sort
+`                        ]C26+SUBmit
+`                        ]C27+Validate (IEBPDSE)
 `
 `                          %*+are only displayed if requested+               +
 )Init
@@ -92,6 +93,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 &C24= 'C24'
 &C25= 'C25'
 &C26= 'C26'
+&C27= 'C27'
 &BR = 'BR'
 &BC = 'BC'
 &EC = 'EC'
@@ -146,26 +148,27 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
            C4,pdsegh2
            C5,pdsegh3
            C6,pdsegh10
-           C7,pdsegh18
-           C8,pdseghf
-           C9,pdseghfs
-          C10,pdsegh17
-          C11,pdseghhw
-          C12,pdseghid
-          C13,pdsegh4
-          C14,pdseghmd
-          C15,pdseghop
-          C16,pdseghou
-          C17,pdsegh12
-          C18,pdsegh20
-          C19,pdsegh19
-          C20,pdseghrs
-          C21,pdsegh13
-          C22,pdsegh8
-          C23,pdsegh21
-          C24,pdsegh5
-          C25,pdseghss
-          C26,pdsegh9
+           C7,pdseghlm
+           C8,pdsegh18
+           C9,pdseghf
+          C10,pdseghfs
+          C11,pdsegh17
+          C12,pdseghhw
+          C13,pdseghid
+          C14,pdsegh4
+          C15,pdseghmd
+          C16,pdseghop
+          C17,pdseghou
+          C18,pdsegh12
+          C19,pdsegh20
+          C20,pdsegh19
+          C21,pdseghrs
+          C22,pdsegh13
+          C23,pdsegh8
+          C24,pdsegh21
+          C25,pdsegh5
+          C26,pdseghss
+          C27,pdsegh9
            BR,pdseghbj
            BC,pdseghc
            EC,pdseghec
@@ -222,6 +225,7 @@ FIELD(C22 )     VAR(ZCMD) VAL(C22)
 FIELD(C23 )     VAR(ZCMD) VAL(C23)
 FIELD(C24 )     VAR(ZCMD) VAL(C24)
 FIELD(C25 )     VAR(ZCMD) VAL(C25)
+FIELD(C26 )     VAR(ZCMD) VAL(C26)
 FIELD(BR  )     VAR(ZCMD) VAL(BR )
 FIELD(BC  )     VAR(ZCMD) VAL(BC )
 FIELD(EC  )     VAR(ZCMD) VAL(EC )
@@ -236,4 +240,4 @@ FIELD(C   )     VAR(ZCMD) VAL(C  )
 FIELD(A   )     VAR(ZCMD) VAL(A  )
 )END
 /* Copyright (c) 2018-2022 by Lionel B. Dyck */
-/* GNU GENERAL PUBLIC LICENSE V3        */
+/* GNU GENERAL PUBLIC LICENSE V3             */

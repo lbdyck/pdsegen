@@ -1,0 +1,28 @@
+)attr default(%+_)
+ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
+ ` type(text) intens(low ) caps(off) just(asis ) color(&clrt)
+ ~ type(text) intens(high) color(&clrh) hilite(&clrhr)
+ % type(text) intens(high) color(&clrw)
+ # area(SCRL) Extend(ON)
+)Body Expand(\\)
+%Tutorial -\-\(~PDSE V2 Member Generations%)\-\- Tutorial
+%Command ===>_ZCMD                                                             +
+%
+#help ---------------------------------------------------------------------- #
+)Area Help
+%  LIMIT
+`
+`  The LIMIT command will limit the number of generations displayed in the
+`  member list.
+`
+`  Syntax:  %LImit generations
+`
+`  To display only the base generation and generations -1 and -2:  %LI 2
+`
+)Init
+ .cursor = &zcmd
+)PROC
+ &ZUP = PDSEGH0
+)END
+/* Copyright (c) 2022 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */
