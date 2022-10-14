@@ -31,7 +31,10 @@
  .cursor = askstr
  .help = pdseghfs
 )Proc
- ver (&askstr,nb,name)
+ if (&askopt EQ G)
+    ver (&askstr,nb,num)
+ if (&askopt NE G)
+    ver (&askstr,nb,name)
 )End
-/* Copyright (c) 2017-2020 by Lionel B. Dyck */
+/* Copyright (c) 2017-2022 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */
