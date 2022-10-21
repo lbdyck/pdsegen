@@ -23,6 +23,7 @@
  * Author:    John Kalinich, Lionel Dyck                      *
  *                                                            *
  * History:                                                   *
+ *            10/21/22 - Update for non-backup pdse's         *
  *            08/07/19 - Add short/long message               *
  *            08/06/19 - enable use of SuperC in non-MG PDSes *
  *                     - return members with hit (lbd)        *
@@ -52,6 +53,8 @@
     wdsn = hlq'.'pdsedsn
   end
 
+  address ispexec 'vget (ftmems gopt)'
+
 Process_Find:
 
   call read_$index
@@ -65,6 +68,7 @@ Read_$Index:
     "dsinfo dataset('"wdsn"')"
     if zdsngen = 0 then     /* allow non member generations */
     return
+    if gopt = 0 then return
     zedsmsg = 'Error'
     zedlmsg = 'Error.' "'"wdsn"($index)'" sysdsn("'"wdsn"($index)'")
     Address ISPExec
@@ -95,7 +99,6 @@ SuperC_Srchfor:
   push "SRCHFOR "string
   else
   push "SRCHFOR '"string"'"
-  address ispexec 'vget (ftmems)'
   if strip(ftmems) /= '' then
   do mi = 1 to words(ftmems)
     queue "SELECT" word(ftmems,mi)

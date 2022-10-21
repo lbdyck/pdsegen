@@ -175,8 +175,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
-  *          10/21/22 - v6.0.7 - Correct bug in Find with      *
-  *                              filter/hide or nogens         *
+  *          10/21/22 - v6.0.7 - Correct bug in FIND if nogen  *
+  *          10/14/22 - v6.0.6 - Add LIMIT Prompt              *
   *          10/13/22 - v6.0.5 - Correct edit gen max msg      *
   *          10/12/22 - v6.0.4 - Add LIMIT command             *
   *          10/06/22 - v6.0.3 - Add + selection option        *
@@ -1400,6 +1400,7 @@ Start:
         zcmd = 'EDIT' subword(zcmd,2)
         edits = 'S'
       end
+      when zcmd = 'LIMITP' then zcmd = 'LIMIT P'
       when abbrev("RESET",word(zcmd,1),3) = 1 then zcmd = "REFRESH"
       when abbrev("SRCH",word(zcmd,1),3) = 1
       then zcmd = "FIND" subword(zcmd,2)
@@ -1496,6 +1497,8 @@ Start:
              'setmsg msg(isrz003)'
              end
           else do
+               if word(zcmd,2) = 'P' then
+                  call cmd_prompt 'G'
                gen_limit = word(zcmd,2)
                if datatype(gen_limit) /= 'NUM' then do
                   zerrsm = null
@@ -2823,7 +2826,12 @@ Start:
             'Setmsg Msg(isrz003)'
           end
           if zerrsm  = null then do
-            call create_temp
+            rc = create_temp()
+            if rc > 4 then do
+               'setmsg msg(isrz003)'
+               address tso 'free ds('tdsn') delete'
+               end
+           else do
             pdsemopt = 'R'
             pdsecpds = "'"wdsn"("mbr")'"
             'vput (pdsecpds)'
@@ -2848,6 +2856,7 @@ Start:
             'tbput' pdset 'Order'
             lopt = null
             lopts = null
+                end
           end
         end
         /* ----------------------------------------- *
@@ -4555,7 +4564,12 @@ Do_Compare:
   mbr = cmem
   if cto /= 0 then do
     mgen = cto
-    call create_temp
+    rc = create_temp()
+    if rc > 4 then do
+       'setmsg msg(isrz003)'
+       address tso 'free ds('tdsn') delete'
+       return
+       end
     todsn = tdsn
   end
   else do
@@ -4835,7 +4849,7 @@ Create_Temp:
   'vput (pdsecpds)'
   'edit dataid('pdsegend') member('mbr') gen('mgen')' ,
     'macro(pdsegenm) parm(pdsemopt)'
-  return
+  return rc
 
   /* ------------------------------------------------------- *
   * Setup Filter procedure                                  *
@@ -5428,12 +5442,16 @@ Do_Prune:
 Do_Find:
   zcmd = null
   fhit = 0
+  if gen_hide = 1
+     then gopt = 0
+     else gopt = 1
+  'vput (gopt)'
   ftmems = null
   'tbtop' pdset
-  if zdsngen = 0 then
+  if zdsngen = 0 | gen_hide = 1 then
   do forever
     /* build selection list */
-    if ft /= null then do
+    do forever
       'tbskip' pdset
       if rc > 0 then leave
       ftmems = ftmems mbr
@@ -5455,6 +5473,7 @@ Do_Find:
     'Setmsg msg(isrz003)'
     return
   end
+  else do
   'tbtop' pdset
   mfind = 0
   qfind = 0
@@ -5478,6 +5497,7 @@ Do_Find:
     end
     if pdsegrc > 0 then 'tbdelete' pdset
     else mfind = mfind + 1
+  end
   end
   'tbtop' pdset
   zerrsm  = mfind 'hits'

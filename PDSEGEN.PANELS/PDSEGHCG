@@ -20,6 +20,7 @@
 +~Version 6.0.7  Oct 21, 2022
 +    - Exec changes
 +      PDSEGEN  - Correct bug in FIND if filter and nogens
++      PDSEGFND - Correct bug in FIND if filter and nogens
 +
 +~Version 6.0.6  Oct 14, 2022
 +    - Exec changes
