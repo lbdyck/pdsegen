@@ -175,6 +175,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/22/22 - v6.0.8 - Fix nogen Find if no filter   *
   *          10/21/22 - v6.0.7 - Correct bug in FIND if nogen  *
   *          10/14/22 - v6.0.6 - Add LIMIT Prompt              *
   *          10/13/22 - v6.0.5 - Correct edit gen max msg      *
@@ -959,12 +960,10 @@ Restart:
       if words(x) > 1 then filter = subword(x,2)
       zcmd = 'C' x
       signal restart
-      exit 0
     end
     else pdsedsn = null
     zcmd = null
     signal restart
-    exit 0
   end
   if pdsedsn /= null then do
     call test_dsn_alias
@@ -5451,6 +5450,7 @@ Do_Find:
   if zdsngen = 0 | gen_hide = 1 then
   do forever
     /* build selection list */
+    if filter /= null then
     do forever
       'tbskip' pdset
       if rc > 0 then leave
