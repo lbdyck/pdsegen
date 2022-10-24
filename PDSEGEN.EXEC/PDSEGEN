@@ -175,6 +175,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/24/22 - v6.0.9 - If limit 0 then set hide      *
+  *                              and if limit > 0 then hide off*
   *          10/22/22 - v6.0.8 - Fix nogen Find if no filter   *
   *          10/21/22 - v6.0.7 - Correct bug in FIND if nogen  *
   *          10/14/22 - v6.0.6 - Add LIMIT Prompt              *
@@ -770,7 +772,7 @@
   parse value '' with null tfilter tfilterl tfiltert filter_title ,
     save_pdsedsn HIGEN_title metric_table ,
     proc_mems hide_title do_pdsedsl date_filter ,
-    date_filter_title gen_hide hide_title ft ,
+    date_filter_title gen_hide ft ,
     date_filterv last_date_filter dfilter ,
     dsn_prompt table_panelo last_mem last_mgen ,
     last_agen first_pass docmd blockcmd ,
@@ -1238,13 +1240,6 @@ Start:
     'setmsg msg(isrz003)'
   end
 
-    if gen_limit /= null then do
-       zerrsm = 'Limit' gen_limit
-       zerrlm = 'LIMIT is limiting the number of generations' ,
-                'displayed.'
-       'setmsg msg(isrz003)'
-       end
-
   /* ------------------------------------- *
   * Now display the ISPF Table of Members *
   * ------------------------------------- */
@@ -1484,8 +1479,10 @@ Start:
              then do
                   zcmd = null
                   gen_limit = null
+                  gen_hide = 0
+                  hide_title = null
                   zerrsm = null
-                  zerrlm = 'LIMIT reset to null'
+                  zerrlm = 'LIMIT reset to off'
                   'setmsg msg(isrz003)'
                   call proc_refresh
                   end
@@ -1506,8 +1503,24 @@ Start:
                   'setmsg msg(isrz003)'
                   end
                else do
-                    if gen_limit > 0 then
-                       gen_limit = gen_limit * -1
+                    if gen_limit < 0
+                       then gen_limit = gen_limit * -1
+                    if gen_limit > 0
+                       then do
+                            gen_limit = gen_limit * -1
+                            hide_title = 'Limit' gen_limit
+                            end
+                    else do
+                    if gen_limit = 0
+                       then do
+                            gen_hide = 1
+                            hide_title = 'Limit 0'
+                            end
+                       else do
+                             gen_hide = 0
+                             hide_title = null
+                             end
+                       end
                end
           end
           zcmd = null
@@ -1907,6 +1920,7 @@ Start:
           zcmd = null
           if gen_hide = 1 then do
             gen_hide = 0
+            gen_limit = null
             hide_title = null
             zerrsm = 'UnHide'
             zerrlm = 'Generations are now displayed.'

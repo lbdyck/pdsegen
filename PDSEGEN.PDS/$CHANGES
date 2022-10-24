@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.0.9  Oct 24, 2022
+     - Exec changes
+       PDSEGEN  - Improve Hide/Limit messaging
+
   Version 6.0.8  Oct 23, 2022
      - Exec changes
        PDSEGEN  - Correct bug in FIND with nogen if no filter
