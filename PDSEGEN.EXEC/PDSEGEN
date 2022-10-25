@@ -175,6 +175,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/25/22 - v6.1.0 - If no generations in list then*
+  *                              use SuperC for Find           *
   *          10/24/22 - v6.0.9 - If limit 0 then set hide      *
   *                              and if limit > 0 then hide off*
   *          10/22/22 - v6.0.8 - Fix nogen Find if no filter   *
@@ -3969,6 +3971,7 @@ Proc_pdsegeni:
   drop members. all_members.
   members.     = null
   all_members. = null
+  gens_found = 0
   numeric digits 10
 
   /* ----------------------------------------------------- *
@@ -4049,6 +4052,11 @@ Proc_pdsegeni:
     * -------------------------------- */
     if agen > 0 then pdsegmem = pdsegmem + 1
 
+    /* --------------------- *
+    | Update gens_found flag |
+    * ---------------------- */
+    if pdsegmem > 0 then gens_found = 1
+
     /* ---------------------------------- *
     | Keep track of members and gen info |
     * ---------------------------------- */
@@ -4063,13 +4071,13 @@ Proc_pdsegeni:
     then all_members.0 = all_members.0 mbr
     if smbr /= null then if smbr /= mbr then iterate
 
-    /* -------------------------------- *
+    /* ------------------------------- *
     | Check for Gen_Limit and honor it |
     * -------------------------------- */
     if gen_limit /= null then
        if mgen < gen_limit then iterate
 
-    /* ----------------------------- *
+    /* ---------------------------- *
     | Check and process any filters |
     * ----------------------------- */
     if filter /= null then do
@@ -5461,7 +5469,7 @@ Do_Find:
   'vput (gopt)'
   ftmems = null
   'tbtop' pdset
-  if zdsngen = 0 | gen_hide = 1 then
+  if zdsngen = 0 | gen_hide = 1 | gens_found = 0 then
   do forever
     /* build selection list */
     if filter /= null then

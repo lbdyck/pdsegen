@@ -148,13 +148,13 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
            C4,pdsegh2
            C5,pdsegh3
            C6,pdsegh10
-           C7,pdseghlm
-           C8,pdsegh18
-           C9,pdseghf
-          C10,pdseghfs
-          C11,pdsegh17
-          C12,pdseghhw
-          C13,pdseghid
+           C7,pdsegh18
+           C8,pdseghf
+           C9,pdseghfs
+          C10,pdsegh17
+          C11,pdseghhw
+          C12,pdseghid
+          C13,pdseghlm
           C14,pdsegh4
           C15,pdseghmd
           C16,pdseghop
