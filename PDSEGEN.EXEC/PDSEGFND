@@ -31,6 +31,7 @@
  *            08/02/16 - created                              *
  * ---------------------------------------------------------- */
   arg pdsedsn string
+
   parse value '' with null ispf
   if right(string,4) = '/\/\' then do
     parse value string with string '/\/\'

@@ -175,6 +175,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          10/26/22 - v6.1.2 - One more fix for find nogens  *
   *          10/25/22 - v6.1.0 - If no generations in list then*
   *                              use SuperC for Find           *
   *          10/24/22 - v6.0.9 - If limit 0 then set hide      *
@@ -5463,7 +5464,7 @@ Do_Prune:
 Do_Find:
   zcmd = null
   fhit = 0
-  if gen_hide = 1
+  if gen_hide = 1 | gens_found = 0
      then gopt = 0
      else gopt = 1
   'vput (gopt)'

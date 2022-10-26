@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.1.2  Oct 26, 2022
+     - Exec changes
+       PDSEGEN  - Find bug fix if maxgens > 0 but no gens found
+
   Version 6.1.1  Oct 25, 2022
      - Panel changes
        PDSEGH0  - Correct tutorial for Limit
