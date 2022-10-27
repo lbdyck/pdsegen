@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.1.3  Oct 27, 2022
++    - Exec changes
++      PDSEGEN  - On Change if left quote used but right missing add it
++
 +~Version 6.1.2  Oct 26, 2022
 +    - Exec changes
 +      PDSEGEN  - Find bug fix if maxgens > 0 but no gens found
