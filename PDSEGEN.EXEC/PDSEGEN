@@ -45,6 +45,8 @@
   *            Edit member                                     *
   *            Filter member-mask (*x, x*, x:, x/ or /x or OFF *
   *            Find 'string'                                   *
+  *            FLip - alias of Change dsn or with no parm      *
+  *              becomes C *                                   *
   *            GENOnly - hide all base members (toggle)        *
   *            Hide - hide all generations (toggle)            *
   *            ID char(s) - display only members with the      *
@@ -175,6 +177,10 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          11/01/22 - v6.1.4 - Add FLIP as alias of Change   *
+  *                            - Update to enable F1 for time  *
+  *                            - Restrict some selections if   *
+  *                              Hide/Limit active             *
   *          10/27/22 - v6.1.3 - Add DSNAMEQ logic to Change   *
   *                              - add right quote if missing  *
   *                                and a left quote used.      *
@@ -1241,8 +1247,6 @@ Start:
       'poserv pocpu poservp pocpup pwtime' ,
       'ptsservp ptcpup ptpservp ptpcpup' ,
       'ptpserv ptpcpu pdsegver) profile'
-    zerrhm = 'pdsegh0'
-    Address ISPExec
     'setmsg msg(isrz003)'
   end
 
@@ -1406,6 +1410,15 @@ Start:
       then zcmd = "FIND" subword(zcmd,2)
       when abbrev("SEARCH",word(zcmd,1),3) = 1
       then zcmd = "FIND" subword(zcmd,2)
+      when abbrev("FLIP",word(zcmd,1),2) = 1
+      then do
+           if save_pdsedsn = null then
+              if words(zcmd) = 1 then
+              zcmd = 'flip' tdsn
+           if subword(zcmd,2) /= null
+              then zcmd = "C" subword(zcmd,2)
+              else zcmd = 'C *'
+           end
 
       /* ----------------------------------------- *
       | Support PDSE memlist/ml syntax for filter |
@@ -1721,7 +1734,7 @@ Start:
 
           do forever
             call pfshow 'off'
-            'Addpop Row(3) Column(3)'
+            'Addpop Row(3)'
             "Display Panel(pdsegcpy)"
             xrc = rc
             'Rempop'
@@ -1957,6 +1970,7 @@ Start:
             'when Hide mode is active.'
           'setmsg msg(isrz003)'
           hide_title = 'Hide'
+          gen_limit = null
         end
         /* ------ *
         * Info   *
@@ -2127,6 +2141,7 @@ Start:
                 if prune = 'RESET' then call prune_all
                 else call do_prune
                 if prune = null then leave
+                if prune = 0 then gens_found = 0
               end
             end
           end
@@ -2135,14 +2150,8 @@ Start:
         * Refresh *
         * ------- */
         when abbrev("REFRESH",word(zcmd,1),3) = 1 then do
-          /* Comment Start
-          parse value '' with tfilter tfilterl tfiltert ,
-            date_filter date_filter_title ,
-            filter filter_title hide_title ,
-            HIGEN_title last_date_filter filter_id
-          higenf = 0
           gen_hide = 0
-             Comment End */
+          gen_limit = 0
           if word(zcmd,2) /= null then do
             filter = subword(zcmd,2)
             call setup_filter
@@ -2477,14 +2486,31 @@ Start:
         When abbrev("SELECT",msel,2)    = 1 then msel = 'S'
         When abbrev("SUBMIT",msel,2)    = 1 then msel = 'J'
         When abbrev("TRANSFER",msel,2)  = 1 then msel = 'C'
-        When abbrev("TRYIT",msel,1)      = 1 then msel = 'T'
+        When abbrev("TRYIT",msel,1)     = 1 then msel = 'T'
         When abbrev("USER",msel,1)      = 1 then msel = 'U'
         When abbrev("VIEW",msel,1)      = 1 then msel = 'V'
         Otherwise nop
       end
 
+       /* ---------------------------------------------- *
+       | Check for hide/limit to prevent some selections |
+       * ----------------------------------------------- */
+       if pos(msel,'CDKRQ') > 0 then
+          if gen_hide = 1 | gen_limit /= null then do
+            if gen_limit /= null then xcmd = 'LIMit'
+               else if hide_title /= null then xcmd = 'HIde'
+            zerrsm = 'Warning'
+            zerrlm = msel 'is not supported when generations are' ,
+              'hidden. Use' xcmd ',or the REFresh' ,
+              'command to restore the' ,
+              'generations to the member list and then you can' ,
+              'use delete.'
+            'Setmsg msg(isrz003)'
+          msel = null
+          end
+
       Select
-        /* ---------------------------------------------------- *
+        /* --------------------------------------------------- *
         | When the selection is > 1 character                  |
         | - checks for EE/EE, Enn, Dnn, DD/DD must be prior to |
         |   this test                                          |
@@ -2638,7 +2664,7 @@ Start:
         * ---------------------------------------------------- */
         when msel = 'D' then do
           pdsedelu = 'N'
-          if gen_hide = 1 then do
+          if gen_hide = 1 | gen_limit /= null then do
             zerrsm = 'Warning'
             zerrlm = 'Delete is not supported when generations are' ,
               'hidden. Use the REFRESH command to restore the' ,
@@ -3046,7 +3072,7 @@ Start:
         *     will be renamed to.                   *
         * ----------------------------------------- */
         when msel = 'R' then do
-          if gen_hide = 1 then do
+          if gen_hide = 1 | gen_limit /= null then do
             zerrsm = 'Warning'
             zerrlm = 'Rename is not supported when generations are' ,
               'hidden. Use the REFRESH command to restore the' ,
@@ -5199,7 +5225,7 @@ Do_Rename_Swap:
   | 3. Rename 2nd to 1st            |
   | 4. Rename temp to 2nd           |
   * ------------------------------- */
-  if gen_hide = 1 then do
+  if gen_hide = 1 | gen_limit /= null then do
     zerrsm = 'Warning'
     zerrlm = 'Rename Swap is not supported when generations are' ,
       'hidden. Use the REFRESH command to restore the' ,
@@ -5456,6 +5482,7 @@ Do_Prune:
       end
     end
   end
+  if prune = 0 then gens_found = 0
   prune = null
   Address TSO ,
     'Free f('pdsedd')'
