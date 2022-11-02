@@ -2498,7 +2498,7 @@ Start:
        /* ---------------------------------------------- *
        | Check for hide/limit to prevent some selections |
        * ----------------------------------------------- */
-       if pos(msel,'CDKRQ') > 0 then
+       if pos(msel,'DKRQ') > 0 then
           if gen_hide = 1 | gen_limit /= null | date_filter /= null
           then do
             if gen_limit /= null then xcmd = 'LIMit'
