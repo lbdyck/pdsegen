@@ -17,6 +17,14 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.1.6  Nov 02, 2022
++    - Exec changes
++      PDSEGEN  - Improve restriction message if hide/limit active
++
++~Version 6.1.5  Nov 01, 2022
++    - Exec changes
++      PDSEGEN  - Add restrictions on selections if a date filter active
++
 +~Version 6.1.4  Nov 01, 2022
 +    - Exec changes
 +      PDSEGEN  - Add FLip as an alias of Change

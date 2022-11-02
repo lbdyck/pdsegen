@@ -177,6 +177,9 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          11/02/22 - v6.1.6 - Fix typo in restricted sel msg*
+  *          11/01/22 - v6.1.5 - Improve restrictions if a     *
+  *                              date filter in play           *
   *          11/01/22 - v6.1.4 - Add FLIP as alias of Change   *
   *                            - Update to enable F1 for time  *
   *                            - Restrict some selections if   *
@@ -2151,7 +2154,7 @@ Start:
         * ------- */
         when abbrev("REFRESH",word(zcmd,1),3) = 1 then do
           gen_hide = 0
-          gen_limit = 0
+          gen_limit = null
           if word(zcmd,2) /= null then do
             filter = subword(zcmd,2)
             call setup_filter
@@ -2496,15 +2499,17 @@ Start:
        | Check for hide/limit to prevent some selections |
        * ----------------------------------------------- */
        if pos(msel,'CDKRQ') > 0 then
-          if gen_hide = 1 | gen_limit /= null then do
+          if gen_hide = 1 | gen_limit /= null | date_filter /= null
+          then do
             if gen_limit /= null then xcmd = 'LIMit'
                else if hide_title /= null then xcmd = 'HIde'
-            zerrsm = 'Warning'
+            if date_filter /= null then xcmd = 'Since'
+            zerrsm = 'Error.'
             zerrlm = msel 'is not supported when generations are' ,
-              'hidden. Use' xcmd ',or the REFresh' ,
+              'hidden. Use' xcmd', or the REFresh' ,
               'command to restore the' ,
               'generations to the member list and then you can' ,
-              'use delete.'
+              'try again.'
             'Setmsg msg(isrz003)'
           msel = null
           end
