@@ -11,10 +11,11 @@
   | Author:    Lionel B. Dyck                                  |
   |                                                            |
   | History:  (most recent on top)                             |
+  |            11/09/22 LBD - Initialize null variable         |
   |            10/20/20 LBD - Creation                         |
   |                                                            |
   | ---------------------------------------------------------- |
-  | Copyright (c) 2017-2020 by Lionel B. Dyck                  |
+  | Copyright (c) 2017-2022 by Lionel B. Dyck                  |
   | ---------------------------------------------------------- |
   | Support is on a best effort and time available basis which |
   | is why the complete source is provided for this application|
@@ -37,6 +38,8 @@
   * ---------------------------------------------------- */
   Address ISPExec
   'Control Errors Return'
+
+  parse value '' with null
 
   /* -------------------------------------------------- *
   | Check to see if the user has ISPTABL allocated and |

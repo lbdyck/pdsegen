@@ -25,6 +25,7 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            11/09/21 - Initialize null variable             *
  *            04/11/20 - Correct Compare Parms                *
  *            01/31/20 - Support new Initial Edit Macro       *
  *            05/19/17 - Change to support edit macro parm    *
@@ -67,6 +68,8 @@
  address isredit
  'macro (pdsemopt)'
  address ispexec 'control errors return'
+
+ parse value '' with null
 
 /* ------------------------------------------------------- *
  | Check for an Initial Edit Macro for this dataset suffix |

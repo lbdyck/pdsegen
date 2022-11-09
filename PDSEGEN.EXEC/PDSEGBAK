@@ -50,6 +50,7 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            11/09/22 - Change null variable setting location*
  *            12/05/21 - Move Numeric Digits to top of code   *
  *            09/10/19 - Update pdsegeni parse for mmod       *
  *            06/25/19 - Set return code                      *
@@ -118,6 +119,7 @@
     end
 
  parse value options with fromdsn targetds options
+ null   = ''
 
  if wordpos('BACKUP',options)  > 0 then pdsebopt = 'BACKUP'
  if wordpos('RESTORE',options) > 0 then pdsebopt = 'RESTORE'
@@ -130,7 +132,6 @@
  * ------------------------------------------ */
  Address ISPExec
  'Control Errors Return'
- null   = ''
  ddn    = 'PDSE'random(999)
  mc     = 0
  zerrhm   = 'PDSEGH0'

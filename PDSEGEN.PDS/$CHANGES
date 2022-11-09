@@ -5,6 +5,13 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.1.7  Nov 09, 2022
+     - Exec changes
+       PDSEGBAK - Properly initialize null variable
+       PDSEGCMD - Properly initialize null variable
+       PDSEGENM - Properly initialize null variable
+       PDSEGVER - Properly initialize null variable
+
   Version 6.1.6  Nov 02, 2022
      - Exec changes
        PDSEGEN  - Improve restriction message if hide/limit active
