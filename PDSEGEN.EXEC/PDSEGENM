@@ -25,7 +25,7 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
- *            11/09/21 - Initialize null variable             *
+ *            11/09/22 - Initialize null variable             *
  *            04/11/20 - Correct Compare Parms                *
  *            01/31/20 - Support new Initial Edit Macro       *
  *            05/19/17 - Change to support edit macro parm    *
@@ -55,7 +55,7 @@
  *            06/02/16 - Creation                             *
  *                                                            *
  * ---------------------------------------------------------- *
- * Copyright (c) 2017-2020 by Lionel B. Dyck                  *
+ * Copyright (c) 2017-2022 by Lionel B. Dyck                  *
  * ---------------------------------------------------------- *
  * License:   This EXEC and related components are released   *
  *            under terms of the GPLV3 License. Please        *

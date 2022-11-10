@@ -177,6 +177,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          11/10/22 - v6.1.8 - Add dsorg to temp allocation  *
   *          11/02/22 - v6.1.6 - Fix typo in restricted sel msg*
   *          11/01/22 - v6.1.5 - Improve restrictions if a     *
   *                              date filter in play           *
@@ -4894,7 +4895,7 @@ Create_Temp:
     else zdsrf = 'V B'
     Address TSO ,
       'Alloc f('zpdsendd') ds('tdsn') new spa('ct_space','ct_space') tr' ,
-      'Recfm('zdsrf') lrecl('zdslrec') blksize('zdsblk')' ,
+      'Recfm('zdsrf') lrecl('zdslrec') blksize('zdsblk') Dsorg(PS)' ,
       def_unit
   end
   else do
