@@ -33,6 +33,7 @@
  | Author:    Lionel B. Dyck                                  |
  |                                                            |
  | History:  (most recent on top)                             |
+ |            11/10/22 - Add DSORG(PS) to allocation          |
  |            04/17/20 - Add Compare RESET option             |
  |            04/04/20 - Fix typo in parm for option R        |
  |            11/24/17 - Update to support changed PDSEGENS   |
@@ -260,7 +261,7 @@
     Address TSO ,
      'Alloc f('tpdsendd') ds('tdsn') new spa(15,50) tr' ,
         'Recfm('recfm' B) lrecl('lrecl') blksize('blksize')' ,
-        def_unit
+        'DSorg(PS)' def_unit
     end
     else tdsn = "'"dataset"("tempmem")'"
  /* ---------------------------------- *

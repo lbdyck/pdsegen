@@ -65,6 +65,7 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            11/10/22 - Add DSORG(PS) to log allocation      *
  *            08/15/22 - Adjust popup on copy panel           *
  *            09/10/19 - Fix pdsegeni parse for mmod          *
  *            08/19/19 - Fix filter/options bug               *
@@ -122,7 +123,7 @@
  *            06/10/16 - Creation                             *
  *                                                            *
  * ---------------------------------------------------------- *
- * Copyright (c) 2017-2019 by Lionel B. Dyck                  *
+ * Copyright (c) 2017-2022 by Lionel B. Dyck                  *
  * ---------------------------------------------------------- *
  * License:   This EXEC and related components are released   *
  *            under terms of the GPLV3 License. Please        *
@@ -505,7 +506,7 @@
     else lrecl = length(zerrlm) + 4
     Address TSO
     'Alloc f('pdd') ds('pdd'.log) new spa(1,1) unit(3390)' ,
-      'Recfm(v b) lrecl('lrecl') blksize(0)'
+      'Recfm(v b) lrecl('lrecl') blksize(0) dsorg(ps)'
     'Execio * diskw' pdd '(finis stem trap.'
     Address ISPExec 'Browse dataset('pdd'.log)'
     'free f('pdd') delete'
