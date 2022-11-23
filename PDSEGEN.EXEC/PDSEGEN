@@ -177,6 +177,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          11/23/22 - v6.1.9 - Fix copy member pattern       *
   *          11/10/22 - v6.1.8 - Add dsorg to temp allocation  *
   *          11/02/22 - v6.1.6 - Fix typo in restricted sel msg*
   *          11/01/22 - v6.1.5 - Improve restrictions if a     *
@@ -1790,6 +1791,9 @@ Start:
                     if repopt = null then repopt = '( batch'
                     else repopt = repopt 'batch'
                   end
+                  if left(mempat,1) = '('
+                     then if right(mempat,1) /= ')'
+                     then mempat = mempat')'
                   'Select cmd(%pdsegenc' frompdse topdse ,
                     mempat repopt
                   leave

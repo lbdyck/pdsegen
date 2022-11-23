@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.1.9  Nov 10, 2022
+     - Exec changes
+       PDSEGEN  - Add closing paren to member pattern for Copy
+
   Version 6.1.8  Nov 10, 2022
      - Exec changes
        PDSEGEN  - Add DSORG to temp dataset allocation
