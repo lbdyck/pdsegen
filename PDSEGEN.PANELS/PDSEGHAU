@@ -23,13 +23,15 @@
 |   Contributors:  John Kalinich  Greg Price     Bill Smith            |
 |                  Bruce Koss     Thomas Conley  Salvador Carrasco     |
 |----------------------------------------------------------------------|
-|               Version number: 6.1.9                                  |
-|               Date          : Nov 23, 2022                           |
+|               Version number: 6.2.0                                  |
+|               Date          : Jan 01, 2023                           |
 |----------------------------------------------------------------------|
 |                                                                      |
 |   Support of PDSEGEN is as time allows.                              |
 |   New versions can be found at                                       |
-|   http://www.lbd.software.com/ispftools.html                         |
+|   https://www.lbd.software.com/ispftools.html                        |
+|   and                                                                |
+|   https://github.com/lbdyck/pdsegen                                  |
 |                                                                      |
 |                        Press ENTER for Disclaimers                   |
 .----------------------------------------------------------------------.

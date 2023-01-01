@@ -177,6 +177,9 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          01/01/23 - v6.2.0 - Adjust time calc on fast cpu  *
+  *                              set to 0.0000000001 if 0 for  *
+  *                              ptcpu ptpcpu                  *
   *          11/23/22 - v6.1.9 - Fix copy member pattern       *
   *          11/10/22 - v6.1.8 - Add dsorg to temp allocation  *
   *          11/02/22 - v6.1.6 - Fix typo in restricted sel msg*
@@ -1235,8 +1238,10 @@ Start:
     ptctime = e_stime - s_stime
     ptsserv = e_spdsi_service - s_spdsi_service
     ptcpu   = e_spdsi_stime - s_spdsi_stime
+    if ptcpu = 0 then ptcpu = 0.0000000001
     ptpserv = e_ppdsi_service - s_ppdsi_service
     ptpcpu  = e_ppdsi_stime - s_ppdsi_stime
+    if ptpcpu = 0 then ptpcpu = 0.0000000001
     poserv  = ptserv - (ptsserv + ptpserv)
     pocpu   = ptctime - (ptcpu + ptpcpu)
     numeric digits 2

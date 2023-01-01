@@ -5,6 +5,11 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.2.0  Jan 01, 2023
+     - Exec changes
+       PDSEGEN  - Adjust time calc on fast cpu set to
+                  0.0000000001 if 0 for ptcpu ptpcpu
+
   Version 6.1.9  Nov 10, 2022
      - Exec changes
        PDSEGEN  - Add closing paren to member pattern for Copy

@@ -1,5 +1,5 @@
 /* --------------------  rexx procedure  -------------------- */
-  ver = "3.8"
+  ver = "3.9"
 /* Name:      TryIT                                           *
  *                                                            *
  * Function:  Used to test the file currently being edited    *
@@ -28,9 +28,13 @@
  *            LIBDEF'd to ISPPLIB. This is so that other      *
  *            panels might be found if SEL or TUT is used.    *
  *            This is being done because ISPF will 'remember' *
- *            the bldl information for the panel and thus     *
+ *            the BLDL information for the panel and thus     *
  *            changes will not be reflected in subsequent     *
  *            uses of this exec.                              *
+ *                                                            *
+ *            For ISPF Panels with )MODEL the ROWS(SCAN)      *
+ *            keyword will be removed since scan does not     *
+ *            work under TRYIT.                               *
  *                                                            *
  *            The type of member is determined by:            *
  *            1) word REXX in record 1 for REXX Execs         *
@@ -93,6 +97,8 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            2022-12-06 - 3.9 - Remove ROWS(SCAN) in )MODEL  *
+ *                               for ISPF Panels              *
  *            2021-05-07 - 3.8 - Replace non-display chars    *
  *                               in TRYIT asm panel           *
  *                             - Fixup the panel load routine *
@@ -408,6 +414,13 @@
     "(last)  = linenum .zl"
     do lr = first to last
       "(record) = line" lr
+      if left(record,6) = ')MODEL' then do
+         trec = translate(record)
+         if pos(' ROWS(SCAN)',trec) > 0 then do
+            parse value trec with ltrec 'ROWS(SCAN)'rtrec
+            record = ltrec rtrec
+            end
+         end
       Address ISPExec ,
         "LmPut dataid("lmispf") MODE(INVAR)" ,
         "DataLoc(record) DataLen(80)"
