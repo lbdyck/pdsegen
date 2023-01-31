@@ -1,5 +1,5 @@
 /* --------------------  rexx procedure  -------------------- */
-  ver = "3.9"
+  ver = "4.0"
 /* Name:      TryIT                                           *
  *                                                            *
  * Function:  Used to test the file currently being edited    *
@@ -34,6 +34,10 @@
  *                                                            *
  *            For ISPF Panels with )MODEL the ROWS(SCAN)      *
  *            keyword will be removed since scan does not     *
+ *            work under TRYIT.                               *
+ *                                                            *
+ *            For ISPF Panels with KEYLIST( in the )PANEL     *
+ *            statement will be changed to just )PANEL to     *
  *            work under TRYIT.                               *
  *                                                            *
  *            The type of member is determined by:            *
@@ -97,6 +101,8 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            2023-01-04 - 4.0 - Remove KEYLIST from )PANEL   *
+ *                               for ISPF Panels              *
  *            2022-12-06 - 3.9 - Remove ROWS(SCAN) in )MODEL  *
  *                               for ISPF Panels              *
  *            2021-05-07 - 3.8 - Replace non-display chars    *
@@ -414,8 +420,11 @@
     "(last)  = linenum .zl"
     do lr = first to last
       "(record) = line" lr
+      trec = translate(record)
+      if pos(' KEYLIST(',trec) > 0 then do
+         record = ')Panel'
+         end
       if left(record,6) = ')MODEL' then do
-         trec = translate(record)
          if pos(' ROWS(SCAN)',trec) > 0 then do
             parse value trec with ltrec 'ROWS(SCAN)'rtrec
             record = ltrec rtrec
