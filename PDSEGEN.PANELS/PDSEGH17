@@ -8,7 +8,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 %Tutorial -\-\(~PDSE V2 Member Generations%)\-\- Tutorial
 %Command ===>_ZCMD                                                             +
 %
-%  GENONLY`or%G`and%HIDE`or%H`commands
+%  GENONLY`or%G`and%HIDE`or%H`commands or%GEN On`or%GEN Off`
 `
 `  GENONLY will hide all base members leaving only the generations
 `  displayed.
@@ -21,6 +21,9 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `
 `  When GENOnly or HIDE mode are active, Delete, Prune, and Rename
 `  are not available.
+`
+`  %GEN On`will display all generations while%GEN Off`will hide all
+`   generations on the member display.
 )Init
  .cursor = &zcmd
 )PROC

@@ -50,6 +50,7 @@
 `                               `Since day-of-week (SUnday, Monday, ...)
 `                               `OFF to turn off filtering
 `     @Find string              `to find a string in all members/gens
+`     @GEN On`or@GEN Off        `Display Generations or Not
 `     @GENOnly                  `Display only Generation members
 `     @HIGen                    `Display the High Generation members
 `                               `- known as dummy members

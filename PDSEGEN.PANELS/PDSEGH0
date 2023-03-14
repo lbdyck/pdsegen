@@ -21,34 +21,35 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `                                                                            +
 `%-- Line Commands ------  -- Primary Commands --- -- More Info -------------
 %
-`]L1+Attributes and Info  ]CA+AGE                 ]EC+Edit/View Compare      +
-`]L2+Browse, Edit or View ]C1+Backup              ]LR+Left and Right Commands+
-`]L3+Delete, Rename       ]C2+Browse/Edit/View                               +
-    +and RenSwap          ]C3+C (change dsn)      ]BR+Batch Backup/Restore   +
-`]L4+Compare              ]C4+Compare             ]BC+Batch Copy             +
-`]L5+eXecute and Submit   ]C5+Copy                                           +
-`]L6+Promote and Recover  ]C6+Dataset Info         ]S+Startup Syntax         +
-`]L7+Hide                 ]C7+Date Filters         ]C+Changes%*              +
-`]L8+Copy and Klone       ]C8+Filter               ]N+Notes                  +
-`]L9+User                 ]C9+Find                 ]O+Overview               +
-`]LM+Mail the member     ]C10+Genonly and Hide     ]P+IEBPDSE                +
-`%   &m1                 ]C11+HIGen                ]R+PDSE Restrictions      +
-`]LT+Tryit               ]C12+ID and MINE          ]T+Hints and Tips         +
-`]LP+Line Prompt %       ]C13+LImit                ]A+Author %*              +
-`                        ]C14+Locate
-`                        ]C15+Model                %Summaries (optional)     +
-`  Any line command can  ]C16+Options              ]LS+Line Summary%*        +
-`  be a block command:   ]C17+Output               ]PS+Primary Summary%*     +
-`  XX/XX or X99999       ]C18+Prune
-`                        ]C19+Reflist
-`  With the Expanded     ]C20+Refresh
-`  Member display any    ]C21+Restore
-`  valid TSO command     ]C22+Select and Edit
-`  can be entered.`      ]C23+Set command
-`                        ]C24+SETMacro
-`                        ]C25+Sort
-`                        ]C26+SUBmit
-`                        ]C27+Validate (IEBPDSE)
+`]L1+Attributes and Info   ]CA+AGE                 ]EC+Edit/View Compare      +
+`]L2+Browse, Edit or View  ]C1+Backup              ]LR+Left and Right Commands+
+`]L3+Delete, Rename        ]C2+Browse/Edit/View                              +
+    +and RenSwap           ]C3+C (change dsn)      ]BR+Batch Backup/Restore   +
+`]L4+Compare               ]C4+Compare             ]BC+Batch Copy             +
+`]L5+eXecute and Submit    ]C5+Copy                                          +
+`]L6+Promote and Recover   ]C6+Dataset Info        ]S+Startup Syntax         +
+`]L7+Hide                  ]C7+Date Filters        ]C+Changes%*              +
+`]L8+Copy and Klone        ]C8+Filter              ]N+Notes                  +
+`]L9+User                  ]C9+Find                ]O+Overview               +
+`]LM+Mail the member       ]C10+Genonly and Hide   ]P+IEBPDSE                +
+`%   &m1                  +     Gen On or Gen Off  ]R+PDSE Restrictions      +
+`]LT+Tryit                 ]C11+HIGen              ]T+Hints and Tips         +
+`]LP+Line Prompt %         ]C12+ID and MINE        ]A+Author %*              +
+`                          ]C13+LImit
+`                          ]C14+Locate             %Summaries (optional)     +
+`  Any line command can    ]C15+Model              ]LS+Line Summary%*        +
+`  be a block command:     ]C16+Options            ]PS+Primary Summary%*     +
+`  XX/XX or X99999         ]C17+Output
+`                          ]C18+Prune
+`  With the Expanded       ]C19+Reflist
+`  Member display any      ]C20+Refresh
+`  valid TSO command       ]C21+Restore
+`  can be entered.`        ]C22+Select and Edit
+`                          ]C23+Set command
+`                          ]C24+SETMacro
+`                          ]C25+Sort
+`                          ]C26+SUBmit
+`                          ]C27+Validate (IEBPDSE)
 `
 `                          %*+are only displayed if requested+               +
 )Init

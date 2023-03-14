@@ -17,6 +17,16 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.1  March 14, 2023
++    - Exec changes
++      PDSEGEN  - Use Parse Source instead of sysvar(sysicmd)
++               - Add new GEN On and GEN Off commands
++      PDSEGCPR - Ignore 'x' if used on the compare -n command
++    - Panel changes
++      PDSEGH0  - Add GEN On and GEN Off
++      PDSEGH17 - Add GEN On and GEN Off
++      PDSEGHPS - Add GEN On and GEN Off
++
 +~Version 6.2.0  Jan 01, 2023
 +    - Exec changes
 +      PDSEGEN  - Adjust time calc on fast cpu set to

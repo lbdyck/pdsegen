@@ -25,9 +25,6 @@
   *                                                            *
   * SET= may be anywhere in the parameters                     *
   *                                                            *
-  * flags may be Time to enable time reporting or HIGEN        *
-  * to display HIGEN members, or both.                         *
-  *                                                            *
   * If flags is E or Edit then if the member name has no mask  *
   * then the member will be edited.                            *
   *                                                            *
@@ -177,6 +174,9 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          03/14/23 - v6.2.1 - Use parse source instead of   *
+  *                              sysvar(sysicmd)               *
+  *                            - Add GEN ON/OFF command        *
   *          01/01/23 - v6.2.0 - Adjust time calc on fast cpu  *
   *                              set to 0.0000000001 if 0 for  *
   *                              ptcpu ptpcpu                  *
@@ -759,7 +759,8 @@
         cmdtbl = 1
       end
     end
-    callit = sysvar('sysicmd')
+    parse source src
+    callit = word(src,3)
     "Select CMD(%"callit options ") Newappl(PDSE)" ,
       "Passlib"
     if cmdtbl = 1 then
@@ -1498,6 +1499,32 @@ Start:
           filter_title = strip(filter_title 'ID' filter_id)
           call proc_refresh
         end
+       /* ---------------------------------------- *
+        | GEN On will display all generations      |
+        | GEN Off will not display any generations |
+        * ---------------------------------------- */
+        When word(zcmd,1) = 'GEN' then do
+             if word(zcmd,2) = 'ON' then do
+                  zcmd = null
+                  gen_limit = null
+                  gen_hide = 0
+                  hide_title = null
+                  call proc_refresh
+                  zerrsm = null
+                  zerrlm = 'All Generations will now be displayed.'
+                  'setmsg msg(isrz003)'
+                end
+             else do
+                  zcmd = null
+                  gen_limit =0
+                  gen_hide = 1
+                  hide_title = 'GEN Off'
+                  call proc_refresh
+                  zerrsm = null
+                  zerrlm = 'No Generations will be displayed.'
+                  'setmsg msg(isrz003)'
+                  end
+             end
         /* --------------------------------- *
         | Check for generation LIMIT        |
         | if positive make negative to      |

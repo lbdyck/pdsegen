@@ -55,7 +55,7 @@
  *            06/02/16 - Creation                             *
  *                                                            *
  * ---------------------------------------------------------- *
- * Copyright (c) 2017-2022 by Lionel B. Dyck                  *
+ * Copyright (c) 2017-2023 by Lionel B. Dyck                  *
  * ---------------------------------------------------------- *
  * License:   This EXEC and related components are released   *
  *            under terms of the GPLV3 License. Please        *
@@ -70,6 +70,7 @@
  address ispexec 'control errors return'
 
  parse value '' with null
+ opsys = space(translate(word(mvsvar('sysopsys'),2),' ','.'),0)
 
 /* ------------------------------------------------------- *
  | Check for an Initial Edit Macro for this dataset suffix |
@@ -127,6 +128,8 @@
         Address TSO 'Free DS('todsn') Delete'
         call outtrap 'off'
         end
+     '(caps) = caps'
+     'caps = off'
      msg = left('-',72,'-')
      call do_msg
      msg = 'Use Locate label next  or L label next to see' ,
@@ -140,6 +143,7 @@
               'to save updates.'
         call do_msg
         end
+     'caps =' caps
      call define_compare
      end
 /* -------------------------------------------------- *
@@ -147,16 +151,21 @@
  *                                                    *
  * Replace the default IBM Edit/View message with one *
  * that reflects the relative generation numbers.     *
+ *                                                    *
+ * Do not issue messages if z/OS 2.5 or later         *
  * -------------------------------------------------- */
  When pdsemopt = 'EM' then do
     Address ISPexec 'vget (mgen agen higen zdsngen)'
     if zdsngen > 0 then do
        'Reset'
+       '(caps) = caps'
+       'caps off'
        msg = '          Relative gen:' mgen 'Absolute gen:' agen ,
                        'High gen:' higen
        call do_msg
        msg = '-CAUTION- Edit session has been invoked.'
        call do_msg
+       'caps' caps
        call define_compare
        end
     end
@@ -170,12 +179,15 @@
     Address ISPexec 'vget (mgen agen higen zdsngen)'
        if zdsngen > 0 then do
        'Reset'
+       '(caps) = caps'
+       'caps off'
        msg = '       Relative gen:' mgen 'Absolute gen:' agen ,
                     'High gen:' higen
        call do_msg
        msg = '-Note- View session has been invoked -' ,
              'Changes cannot be saved.'
        call do_msg
+       'caps' caps
        call define_compare
        end
     end
