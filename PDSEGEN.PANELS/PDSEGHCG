@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.2  March 18, 2023
++    - Exec changes
++      PDSEGCPR - Correct Ignore 'x' if used on the compare -n command
++
 +~Version 6.2.1  March 14, 2023
 +    - Exec changes
 +      PDSEGEN  - Use Parse Source instead of sysvar(sysicmd)

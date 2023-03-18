@@ -33,6 +33,7 @@
  | Author:    Lionel B. Dyck                                  |
  |                                                            |
  | History:  (most recent on top)                             |
+ |            03/18/23 - Correct 'x' test                     |
  |            03/10/23 - Ignore 'x' in compare if provided    |
  |            11/10/22 - Add DSORG(PS) to allocation          |
  |            04/17/20 - Add Compare RESET option             |
@@ -55,6 +56,7 @@
  * ----------------------- */
  if options = null then exit
 
+ if left(strip(options),1) = '-' then
  if wordpos('X',translate(options)) > 0 then do
     p = wordpos('X',translate(options))
     if p > 1 then

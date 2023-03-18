@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.2.2  March 18, 2023
+     - Exec changes
+       PDSEGCPR - Correct Ignore 'x' if used on the compare -n command
+
   Version 6.2.1  March 14, 2023
      - Exec changes
        PDSEGEN  - Use Parse Source instead of sysvar(sysicmd)
