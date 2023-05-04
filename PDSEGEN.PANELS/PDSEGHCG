@@ -17,6 +17,12 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.3  May 4, 2023
++    - Exec changes
++      PDSEGEN  - Correctly display hit count (or not) if elapsed time
++                 display requested via set
++               - Allow K(lone) if genhide/limit active
++
 +~Version 6.2.2  March 18, 2023
 +    - Exec changes
 +      PDSEGCPR - Correct Ignore 'x' if used on the compare -n command
