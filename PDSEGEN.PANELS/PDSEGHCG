@@ -19,7 +19,8 @@
 +
 +~Version 6.2.5  Jun 17, 2023
 +    - Exec changes
-+      PDSEGEN  - Update page/%used after Prune
++      PDSEGEN  - Update page/%used after Prune and improve the prune
++                 message to reflect recovered pages/% used
 +
 +~Version 6.2.4  May 8, 2023
 +    - Exec changes

@@ -175,6 +175,7 @@
   *                                                            *
   * History:                                                   *
   *          06/17/23 - v6.2.5 - Update pages/%used after Prune*
+  *                              and improve pruned messages   *
   *          05/08/23 - v6.2.4 - Allow delete in more cases    *
   *          05/04/23 - v6.2.3 - Fix hit msg if time requested *
   *                            - Allow K(lone) if genhide/limit*
@@ -5508,6 +5509,10 @@ Prune_all:
   * members and generations.                             *
   * ---------------------------------------------------- */
 Do_Prune:
+  parse value '' with zerrsm zerrlm
+  'dsinfo dataset('pdsedsn')'
+  save_pagu = zdspagu
+  save_peru = zdsperu
   tpruned   = 0
   pmbr      = null
   Address TSO ,
@@ -5534,6 +5539,12 @@ Do_Prune:
   Address TSO ,
     'Free f('pdsedd')'
   'dsinfo dataset('pdsedsn')'
+  if zerrlm /= null then do
+  zerrlm = left(zerrlm,74) ,
+      'Pages recovered:' save_pagu - zdspagu ,
+      'Percent recovered:' save_peru - zdsperu
+      'Setmsg msg(isrz003)'
+      end
   return
 
   /* ---------------------------------------------------------- *
