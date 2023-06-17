@@ -5,6 +5,10 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.2.5  Jun 17, 2023
+     - Exec changes
+       PDSEGEN  - Update page/%used after Prune
+
   Version 6.2.4  May 8, 2023
      - Exec changes
        PDSEGEN  - Remove some restrictions on using member delete

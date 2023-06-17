@@ -174,6 +174,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          06/17/23 - v6.2.5 - Update pages/%used after Prune*
   *          05/08/23 - v6.2.4 - Allow delete in more cases    *
   *          05/04/23 - v6.2.3 - Fix hit msg if time requested *
   *                            - Allow K(lone) if genhide/limit*
@@ -5532,6 +5533,7 @@ Do_Prune:
   prune = null
   Address TSO ,
     'Free f('pdsedd')'
+  'dsinfo dataset('pdsedsn')'
   return
 
   /* ---------------------------------------------------------- *
