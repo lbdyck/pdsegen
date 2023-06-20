@@ -17,6 +17,12 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.6  Jun 20, 2023
++    - Exec changes
++      PDSEGEN  - The page count from dsinfo can contain a comma which
++                 causes the generated message after Prune to fail on the
++                 subtraction - fixed.
++
 +~Version 6.2.5  Jun 17, 2023
 +    - Exec changes
 +      PDSEGEN  - Update page/%used after Prune and improve the prune

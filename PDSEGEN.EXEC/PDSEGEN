@@ -174,6 +174,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          06/20/23 - v6.2.6 - Correct pages after prune math*
   *          06/17/23 - v6.2.5 - Update pages/%used after Prune*
   *                              and improve pruned messages   *
   *          05/08/23 - v6.2.4 - Allow delete in more cases    *
@@ -5541,11 +5542,22 @@ Do_Prune:
   'dsinfo dataset('pdsedsn')'
   if zerrlm /= null then do
   zerrlm = left(zerrlm,74) ,
-      'Pages recovered:' save_pagu - zdspagu ,
-      'Percent recovered:' save_peru - zdsperu
+      'Pages recovered:' substat(save_pagu zdspagu),
+      'Percent recovered:' substat(save_peru zdsperu)
       'Setmsg msg(isrz003)'
       end
   return
+
+  /* ---------------------------------------------------------- *
+   | Subroutine to subtract the original page count and percent |
+   | with the current values. Have to remove the comma if the   |
+   | count is greater than 999 or the subtraction fails.        |
+   * ---------------------------------------------------------- */
+Substat: Procedure
+  arg orig new
+  orig = space(translate(orig,' ',','),0)
+  new  = space(translate(new,' ',','),0)
+  return orig - new
 
   /* ---------------------------------------------------------- *
   * Do_Find routine                                            *
