@@ -174,6 +174,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          07/09/23 - v6.2.7 - Count Ghost members           *
+  *                              members with no absolute gen 0*
   *          06/20/23 - v6.2.6 - Correct pages after prune math*
   *          06/17/23 - v6.2.5 - Update pages/%used after Prune*
   *                              and improve pruned messages   *
@@ -4050,6 +4052,7 @@ Proc_pdsegeni:
   smbr     = null  /* was mbr */
   ombr     = null
   grows    = 0
+  ghosts   = 0
   metrics  = null
   drop members. all_members.
   members.     = null
@@ -4243,6 +4246,15 @@ Proc_pdsegeni:
       if Dummy = 'G' then cdate  = null
     end
 
+  /* ------------------------------------------------- *
+   | Check and count 'ghost' elements.                 |
+   | These are members with an absolute generation > 0 |
+   | but with a relative generation of 0               |
+   * ------------------------------------------------- */
+   if mgen = 0
+      then if agen > 0
+        then ghosts = ghosts + 1
+
     /* ------------------------------------------------- *
     | If the creation date is null then nullify all the |
     | row variables                                     |
@@ -4364,6 +4376,7 @@ do_metric:
     left('Pages Used:',20) left(strip(zdspagu),11)
   call add_tblmet left('Used:',20) left(strip(zdstotu),11) ,
     left('Pages Utilized:',20) left(strip(zdsperu),11)
+  call add_tblmet left('Ghosts:',20) left(strip(ghosts),11)
   call add_tblmet ' '
   call add_tblmet 'Member Distribution:'
   call add_tblmet 'GenNo  Members' ,

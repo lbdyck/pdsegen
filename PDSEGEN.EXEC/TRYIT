@@ -1,5 +1,5 @@
 /* --------------------  rexx procedure  -------------------- */
-  ver = "4.0"
+  ver = "4.2"
 /* Name:      TryIT                                           *
  *                                                            *
  * Function:  Used to test the file currently being edited    *
@@ -102,6 +102,9 @@
  * Author:    Lionel B. Dyck                                  *
  *                                                            *
  * History:                                                   *
+ *            2023-06-29 - 4.2 - Update if used under EDIF    *
+ *            2023-06-27 - 4.1 - With Panel test reset cursor *
+ *                               to the command line          *
  *            2023-01-04 - 4.0 - Remove KEYLIST from )PANEL   *
  *                               for ISPF Panels              *
  *            2022-12-06 - 3.9 - Remove ROWS(SCAN) in )MODEL  *
@@ -350,8 +353,10 @@
  * ----------------------- */
   td = translate(dataset,' ','.')
   w = words(td)
-  llq = word(td,w)
+  if w > 0 then
+     llq = word(td,w)
 
+  if strip(dataset) /= null then
   if type = null then do
     Select
       When wordpos(word(td,w),rexx)  > 0 then do
@@ -813,16 +818,19 @@
   "Setmsg msg(isrz001)"
 
   /*  clean up - delete tempmem member */
-  If temp <> 1 then exit 0
+  If temp = 1 then do
+     Address ISPExec
+     "LMInit  Dataid(tryit)   Dataset('"dataset"') enq(shrw)"
+     "LMOpen  Dataid("tryit") Option(Output)"
+     "LMMDel  Dataid("tryit") Member("tempmem") NoEnq"
+     "LMClose Dataid("tryit")"
+     "LMFree  Dataid("tryit")"
+     end
 
-  Address ISPExec
-  "LMInit  Dataid(tryit)   Dataset('"dataset"') enq(shrw)"
-  "LMOpen  Dataid("tryit") Option(Output)"
-  "LMMDel  Dataid("tryit") Member("tempmem") NoEnq"
-  "LMClose Dataid("tryit")"
-  "LMFree  Dataid("tryit")"
-
-  Exit 0
+  Address ISREdit
+  exit 0
+  'locate .zfirst'
+  Exit 1
 
 /* ----------------------------------------------*
  * Find_Temp:  - routine to generate a temporary *

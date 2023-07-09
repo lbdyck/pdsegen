@@ -5,6 +5,11 @@ Change History
        PDSEGHCG   - Change for release update (Panel)
        PDSEGVER   - Change for release update (Exec)
 
+  Version 6.2.7  Jul 09, 2023
+     - Exec changes
+       PDSEGEN  - Count Ghost members and report with Info command
+                  Members with no absolute generation of 0.
+
   Version 6.2.6  Jun 20, 2023
      - Exec changes
        PDSEGEN  - The page count from dsinfo can contain a comma which
