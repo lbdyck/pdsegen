@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.8  Nov 21, 2023
++    - Exec changes
++      PDSEGEN  - Correct bug in counting Ghosts
++
 +~Version 6.2.7  Jul 09, 2023
 +    - Exec changes
 +      PDSEGEN  - Count Ghost members and report with Info command
