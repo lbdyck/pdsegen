@@ -174,6 +174,8 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          11/25/23 - v6.2.9 - Improve Orphan/Ghost to only  *
+  *                              display orphan elements       *
   *          11/21/23 - v6.2.8 - Count Ghost members fix       *
   *          07/09/23 - v6.2.7 - Count Ghost members           *
   *                              members with no absolute gen 0*
@@ -816,6 +818,7 @@
   zerrhm   = 'PDSEGH0'
   zerralrm = 'NO'
   zerrtp   = 'NOTIFY'
+  ghostf   = 0
   closed   = 1   /* 1 = closed 0 = open */
   sortcol  = 'NAME'
   sortf = 'mbr,c,'A',mgen,n,d'
@@ -923,10 +926,14 @@
   | Test for any Flag options |
   * ------------------------- */
   if flag /= null then do i = 1 to words(flag)
-    if abbrev("CASPER",word(flag,i),1) = 1 then higenf = 1
-    if abbrev("ACHMED",word(flag,i),1) = 1 then higenf = 1
-    if abbrev("ZOMBIE",word(flag,i),1) = 1 then higenf = 1
-    if abbrev("HIGEN",word(flag,i),1)  = 1 then higenf = 1
+    if abbrev("CASPER",word(flag,i),1) = 1 then ghostf = 1
+    if abbrev("ACHMED",word(flag,i),1) = 1 then ghostf = 1
+    if abbrev("ZOMBIE",word(flag,i),1) = 1 then ghostf = 1
+    if abbrev("HIGEN",word(flag,i),1)  = 1 then ghostf = 1
+    if ghostf = 1 then do
+        higenf = 0
+        higen_title = 'Orphan members.'
+        end
     if higenf = 1 then HIGEN_title = 'HIGen members'
     if abbrev("TIME",word(flag,i),1)   = 1 then etime  = 1
     if abbrev("EDIT",word(flag,i),1)   = 1 then do
@@ -1416,11 +1423,20 @@ Start:
       call logit 'Processing Command:' zcmd
       Select
       when abbrev("CASPER",word(zcmd,1),3) = 1
-      then zcmd = "HIGEN" subword(zcmd,2)
+      then do
+           zcmd = "ORPHAN"
+           higen_title = 'Orphan members.'
+         end
       when abbrev("ACHMED",word(zcmd,1),3) = 1
-      then zcmd = "HIGEN" subword(zcmd,2)
+      then do
+           zcmd = "ORPHAN"
+           higen_title = 'Orphan members.'
+           end
       when abbrev("ZOMBIE",word(zcmd,1),3) = 1
-      then zcmd = "HIGEN" subword(zcmd,2)
+      then do
+           zcmd = "ORPHAN"
+           higen_title = 'Orphan members.'
+           end
       when abbrev("SELECT",word(zcmd,1),1) = 1 then do
         zcmd = 'EDIT' subword(zcmd,2)
         edits = 'S'
@@ -1855,6 +1871,30 @@ Start:
         when abbrev("BROWSE",word(zcmd,1),1) = 1 then do
           if words(zcmd) = 1 then call cmd_prompt 'B'
           call do_command 'B'
+        end
+        /* ------- *
+        | Orphan  |
+        * ------- */
+        when abbrev("ORPHAN",word(zcmd,1),3) = 1 then do
+            if zdsngen = 0 then do
+              zerrsm = 'Error'
+              zerrlm = 'Orphan is not supported for datasets without' ,
+                'PDSE member generations.'
+              'Setmsg msg(isrz003)'
+              higenf = 0
+            end
+            else do
+              if ghostf = 0 then do
+                  ghostf = 1
+                  HIGEN_title = 'Orphan members'
+                  call proc_refresh
+              end
+              else do
+                   ghostf = 0
+                   higen_title = null
+                   call proc_refresh
+          end
+          end
         end
         /* ------- *
         | HIGEN   |
@@ -4127,7 +4167,7 @@ Proc_pdsegeni:
         if higenf = 0 then iterate
       end
       if agen = 0 then mgen = 1
-      if higenf = 1 then
+      if higenf = 1 | ghostf = 1 then
       if mgen = '-' then mgen = 0
       if Dummy /= 'G'
       then mgen = mgen -1
@@ -4260,6 +4300,7 @@ Proc_pdsegeni:
    else gflag = 0
    if gflag = 1 then
    ghosts = ghosts + 1
+   if ghostf = 1 then if gflag = 0 then iterate
 
     /* ------------------------------------------------- *
     | If the creation date is null then nullify all the |

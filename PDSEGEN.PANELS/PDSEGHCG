@@ -17,6 +17,10 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.2.9  Nov 25, 2023
++    - Exec changes
++      PDSEGEN  - Only display (toggle) orphan members with Orphan commands
++
 +~Version 6.2.8  Nov 21, 2023
 +    - Exec changes
 +      PDSEGEN  - Correct bug in counting Ghosts
