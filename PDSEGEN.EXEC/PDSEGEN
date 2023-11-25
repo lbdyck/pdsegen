@@ -4423,7 +4423,7 @@ do_metric:
     left('Pages Used:',20) left(strip(zdspagu),11)
   call add_tblmet left('Used:',20) left(strip(zdstotu),11) ,
     left('Pages Utilized:',20) left(strip(zdsperu),11)
-  call add_tblmet left('Ghosts:',20) left(strip(ghosts),11)
+  call add_tblmet left('Orphans:',20) left(strip(ghosts),11)
   call add_tblmet ' '
   call add_tblmet 'Member Distribution:'
   call add_tblmet 'GenNo  Members' ,
