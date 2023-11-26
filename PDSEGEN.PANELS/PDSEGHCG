@@ -17,6 +17,15 @@
 +The following is a list of the changes and enhancements that have been
 +made to the~PDSEGEN+package.+
 +
++~Version 6.3.0  Nov 26, 2023
++    - Panel changes
++      PDSEGHHW - update for Orphan command
++      PDSEGHN  - update for Orphan command
++      PDSEGHOR - update for Orphan command
++      PDSEGHPS - update for Orphan command
++      PDSEGH0  - update for Orphan command
++      PDSEGOPT - update for Orphan command
++
 +~Version 6.2.9  Nov 25, 2023
 +    - Exec changes
 +      PDSEGEN  - Only display (toggle) orphan members with Orphan commands

@@ -64,6 +64,7 @@
 `     @MODel                    `to allocate a new dataset based on the
 `                                attributes of the current dataset
 `     @Options                  `Display a Primary Command prompting panel
+`     @Orphan                   `display only orphan/dummy elements
 `     @Output                   `to create a report of the active member list
 `     @Prune #                  `to delete obsolete generations
 `     @REFList                  `to list last 30 data sets used in ISPF to
@@ -105,5 +106,5 @@
 )PROC
  &ZUP = PDSEGH0
 )END
-/* Copyright (c) 2018-2020 by Lionel B. Dyck */
+/* Copyright (c) 2018-2023 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

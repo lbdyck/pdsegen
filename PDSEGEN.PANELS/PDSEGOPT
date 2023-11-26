@@ -18,16 +18,16 @@
 %                                                                              +
 %Member Commands                                 %Filters
   +1}browse+%**+4}edit+%** +7}limit+%** +10}view+%** +13}month+  +16}id+%**
-  +2}compare+  +5}filt  +  +8}locate+%**+11}today+   +14}year+
+  +2}compare+  +5}filt  +  +8}locate+%**+11}today+   +14}year+   +17}orphan+
   +3}copy+     +6}find+    +9}submit+%**+12}week+    +15}mine+
 +
 %Dataset Commands
- +17}backup+    +19}model+    +21}restore+
- +18}info+      +20}prune+    +22}validate+
+ +18}backup+    +20}model+    +22}restore+
+ +19}info+      +21}prune+    +23}validate+
 +
 %Dialog Commands
- +23}change+    +25}hide+     +27}output+     +29}set+   +31}reflist+
- +24}genonly+   +26}higen+    +28}refresh+    +30}sort+  +32}setmacro+
+ +24}change+    +26}hide+     +28}output+     +30}set+   +32}reflist+
+ +25}genonly+   +27}higen+    +29}refresh+    +31}sort+  +33}setmacro+
 +
  %**+Indicates the Parms are required, others will prompt if needed.
 )Init
@@ -47,6 +47,7 @@
  &filt    = 'FILter'
  &find    = 'Find'
  &genonly = 'Genonly'
+ &orphan  = 'Orphan'
  &hide    = 'Hide'
  &higen   = 'HIGen'
  &info    = 'Info'
@@ -79,22 +80,23 @@
                      14,YEAR
                      15,MINE
                      16,ID
-                     17,BACKUP
-                     18,INFO
-                     19,MODEL
-                     20,PRUNE
-                     21,RESTORE
-                     22,VAL
-                     23,C
-                     24,GENO
-                     25,HIDE
-                     26,HIG
-                     27,OUT
-                     28,REF
-                     29,SET
-                     30,SORT
-                     31,REFL
-                     32,SETMACRO
+                     17,ORPHAN
+                     18,BACKUP
+                     19,INFO
+                     20,MODEL
+                     21,PRUNE
+                     22,RESTORE
+                     23,VAL
+                     24,C
+                     25,GENO
+                     26,HIDE
+                     27,HIG
+                     28,OUT
+                     29,REF
+                     30,SET
+                     31,SORT
+                     32,REFL
+                     33,SETMACRO
                      *,*)
  if (&zcmd = 1 | &zcmd = 'B')
      &zedsmsg = ''
@@ -141,22 +143,23 @@ FIELD(month)   VAR(ZCMD)  VAL(13)
 FIELD(year)    VAR(ZCMD)  VAL(14)
 FIELD(mine)    VAR(ZCMD)  VAL(15)
 FIELD(id)      VAR(ZCMD)  VAL(16)
-FIELD(backup)  VAR(ZCMD)  VAL(17)
-FIELD(info  )  VAR(ZCMD)  VAL(18)
-FIELD(model )  VAR(ZCMD)  VAL(19)
-FIELD(prune )  VAR(ZCMD)  VAL(20)
-FIELD(restore) VAR(ZCMD)  VAL(21)
-FIELD(validate) VAR(ZCMD) VAL(22)
-FIELD(change)  VAR(ZCMD)  VAL(23)
-FIELD(genonly) VAR(ZCMD)  VAL(24)
-FIELD(hide  )  VAR(ZCMD)  VAL(25)
-FIELD(higen )  VAR(ZCMD)  VAL(26)
-FIELD(output)  VAR(ZCMD)  VAL(27)
-FIELD(refresh) VAR(ZCMD)  VAL(28)
-FIELD(set)     VAR(ZCMD)  VAL(29)
-FIELD(sort)    VAR(ZCMD)  VAL(30)
-FIELD(reflist) VAR(ZCMD)  VAL(31)
-FIELD(setmacro) VAR(ZCMD) VAL(32)
+FIELD(orphan)  VAR(ZCMD)  VAL(17)
+FIELD(backup)  VAR(ZCMD)  VAL(18)
+FIELD(info  )  VAR(ZCMD)  VAL(19)
+FIELD(model )  VAR(ZCMD)  VAL(20)
+FIELD(prune )  VAR(ZCMD)  VAL(21)
+FIELD(restore) VAR(ZCMD)  VAL(22)
+FIELD(validate) VAR(ZCMD) VAL(23)
+FIELD(change)  VAR(ZCMD)  VAL(24)
+FIELD(genonly) VAR(ZCMD)  VAL(25)
+FIELD(hide  )  VAR(ZCMD)  VAL(26)
+FIELD(higen )  VAR(ZCMD)  VAL(27)
+FIELD(output)  VAR(ZCMD)  VAL(28)
+FIELD(refresh) VAR(ZCMD)  VAL(29)
+FIELD(set)     VAR(ZCMD)  VAL(30)
+FIELD(sort)    VAR(ZCMD)  VAL(31)
+FIELD(reflist) VAR(ZCMD)  VAL(32)
+FIELD(setmacro) VAR(ZCMD) VAL(33)
 )End
-/* Copyright (c) 2018-2022 by Lionel B. Dyck */
+/* Copyright (c) 2018-2023 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3             */

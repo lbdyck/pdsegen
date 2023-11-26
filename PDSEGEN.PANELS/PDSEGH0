@@ -39,17 +39,18 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `                          ]C14+Locate             %Summaries (optional)     +
 `  Any line command can    ]C15+Model              ]LS+Line Summary%*        +
 `  be a block command:     ]C16+Options            ]PS+Primary Summary%*     +
-`  XX/XX or X99999         ]C17+Output
-`                          ]C18+Prune
-`  With the Expanded       ]C19+Reflist
-`  Member display any      ]C20+Refresh
-`  valid TSO command       ]C21+Restore
-`  can be entered.`        ]C22+Select and Edit
-`                          ]C23+Set command
-`                          ]C24+SETMacro
-`                          ]C25+Sort
-`                          ]C26+SUBmit
-`                          ]C27+Validate (IEBPDSE)
+`  XX/XX or X99999         ]C17+Orphan
+`                          ]C18+Output
+`  With the Expanded       ]C19+Prune
+`  Member display any      ]C20+Reflist
+`  valid TSO command       ]C21+Refresh
+`  can be entered.`        ]C22+Restore
+`                          ]C23+Select and Edit
+`                          ]C24+Set command
+`                          ]C25+SETMacro
+`                          ]C26+Sort
+`                          ]C27+SUBmit
+`                          ]C28+Validate (IEBPDSE)
 `
 `                          %*+are only displayed if requested+               +
 )Init
@@ -95,6 +96,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 &C25= 'C25'
 &C26= 'C26'
 &C27= 'C27'
+&C28= 'C28'
 &BR = 'BR'
 &BC = 'BC'
 &EC = 'EC'
@@ -159,17 +161,18 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
           C14,pdsegh4
           C15,pdseghmd
           C16,pdseghop
-          C17,pdseghou
-          C18,pdsegh12
-          C19,pdsegh20
-          C20,pdsegh19
-          C21,pdseghrs
-          C22,pdsegh13
-          C23,pdsegh8
-          C24,pdsegh21
-          C25,pdsegh5
-          C26,pdseghss
-          C27,pdsegh9
+          C17,pdseghor
+          C18,pdseghou
+          C19,pdsegh12
+          C20,pdsegh20
+          C21,pdsegh19
+          C22,pdseghrs
+          C23,pdsegh13
+          C24,pdsegh8
+          C25,pdsegh21
+          C26,pdsegh5
+          C27,pdseghss
+          C28,pdsegh9
            BR,pdseghbj
            BC,pdseghc
            EC,pdseghec
@@ -227,6 +230,8 @@ FIELD(C23 )     VAR(ZCMD) VAL(C23)
 FIELD(C24 )     VAR(ZCMD) VAL(C24)
 FIELD(C25 )     VAR(ZCMD) VAL(C25)
 FIELD(C26 )     VAR(ZCMD) VAL(C26)
+FIELD(C27 )     VAR(ZCMD) VAL(C27)
+FIELD(C28 )     VAR(ZCMD) VAL(C28)
 FIELD(BR  )     VAR(ZCMD) VAL(BR )
 FIELD(BC  )     VAR(ZCMD) VAL(BC )
 FIELD(EC  )     VAR(ZCMD) VAL(EC )
@@ -240,5 +245,5 @@ FIELD(T   )     VAR(ZCMD) VAL(T  )
 FIELD(C   )     VAR(ZCMD) VAL(C  )
 FIELD(A   )     VAR(ZCMD) VAL(A  )
 )END
-/* Copyright (c) 2018-2022 by Lionel B. Dyck */
+/* Copyright (c) 2018-2023 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3             */

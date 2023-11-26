@@ -1,0 +1,37 @@
+)attr default(%+@)
+  % type(text) intens(high) color(&clrw)
+  + type(text) intens(low ) color(&clrb)
+  ~ type(text) intens(high) caps(off) just(asis ) color(&clrh)
+    hilite(&clrhr)
+  @ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
+  ` type(text) intens(low ) caps(off) just(asis ) color(&clrt)
+  # type(text) intens(high) caps(off) just(asis ) color(&clrt)
+)Body Expand(\\)
+%Tutorial -\-\(~PDSE V2 Member Generations%)\-\- Tutorial
+%Command ===>@ZCMD                                                             +
+%
+%  ORPHAN
+`
+`  ORPHAN will limit the display to only the orphan (aka dummy/ghost)
+`  members.
+`
+`  These are members that have no absolute generation 0 member which is
+`  what happens when the member is deleted using a utility, or command,
+`  that does not understand PDSE member generations.
+`
+`  These members are also%not`accessible using Dynamic Alloction, JCL, or
+`  many other services that do not understand PDSE member generations.
+`
+`
+`
+`
+`
+`
+`
+)Init
+ .cursor = zcmd
+)PROC
+ &ZUP = PDSEGH0
+)END
+/* Copyright (c) 2023 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3        */

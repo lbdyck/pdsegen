@@ -109,10 +109,12 @@
 `     generation counter when generations are once again created for that
 `     member name.
 `
-)INIT
+` 24. The Orphan command will limit the display to only the orphan, or
+`     dummy elements.
+`
  .cursor = &zcmd
 )PROC
  &ZUP = PDSEGH0
 )END
-/* Copyright (c) 2018 by Lionel B. Dyck */
+/* Copyright (c) 2018-2023 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */

@@ -27,12 +27,12 @@
 `
 `  HIGEN ? will display this tutorial panel.
 `
-`  Fun aliases:  Achmed, Casper, Zombie
+`  Also check out the%Orhpan+command.
 `
 )Init
  .cursor = zcmd
 )Proc
  &ZUP = PDSEGH0
 )END
-/* Copyright (c) 2018 by Lionel B. Dyck */
+/* Copyright (c) 2018-2023 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */
