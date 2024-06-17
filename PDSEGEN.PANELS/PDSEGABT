@@ -21,12 +21,12 @@
 +Contributors:  John Kalinich  Greg Price     Bill Smith
 +               Bruce Koss     Thomas Conley  Salvador Carrasco
 +
-+The latest version may be found at www.lbdsoftware.com and
++The latest version may be found at github.com/lbdyck/pdsegen and
 +at www.cbttape.org in file 969.
 )Init
   &ver = &pdsegver
 )Proc
  &zcont = pdsegabt
 )End
-/* Copyright (c) 2017-2020 by Lionel B. Dyck */
+/* Copyright (c) 2017-2024 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3        */
