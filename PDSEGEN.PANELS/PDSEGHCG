@@ -19,8 +19,8 @@
 +
 +~Version 6.3.1  Jan 04, 2024
 +    - Exec changes
-+      PDSEGEN  - Allow non-quoted fully qualified datasets on entry and change
-+                 and add quotes if needed.
++      PDSEGEN  - Allow non-quoted fully qualified datasets on entry and
++                 change and add quotes if needed.
 +
 +~Version 6.3.0  Nov 26, 2023
 +    - Panel changes
