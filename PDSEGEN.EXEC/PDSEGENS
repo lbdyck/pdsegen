@@ -85,13 +85,26 @@
 /* ------------------------------------------------- *
  * Clean option                                      *
  *                                                   *
+ * NOTE: This parameter is now mostly obsolete. The  *
+ * APAR is included in base z/OS 2.3, so if it is    *
+ * determined that you are at least that version,    *
+ * clear is set to 1. If not, change the "else"      *
+ * assignment.                                       *
+ *                                                   *
  * Set to 1 if APAR OA50214 is installed             *
  * otherwise set to 0                                *
  *                                                   *
  * If APAR is not installed could cause corruption   *
  * to the PDSE                                       *
  * ------------------------------------------------- */
- clean = 1
+
+/* ========= DO NOT CHANGE BELOW THIS LINE ========= */
+ parse value mvsvar('SYSOPSYS') with . zosver .
+ if zosver >= '02.03.00' then
+   clean = 1
+ else
+/* ========= DO NOT CHANGE ABOVE THIS LINE ========= */
+   clean = 1  /* Change to 0 if before z/OS 2.2      */
 
 /* ------------------------------------------------- *
  * Prune option                                      *
