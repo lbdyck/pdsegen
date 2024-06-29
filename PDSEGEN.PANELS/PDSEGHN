@@ -112,6 +112,7 @@
 ` 24. The Orphan command will limit the display to only the orphan, or
 `     dummy elements.
 `
+)INIT
  .cursor = &zcmd
 )PROC
  &ZUP = PDSEGH0
