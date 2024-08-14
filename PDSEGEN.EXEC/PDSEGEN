@@ -174,6 +174,7 @@
   *                  and have incorporated as PDSEGMAT.        *
   *                                                            *
   * History:                                                   *
+  *          08/14/24 - v6.3.2 - Support 8 char userids        *
   *          01/04/24 - v6.3.1 - Allow unqualified dsnames on  *
   *                              entry or change (fix if so)   *
   *          11/25/23 - v6.2.9 - Improve Orphan/Ghost to only  *
@@ -2675,9 +2676,11 @@ Start:
               amd = amd * 1
               if avr < 10 then avr = '0'avr
               if amd < 10 then amd = '0'amd
+              if length(aid) = 8
+                 then lmmu = 'User8('aid')'
+                 else lmmu = 'User('aid')'
               'LMMStats Dataid('pdsegend')' ,
-                'Member('mbr') version('avr') modlevel('amd')' ,
-                'User('aid')'
+                'Member('mbr') version('avr') modlevel('amd')' lmmu
               lrc = rc
               if lrc = 0 then do
                 vrm = avr'.'amd
@@ -3002,12 +3005,14 @@ Start:
             pmbr = mbr
             if cdate /= null then do
               parse var vrm iver'.'imod
+              if length(muser) = 8
+                 then lmmu = 'User8('muser')'
+                 else lmmu = 'User('muser')'
               'LMMStats Dataid('pdsegend')' ,
                 'Member('mbr') version('iver') modlevel('imod')' ,
                 'Created('cdate') Moddate('mdate')' ,
                 'Modtime('mtime') Cursize('mcur')' ,
-                'Initsize('minit') Modrecs('mmod')' ,
-                'User('muser')'
+                'Initsize('minit') Modrecs('mmod')' lmmu
             end
             lopt = '*Promote'
             lopts = lopt
@@ -3925,12 +3930,14 @@ Del_Promote:
   'tbskip' pdset
   if cdate /= null then do
     parse var vrm iver'.'imod
+    if length(muser) = 8
+       then lmmu = 'User8('muser')'
+       else lmmu = 'User('muser')'
     'LMMStats Dataid('pdsegend')' ,
       'Member('mbr') version('iver') modlevel('imod')' ,
       'Created('cdate') Moddate('mdate')' ,
       'Modtime('mtime') Cursize('mcur')' ,
-      'Initsize('minit') Modrecs('mmod')' ,
-      'User('muser')'
+      'Initsize('minit') Modrecs('mmod')' lmmu
   end
   lopt = '*D'
   lopts = lopt
@@ -5330,12 +5337,14 @@ Do_Rename:
       /* ------------------------------------------------ *
       * Update the target member with the old ISPF stats *
       * ------------------------------------------------ */
+    if length(muser) = 8
+       then lmmu = 'User8('muser')'
+       else lmmu = 'User('muser')'
       'LMMStats Dataid('rename')' ,
         'Member('znewmem') version('iver') modlevel('imod')' ,
         'Created('cdate') Moddate('mdate')' ,
         'Modtime('mtime') Cursize('mcur')' ,
-        'Initsize('minit') Modrecs('mmod')' ,
-        'User('muser')'
+        'Initsize('minit') Modrecs('mmod')' lmmu
     end
   end
   Address TSO ,
