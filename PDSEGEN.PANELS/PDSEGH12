@@ -14,7 +14,7 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 `  Prune will remove old member generations and retain the number
 `  of generations specified (from 0 to nn).
 `
-`  If 2 is specified then all generations beyond generation -2 will
+`  If 2 is specified then all generations beyond generation -1 will
 `  be deleted.
 `
 `  If 0 is specified than all generations will be removed leaving
@@ -31,5 +31,5 @@ _ type( input) intens(low ) just(left ) hilite(uscore) color(&clrw )
 )PROC
  &ZUP = PDSEGH0
 )END
-/* Copyright (c) 2017 by Lionel B. Dyck */
-/* GNU GENERAL PUBLIC LICENSE V3        */
+/* Copyright (c) 2017-2025 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3             */

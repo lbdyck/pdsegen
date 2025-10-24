@@ -36,6 +36,10 @@
 )Proc
 if (&prune NE 'RESET')
     ver (&prune,nb,num)
+*REXX (*)
+ if prune > 1 then
+    prune = prune - 1
+*ENDRexx
 )End
 /* Copyright (c) 2017-2025 by Lionel B. Dyck */
 /* GNU GENERAL PUBLIC LICENSE V3             */
