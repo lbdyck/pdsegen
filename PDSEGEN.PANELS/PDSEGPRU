@@ -14,7 +14,7 @@
 +Prune will remove all generations beyond the number specified.
 +(e.g. 2 will retain generations 0,1,2)
 +
-+Enter the number of generation to retain:$prune+0 to^zmax   +
++Enter the number of generation to remove:$prune+0 to^zmax   +
 +
 +Current Filter:^prunef
 +
@@ -37,5 +37,5 @@
 if (&prune NE 'RESET')
     ver (&prune,nb,num)
 )End
-/* Copyright (c) 2017 by Lionel B. Dyck */
-/* GNU GENERAL PUBLIC LICENSE V3        */
+/* Copyright (c) 2017-2025 by Lionel B. Dyck */
+/* GNU GENERAL PUBLIC LICENSE V3             */
